@@ -1,5 +1,10 @@
 * { box-sizing: border-box; }
 
+/* 4. Transicao Suave de Ecras */
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #0f172a;
@@ -33,7 +38,7 @@ h3 { color: #f8fafc; font-size: 28px; }
 .enigma-box { display: none; }
 .active { display: block; animation: fadeIn 0.5s ease-in-out; }
 
-/* Animação de Celebração */
+/* Animacao de Celebracao */
 @keyframes celebrar {
     0% { transform: scale(1); filter: brightness(1); }
     50% { transform: scale(1.02); filter: brightness(1.3); }
@@ -42,7 +47,6 @@ h3 { color: #f8fafc; font-size: 28px; }
 .celebrar {
     animation: celebrar 0.6s ease;
 }
-
 
 @keyframes fadeIn { 
     from { opacity: 0; transform: translateY(10px); } 
@@ -65,11 +69,55 @@ h3 { color: #f8fafc; font-size: 28px; }
 .caixa-dica { display: none; background-color: #451a03; border-left: 6px solid #f97316; padding: 15px; margin-top: 20px; text-align: left; border-radius: 0 6px 6px 0; font-size: 20px; color: #ffedd5; }
 .aviso-pontuacao { background-color: #1e3a5f; border-left: 4px solid #f59e0b; padding: 8px 15px; margin: 10px 0; font-size: 14px; color: #fde047; display: inline-block; border-radius: 5px; }
 
-.input-group { display: flex; justify-content: center; align-items: center; gap: 20px; margin: 20px 0; flex-wrap: wrap; background: #334155; padding: 25px; border-radius: 8px; }
-input[type="number"], input[type="text"] { padding: 15px 20px; font-size: 24px; width: 300px; text-align: center; border: 2px solid #38bdf8; border-radius: 6px; background-color: #0f172a; color: #fff; font-weight: bold; }
-input[type="text"].largo { width: 350px; }
-input[type="text"].xlargo { width: 650px; }
-input:focus, textarea:focus, select:focus { outline: none; border-color: #fde047; }
+.input-group { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; gap: 20px; 
+    margin: 20px 0; flex-wrap: wrap; 
+    background: #334155; padding: 25px; 
+    border-radius: 8px;     
+}
+
+input[type="number"], input[type="text"] {
+    padding: 15px 20px; 
+    font-size: 24px; 
+    width: 300px; 
+    text-align: center; 
+    border: 2px solid #38bdf8; 
+    border-radius: 6px; 
+    background-color: #0f172a; 
+    color: #fff; 
+    font-weight: bold; 
+}
+
+/* 1. Esconder setas nativas dos inputs tipo number */
+/* Esconder setas nativas dos inputs tipo number (Chrome, Safari, Edge) */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Esconder setas nativas no Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+input[type="text"].largo { 
+    width: 350px; 
+}
+
+input[type="text"].xlargo { 
+    width: 650px; 
+}
+
+/* 2. Brilho Neon Focado */
+input:focus, textarea:focus, select:focus { 
+    outline: none; 
+    border-color: #38bdf8; 
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
 
 input.correto {
     border: 2px solid #22c55e !important;
@@ -119,7 +167,7 @@ button:hover { background-color: #0369a1; transform: scale(1.02); }
 .estrela { color: #fbbf24; font-size: 20px; letter-spacing: 2px; }
 
 /* =========================================
-   CABEÇALHO (NOVO ALINHAMENTO FIXO)
+   CABECALHO (NOVO ALINHAMENTO FIXO)
 ========================================= */
 header {
     display: flex;
@@ -156,7 +204,7 @@ header {
 }
 
 /* =========================================
-   FOOTER (RODAPÉ)
+   FOOTER (RODAPE)
 ========================================= */
 footer {
     position: fixed;
@@ -177,7 +225,6 @@ footer strong { color: #38bdf8; letter-spacing: 1px; }
 .footer-autores { font-size: 12px; color: #64748b; max-width: 1200px; margin: 4px auto; }
 .footer-legal { font-size: 10px; margin-top: 6px; color: #cbd5e1; }
 
-
 .pergunta-socratica {
     background-color: rgba(253, 224, 71, 0.1);
     border-left: 4px solid #fde047;
@@ -188,8 +235,6 @@ footer strong { color: #38bdf8; letter-spacing: 1px; }
     color: #f8fafc;
     box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
 }
-
-
 
 /* =========================================
    MEDIA QUERIES (RESPONSIVIDADE)
@@ -210,7 +255,7 @@ footer strong { color: #38bdf8; letter-spacing: 1px; }
         font-size: 16px;
     }
     input[type="number"], input[type="text"] {
-        font-size: 16px; /* mínimo para não dar zoom em iOS */
+        font-size: 16px; 
     }
     .container {
         padding: 20px 10px !important;
@@ -234,7 +279,7 @@ footer strong { color: #38bdf8; letter-spacing: 1px; }
 }
 
 /* =========================================
-   TEMA CLARO (CORES FORÇADAS E CONTRASTE)
+   TEMA CLARO (CORES FORCADAS E CONTRASTE)
 ========================================= */
 body.tema-claro {
     background-color: #f8fafc;
@@ -250,7 +295,6 @@ body.tema-claro .relatorio-box {
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-/* 1. Títulos e Textos Principais */
 body.tema-claro h1, 
 body.tema-claro h2,
 body.tema-claro h3,
@@ -264,14 +308,12 @@ body.tema-claro p {
     color: #334155 !important;
 }
 
-/* Força a caixa de input do aluno a ficar clara */
 body.tema-claro #nome_aluno {
     background-color: #ffffff !important;
     color: #0f172a !important;
     border-color: #94a3b8 !important;
 }
 
-/* 2. Caixas Estruturais (Mentoria, Dicas, Inputs) */
 body.tema-claro .mentor,
 body.tema-claro .caixa-dica,
 body.tema-claro .input-group {
@@ -280,7 +322,6 @@ body.tema-claro .input-group {
     border-color: #cbd5e1 !important;
 }
 
-/* 3. VARREDURA DE FUNDOS ESCUROS (Inline Styles do HTML) */
 body.tema-claro [style*="background:#1e293b"],
 body.tema-claro [style*="background: #1e293b"],
 body.tema-claro [style*="background:rgba(0,0,0,0.2)"],
@@ -291,7 +332,6 @@ body.tema-claro [style*="background: rgba(56, 189, 248, 0.1)"] {
     border-color: #cbd5e1 !important;
 }
 
-/* 4. VARREDURA DE TEXTOS COLORIDOS E BRANCOS (Inline Styles do HTML) */
 body.tema-claro [style*="color:#fde047"], 
 body.tema-claro [style*="color: #fde047"] { color: #b45309 !important; }
 
@@ -311,17 +351,13 @@ body.tema-claro [style*="color: #ffedd5"],
 body.tema-claro [style*="color:#fff"],
 body.tema-claro [style*="color: #fff"] { color: #1e293b !important; }
 
-/* Palavras específicas em Destaque */
 body.tema-claro .mentor strong { color: #0369a1 !important; }
 body.tema-claro .termo-math { color: #b45309 !important; background: rgba(245, 158, 11, 0.15) !important; }
 
-/* Linhas de divisão de fração nas dicas (ex: 4,333) */
 body.tema-claro span[style*="border-bottom: 2px solid #ffedd5"] {
     border-bottom-color: #94a3b8 !important;
 }
 
-/* Inputs, Selects e Calculadora */
-/* Inputs, Selects e Calculadora */
 body.tema-claro input, 
 body.tema-claro select,
 body.tema-claro textarea,
@@ -331,13 +367,11 @@ body.tema-claro .calc-display {
     border-color: #94a3b8 !important;
 }
 
-/* Ajuste de Contraste da Pergunta Socrática para o Tema Claro */
 body.tema-claro .pergunta-socratica {
     background-color: rgba(245, 158, 11, 0.1) !important;
     border-left-color: #f59e0b !important;
     color: #334155 !important;
 }
-
 
 @keyframes pisca-senha {
     0% { opacity: 1; transform: scale(1); }
@@ -352,11 +386,11 @@ body.tema-claro .pergunta-socratica {
     border-radius: 8px;
     color: #0f172a;
     font-weight: bold;
-    display: inline-block;
+    display: table;
+    margin: 15px auto 0;
     animation: pisca-senha 0.8s infinite;
 }
 
-/* Botão Secreto Glitch */
 .btn-glitch {
     background: #0f0;
     color: #000;
@@ -383,10 +417,6 @@ body.tema-claro .pergunta-socratica {
     100% { transform: translateX(0px) skewX(0deg); opacity: 1; }
 }
 
-
-/* =========================================
-   5. AJUSTES PROFUNDOS NAS IMAGENS SVG
-========================================= */
 body.tema-claro .svg-container {
     background-color: #ffffff !important;
     border-color: #cbd5e1 !important;
@@ -439,9 +469,6 @@ body.tema-claro .svg-container svg line[stroke="#22c55e"],
 body.tema-claro .svg-container svg polyline[stroke="#22c55e"],
 body.tema-claro .svg-container svg polygon[stroke="#22c55e"] { stroke: #15803d !important; }
 
-/* =========================================
-   6. CABEÇALHO E RODAPÉ (FOOTER)
-========================================= */
 body.tema-claro header {
     background-color: #ffffff !important;
     border-bottom-color: #0284c7 !important;
@@ -453,7 +480,6 @@ body.tema-claro footer {
     color: #475569 !important;
 }
 
-/* Força as cores e fundos dentro do footer */
 body.tema-claro footer div {
     color: #334155 !important;
 }
@@ -467,10 +493,25 @@ body.tema-claro .footer-legal {
     color: #64748b !important;
 }
 
-/* Ajuste da caixa de Aviso de Pontuação (Sistema de Estrelas) */
 body.tema-claro .aviso-pontuacao {
     background-color: #ffffff !important;
-    color: #b45309 !important; /* Tom alaranjado escuro para ler bem no fundo branco */
+    color: #b45309 !important; 
     border-left-color: #f59e0b !important;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05) !important; /* Sombra leve para destacar */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05) !important; 
+}
+
+/* 3. Barra de rolagem customizada (Estilo Sci-Fi) */
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+    background: #0f172a; 
+    border-left: 1px solid #1e293b;
+}
+::-webkit-scrollbar-thumb {
+    background: #38bdf8; 
+    border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #0284c7; 
 }

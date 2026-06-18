@@ -50,11 +50,12 @@
 
     <div id="tela1" class="enigma-box active">
         <h1>Protocolo de Aprendizagem I.A.</h1>
-        <div style="margin: 25px 0; text-align: center; background: rgba(56, 189, 248, 0.1); padding: 20px; border-radius: 8px; border: 1px dashed #38bdf8;">
-            <label for="nome_aluno" style="font-size: 20px; color: #38bdf8; font-weight: bold; display: block; margin-bottom: 10px;">Identificação Obrigatória:</label>
-            <input type="text" id="nome_aluno" placeholder="Digite seu primeiro nome" style="text-align: center; font-size: 20px; padding: 10px; border-radius: 6px; border: 2px solid #334155; background: #0f172a; color: #fde047; width: 100%; max-width: 300px;">
-        </div>
-        <p>Atenção, aluno. Você está trancado no laboratório de matemática pura. Para sair, não basta adivinhar senhas; você precisará <strong>aprender as leis do universo numérico a partir do zero</strong>.</p>
+        
+        <p>
+        <strong>Bem-vindo ao Escape Room Matemático – um Recurso Educacional Aberto (REA) que une diversão e diagnóstico pedagógico.</strong><br><br>
+        Você está trancado no laboratório de matemática pura. Para escapar, não basta adivinhar: você precisará <strong>compreender a essência visual e lógica dos números</strong>.<br><br>
+        Cada fase ensina um conceito fundamental – de Pitágoras a cálculos de tempo – e ao final você poderá baixar um <strong>relatório completo</strong> com seus acertos, erros, dicas usadas e muito mais. Professores podem usar esses dados para identificar fragilidades e planejar intervenções personalizadas.
+        </p>
         <p>Eu serei o seu professor. Vou ensinar a você como os entes matemáticos se comportam na sua essência visual e lógica.</p>
         
         <div style="background: rgba(239, 68, 68, 0.1); border: 2px dashed #ef4444; padding: 15px; margin: 15px 0; border-radius: 8px;">
@@ -62,31 +63,13 @@
         </div>
 
         <p class="aviso-pontuacao">⭐ Sistema de Estrelas: <strong>⭐⭐⭐</strong> sem erros/dicas | <strong>⭐⭐</strong> 1 erro ou 1 dica | <strong>⭐</strong> 2+ erros/dicas.</p>
+
+        <div style="margin: 25px 0; text-align: center; background: rgba(56, 189, 248, 0.1); padding: 20px; border-radius: 8px; border: 1px dashed #38bdf8;">
+            <label for="nome_aluno" style="font-size: 20px; color: #38bdf8; font-weight: bold; display: block; margin-bottom: 10px;">Identificação Obrigatória:</label>
+            <input type="text" id="nome_aluno" placeholder="Digite seu primeiro nome" style="text-align: center; font-size: 20px; padding: 10px; border-radius: 6px; border: 2px solid #334155; background: #0f172a; color: #fde047; width: 100%; max-width: 300px;">
+        </div>
+
         <div class="btn-container"><button onclick="iniciarJogo()">Iniciar Aula de Fuga</button></div>
-
-        
-
- <!--       <div style="margin-top: 50px; padding: 20px; border: 2px dashed #f59e0b; background: rgba(245, 158, 11, 0.1); border-radius: 8px;">
-            <h3 style="color: #fde047; font-size: 20px; margin-top: 0;">🛠️ Menu Provisório de Testes</h3>
-            <p style="font-size: 16px; margin-bottom: 15px;">Selecione a fase para onde deseja saltar diretamente:</p>
-            <select id="menu-testes" style="padding: 10px; font-size: 16px; border-radius: 6px; margin-bottom: 15px; width: 100%; max-width: 400px; cursor: pointer;">
-                <option value="fase1">Fase 1 (Parte 1) - Pitágoras</option>
-                <option value="fase1_pt2">Fase 1 (Parte 2) - Simplificação √20</option>
-                <option value="fase1_pt3">Fase 1 (Parte 3) - Tirolesa</option>
-                <option value="fase2">Fase 2 (Parte 1) - Triângulo Retângulo</option>
-                <option value="fase2_pt2">Fase 2 (Parte 2) - Circunferência</option>
-                <option value="fase3">Fase 3 - O Finito e o Infinito</option>
-                <option value="fase4">Fase 4 - Potências e Dízimas</option>
-                <option value="fase5">Fase 5 (Parte 1) - Áreas e Raízes</option>
-                <option value="fase5_pt2">Fase 5 (Parte 2) - Raiz de 180</option>
-                <option value="fase6">Fase 6 (Parte 1) - Caixinha Cúbica 3D</option>
-                <option value="fase6_pt2">Fase 6 (Parte 2) - Sobra da Fita</option>
-                <option value="fase7">Fase 7 - Estrutura do Tempo</option>
-                <option value="tela_sucesso">TELA FINAL (Relatório de Sucesso)</option>
-            </select>
-            <br>
-            <button onclick="mudarTela('tela1', document.getElementById('menu-testes').value)" style="background: #f59e0b; color: #0f172a; padding: 10px 20px; font-size: 16px; text-transform: none; border-radius: 6px;">Saltar para Fase Selecionada 🚀</button>
-        </div> -->
 
     </div>
 
@@ -163,7 +146,7 @@
         </div>
         <div class="input-group" style="background:#1e293b;border:1px dashed #38bdf8;">
             <span style="font-size:18px;color:#38bdf8;">Total: Hipotenusa&sup2; = </span>
-            <input type="text" class="xlargo" id="soma_quadrados" placeholder="Some o quadrado dos dois catetos">
+            <input type="text" id="soma_quadrados" placeholder="Some o quadrado dos dois catetos" style="width: 520px; text-align: center; max-width: 100%;">
         </div>
         <div class="btn-container">
             <button onclick="verificarPit()">Validar Teorema</button>
@@ -214,7 +197,9 @@
             
             <p style="font-size:20px; margin-top:20px;"><strong>1º Passo:</strong> Aplique a propriedade preenchendo os campos abaixo:</p>
             <div class="raiz-bloco">
-                <input type="number" id="raiz20_fora" placeholder="Fora"> <span>&radic;</span> <input type="number" id="raiz20_dentro" placeholder="Dentro">
+                <input type="number" id="raiz20_fora" placeholder="Fora"> 
+                <span>&radic;</span> 
+                <input type="number" id="raiz20_dentro" placeholder="Dentro">
             </div>
             <div class="btn-container">
                 <button onclick="verificarRaiz20Passo1()">Validar Simplificação</button>
@@ -318,7 +303,7 @@
             </div>
             <div class="input-group">
                 <span style="font-size:18px;">Medida da Parede Completa: </span>
-                <input type="text" class="largo" id="raiz20_aprox" placeholder="?">
+                <input type="text" id="raiz20_aprox" style="width:150px; font-size:20px; padding:10px; text-align:center;"placeholder="?">
                 <span>metros</span>
             </div>
             <div class="btn-container">
@@ -424,7 +409,9 @@
                 "❓ Observe a tabela de fatores primos. Quantos '2' encontramos? Agrupe-os logicamente em potências quadradas (ex: 2&sup2;) para que a raiz as anule."
             </div>
             <div class="raiz-bloco">
-                <input type="number" id="f1_fora416" placeholder="Fora"> <span>&radic;</span> <input type="number" id="f1_dentro416" placeholder="Dentro">
+                <input type="number" id="f1_fora416" placeholder="Fora"> 
+                <span>&radic;</span> 
+                <input type="number" id="f1_dentro416" placeholder="Dentro">
             </div>
             <div class="btn-container">
                 <button onclick="verificarF1Passo3_3()">Simplificar Raiz</button>
@@ -476,7 +463,9 @@
 
         <div id="passo1-fase2">
             <div class="input-group">
-                <span>Hipotenusa&sup2; =</span> <input type="number" id="f2_cat1" placeholder="Cateto"> &sup2; + <input type="number" id="f2_cat2" placeholder="Cateto"> &sup2;
+                <span>Hipotenusa&sup2; =</span> 
+                <input type="number" id="f2_cat1" placeholder="Cateto" style="width: 180px; text-align: center;"> &sup2; + 
+                <input type="number" id="f2_cat2" placeholder="Cateto" style="width: 180px; text-align: center;"> &sup2;
             </div>
             <div class="btn-container">
                 <button onclick="verificarF2Passo1()">Validar</button>
@@ -587,7 +576,11 @@
         <div id="passo3-circ" class="hidden">
             <p style="font-size:18px;"><strong>3º Passo – Encontrar o Raio</strong><br>
             A álgebra ensina: se dividimos uma expressão por 2, nós só alteramos os múltiplos externos que não estão presos em propriedades complexas como raízes inquebráveis.</p>
-            <div class="input-group"><span>Raio = Diâmetro &divide; 2 = &radic;</span> <input type="number" id="circ_raio" placeholder="O que sobra dentro"> <span>cm</span></div>
+                        <div class="input-group">
+                <span>Raio = Diâmetro &divide; 2 = &radic;</span> 
+                <input type="number" id="circ_raio" placeholder="O que sobra dentro" style="width: 400px; text-align: center; max-width: 100%;"> 
+                <span>cm</span>
+            </div>
             <div class="btn-container">
                 <button onclick="verificarCircPasso3()">Validar Raio</button>
                 <button class="btn-dica" onclick="confirmarDica('dicaCirc3','circ_p3')">Dica</button>
@@ -612,14 +605,53 @@
         </div>
         <div id="passo1-fase3">
             <p style="font-size:18px;"><strong>1º Passo:</strong> Use essa lógica para criar as frações originais (sem simplificar ainda):</p>
-            <div class="input-group" style="gap:40px;">
-                <div><p><strong>0,5</strong> (Finito)</p><input type="number" id="nf1" placeholder="Num"><br><div style="height:2px;background:#fff;margin:5px 0;"></div><input type="number" id="df1" placeholder="Den"></div>
-                <div><p><strong>0,555...</strong> (Dízima)</p><input type="number" id="ni1" placeholder="Num"><br><div style="height:2px;background:#fff;margin:5px 0;"></div><input type="number" id="di1" placeholder="Den"></div>
+            
+            <div class="input-group" style="gap:40px; flex-wrap: wrap; justify-content: center;">
+    
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 18px; white-space: nowrap;"><strong>0,5</strong> (Finito) =</span>
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <input type="number" id="nf1" placeholder="Numerador" style="width: 250px; text-align: center; max-width: 100%;">
+                        <div style="width: 100%; height: 2px; background: #fff; margin: 6px 0;"></div>
+                        <input type="number" id="df1" placeholder="Denominador" style="width: 250px; text-align: center; max-width: 100%;">
+                    </div>
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 18px; white-space: nowrap;"><strong>0,555...</strong> (Dízima) =</span>
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <input type="number" id="ni1" placeholder="Numerador" style="width: 250px; text-align: center; max-width: 100%;">
+                        <div style="width: 100%; height: 2px; background: #fff; margin: 6px 0;"></div>
+                        <input type="number" id="di1" placeholder="Denominador" style="width: 250px; text-align: center; max-width: 100%;">
+                    </div>
+                </div>
+
             </div>
-            <div class="input-group" style="gap:40px;margin-top:20px;">
-                <div><p><strong>0,75</strong> (Finito)</p><input type="number" id="nf2" placeholder="Num"><br><div style="height:2px;background:#fff;margin:5px 0;"></div><input type="number" id="df2" placeholder="Den"></div>
-                <div><p><strong>0,333...</strong> (Dízima)</p><input type="number" id="ni2" placeholder="Num"><br><div style="height:2px;background:#fff;margin:5px 0;"></div><input type="number" id="di2" placeholder="Den"></div>
+
+            <div class="input-group" style="gap:40px; margin-top:20px; flex-wrap: wrap; justify-content: center;">
+                
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 18px; white-space: nowrap;"><strong>0,75</strong> (Finito) =</span>
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <input type="number" id="nf2" placeholder="Numerador" style="width: 250px; text-align: center; max-width: 100%;">
+                        <div style="width: 100%; height: 2px; background: #fff; margin: 6px 0;"></div>
+                        <input type="number" id="df2" placeholder="Denominador" style="width: 250px; text-align: center; max-width: 100%;">
+                    </div>
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 18px; white-space: nowrap;"><strong>0,333...</strong> (Dízima) =</span>
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <input type="number" id="ni2" placeholder="Numerador" style="width: 250px; text-align: center; max-width: 100%;">
+                        <div style="width: 100%; height: 2px; background: #fff; margin: 6px 0;"></div>
+                        <input type="number" id="di2" placeholder="Denominador" style="width: 250px; text-align: center; max-width: 100%;">
+                    </div>
+                </div>
+
             </div>
+
+
+
             <div class="btn-container">
                 <button onclick="verificarF3Passo1()">Validar Frações</button>
                 <button class="btn-dica" onclick="confirmarDica('dica3','fracoes')">Dica</button>
@@ -687,7 +719,18 @@
         <h2>Fase 4: Potências e Dízimas</h2>
         <p class="aviso-pontuacao">⭐ Sistema de Estrelas</p>
         <div class="mentor">
-            <p><strong>Assistente I.A. diz:</strong> "O laboratório exige agora a síntese de propriedades avançadas. O nosso Desafio é decodificar e calcular o valor final de <strong>m &times; n</strong>, sabendo que <strong>m = (1,777...)<sup>0,5</sup></strong> e <strong>n = (2/3)<sup>&minus;2</sup></strong>."</p>
+            <p><strong>Assistente I.A. diz:</strong> "O laboratório exige agora a síntese de propriedades avançadas. O nosso Desafio é decodificar e calcular o valor final de <strong>m &times; n</strong>, sabendo que <strong>m = (1,777...)<sup>0,5</sup></strong> e <strong>n = 
+                <span style="display: inline-flex; align-items: center; vertical-align: middle;">
+                    <span style="font-size: 28px; font-weight: normal;">(</span>
+                    <span style="display: inline-flex; flex-direction: column; align-items: center; margin: 0 4px;">
+                        <span style="line-height: 1;">2</span>
+                        <span style="width: 100%; height: 2px; background-color: currentColor; margin: 2px 0;"></span>
+                        <span style="line-height: 1;">3</span>
+                    </span>
+                    <span style="font-size: 28px; font-weight: normal;">)</span>
+                    <sup style="align-self: flex-start; margin-top: 4px; font-size: 14px;">&minus;2</sup>
+                </span></strong>."
+            </p>
             <p class="pergunta-socratica">❓ <strong>Reflexão sobre Dízimas:</strong> Observe o número 1,777... Ele possui uma parte cravada (inteira) e uma repetição infinita (decimal). Como você pode isolar mentalmente a parte sólida desse 'eco' decimal para, usando a lógica da fase anterior, fundir as duas partes utilizando uma mesma base fracionária?</p>
             <p class="pergunta-socratica">❓ <strong>Decodificando Expoentes:</strong> Sabemos que elevar um número à potência '2' equivale a construir a área de um quadrado perfeito. Sendo assim, o que o expoente 0,5 (que representa exatamente a fração 1/2) realizaria como operação geométrica inversa? E quanto ao expoente de 'n': se um sinal de subtração (negativo) costuma indicar um sentido 'oposto', qual seria o efeito lógico desse sinal sobre os andares (numerador e denominador) da sua fração base?</p>
         </div>
@@ -736,7 +779,20 @@
             <div id="erro_f4p2" class="feedback"></div>
         </div>
         <div id="passo3-fase4" class="hidden">
-            <p style="font-size:18px;"><strong>3º Passo:</strong> Obtenha 'n'. n = (2/3)<sup>&minus;2</sup>. Inverta a fração para remover o negativo, depois eleve ao quadrado ambas as partes.</p>
+            
+            <p style="font-size:18px;"><strong>3º Passo:</strong> Obtenha 'n'. n = 
+                <span style="display: inline-flex; align-items: center; vertical-align: middle; font-weight: bold;">
+                    <span style="font-size: 28px; font-weight: normal;">(</span>
+                    <span style="display: inline-flex; flex-direction: column; align-items: center; margin: 0 4px;">
+                        <span style="line-height: 1;">2</span>
+                        <span style="width: 100%; height: 2px; background-color: currentColor; margin: 2px 0;"></span>
+                        <span style="line-height: 1;">3</span>
+                    </span>
+                    <span style="font-size: 28px; font-weight: normal;">)</span>
+                    <sup style="align-self: flex-start; margin-top: 4px; font-size: 14px;">&minus;2</sup>
+                </span>. Inverta a fração para remover o negativo, depois eleve ao quadrado ambas as partes.
+            </p>
+
             <div class="input-group">
                 <span style="font-size:20px;">n =</span>
                 <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
@@ -790,10 +846,20 @@
             
             <p class="pergunta-socratica">❓ <strong>Reflexão Espacial:</strong> Baseado exclusivamente na figura geométrica acima, qual é a ligação lógica entre a quantidade total de blocos azuis dispostos no chão (a Área interna) e a quantidade de margens verdes (o Lado perfeito da raiz)? Utilizando essa mesma lógica de progressão espacial, que dimensão física e reta de parede construiria perfeitamente os nossos grandes pátios com áreas de 169 e 196 blocos?"</p>
         </div>
-        <div class="input-group">
-            <span>&radic;169 = Lado de</span> <input type="number" id="raiz_baixa" placeholder="?">
-            <span>&radic;196 = Lado de</span> <input type="number" id="raiz_alta" placeholder="?">
+        <div class="input-group" style="flex-direction: column; align-items: center; gap: 15px;">
+    
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 18px;">&radic;169 = Lado de</span> 
+                <input type="number" id="raiz_baixa" placeholder="?" style="width: 150px; text-align: center;">
+            </div>
+            
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 18px;">&radic;196 = Lado de</span> 
+                <input type="number" id="raiz_alta" placeholder="?" style="width: 150px; text-align: center;">
+            </div>
+
         </div>
+
         <div class="btn-container">
             <button onclick="verificarRaizes()">Verificar Lados Geométricos</button>
             <button class="btn-dica" onclick="confirmarDica('dica5','limites')">Dica</button>
@@ -857,11 +923,54 @@
                 <svg width="100%" viewBox="0 0 600 100" style="max-width:600px;margin:0 auto;display:block;"><line x1="50" y1="60" x2="550" y2="60" stroke="#f8fafc" stroke-width="3"/><text x="50" y="80" fill="#f8fafc" font-size="12" text-anchor="middle">0</text><text x="150" y="80" fill="#f8fafc" font-size="12" text-anchor="middle">1</text><text x="250" y="80" fill="#f8fafc" font-size="12" text-anchor="middle">2</text><text x="350" y="80" fill="#f8fafc" font-size="12" text-anchor="middle">3</text><text x="450" y="80" fill="#f8fafc" font-size="12" text-anchor="middle">4</text><text x="550" y="80" fill="#f8fafc" font-size="12" text-anchor="middle">5</text><circle cx="75" cy="60" r="5" fill="#ef4444"/><text x="75" y="50" fill="#ef4444" font-size="10" font-weight="bold" text-anchor="middle">O</text><circle cx="264" cy="60" r="5" fill="#22c55e"/><text x="264" y="50" fill="#22c55e" font-size="10" font-weight="bold" text-anchor="middle">P</text><circle cx="519" cy="60" r="5" fill="#fde047"/><text x="519" y="50" fill="#fde047" font-size="10" font-weight="bold" text-anchor="middle">M</text></svg>
             </div>
             
-            <div class="input-group" style="gap:30px;">
-                <div><span>&radic;22 &rarr;</span> <select id="reta_raiz"><option value="">?</option><option value="M">M</option><option value="O">O</option><option value="P">P</option></select></div>
-                <div><span>25/99 (um pouco mais que 0) &rarr;</span> <select id="reta_frac1"><option value="">?</option><option value="M">M</option><option value="O">O</option><option value="P">P</option></select></div>
-                <div><span>193/90 (2 e um pouco mais) &rarr;</span> <select id="reta_frac2"><option value="">?</option><option value="M">M</option><option value="O">O</option><option value="P">P</option></select></div>
+           <div class="input-group" style="flex-direction: column; align-items: center; gap: 25px;">
+                
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="display: flex; align-items: center; font-size: 18px;">
+                        <span style="display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; margin-right: 8px;">
+                            <span style="line-height: 1;">25</span>
+                            <span style="width: 100%; height: 2px; background-color: currentColor; margin: 2px 0;"></span>
+                            <span style="line-height: 1;">99</span>
+                        </span>
+                        <span> (um pouco mais que 0) &rarr;</span> 
+                    </div>
+                    <select id="reta_frac1" style="font-size: 18px; padding: 5px; cursor: pointer;">
+                        <option value="">?</option>
+                        <option value="M">M</option>
+                        <option value="O">O</option>
+                        <option value="P">P</option>
+                    </select>
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 18px;">&radic;22 (um pouco mais que 4,5) &rarr;</span> 
+                    <select id="reta_raiz" style="font-size: 18px; padding: 5px; cursor: pointer;">
+                        <option value="">?</option>
+                        <option value="M">M</option>
+                        <option value="O">O</option>
+                        <option value="P">P</option>
+                    </select>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="display: flex; align-items: center; font-size: 18px;">
+                        <span style="display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; margin-right: 8px;">
+                            <span style="line-height: 1;">193</span>
+                            <span style="width: 100%; height: 2px; background-color: currentColor; margin: 2px 0;"></span>
+                            <span style="line-height: 1;">90</span>
+                        </span>
+                        <span> (2 e um pouco mais) &rarr;</span> 
+                    </div>
+                    <select id="reta_frac2" style="font-size: 18px; padding: 5px; cursor: pointer;">
+                        <option value="">?</option>
+                        <option value="M">M</option>
+                        <option value="O">O</option>
+                        <option value="P">P</option>
+                    </select>
+                </div>
+
             </div>
+
             <div class="btn-container">
                 <button onclick="verificarReta()">Validar Associações</button>
                 <button class="btn-dica" onclick="confirmarDica('dicaReta','reta')">Dica</button>
@@ -949,7 +1058,9 @@
             <p><strong>Assistente I.A. diz:</strong> "O laboratório exige que você controle recursos físicos. Você possui um rolo principal de fita e três fragmentos retirados (<strong>2,5 m</strong>, <strong>3/4 m</strong> e <strong>&radic;(9/4) m</strong>), cada um expresso em um formato matemático diferente."</p>
             <p class="pergunta-socratica">❓ <strong>Reflexão Analítica:</strong> Tentar operar misturando raízes puras, frações de divisão e números quebrados é como tentar subtrair líquidos de centímetros. Para descobrirmos com segurança e lógica o que restou no rolo, para qual 'linguagem universal e plana' devemos traduzir e nivelar todas essas grandezas geométricas antes de realizar o corte final?"</p>
         </div>
-        <div id="passo1-fita">
+        
+
+            <div id="passo1-fita">
             <div style="margin-bottom: 25px; text-align: center;">
                 <p><strong>&radic;144 m</strong> &rarr; comprimento <strong>total</strong> do rolo.</p>
                 <div class="input-group">
@@ -958,22 +1069,57 @@
                     <span>m</span>
                 </div>
             </div>
+            
             <div style="margin-bottom: 25px; text-align: center;">
-                <p><strong>3/4 m</strong> &rarr; segundo pedaço.</p>
+                <div style="margin-bottom: 10px; font-size: 16px;">
+                    <span style="display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; margin-right: 4px;">
+                        <strong style="line-height: 1;">3</strong>
+                        <span style="width: 100%; height: 2px; background-color: currentColor; margin: 2px 0;"></span>
+                        <strong style="line-height: 1;">4</strong>
+                    </span>
+                    <strong>m</strong> &rarr; segundo pedaço.
+                </div>
                 <div class="input-group">
-                    <span>3/4 =</span>
+                    <span style="display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; margin-right: 5px;">
+                        <span style="line-height: 1;">3</span>
+                        <span style="width: 100%; height: 2px; background-color: currentColor; margin: 2px 0;"></span>
+                        <span style="line-height: 1;">4</span>
+                    </span>
+                    <span>=</span>
                     <input type="text" class="largo" id="fita_frac" placeholder="?">
                     <span>m</span>
                 </div>
             </div>
+            
             <div style="margin-bottom: 25px; text-align: center;">
-                <p><strong>&radic;(9/4) m</strong> &rarr; terceiro pedaço. (Aplique a propriedade das raízes vistas na Fase 4: Raiz em cima / Raiz em baixo, depois divida o resultado)</p>
+                <div style="margin-bottom: 10px; font-size: 16px;">
+                    <strong>&radic;</strong>
+                    <span style="display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; margin: 0 4px;">
+                        <strong style="line-height: 1;">9</strong>
+                        <span style="width: 100%; height: 2px; background-color: currentColor; margin: 2px 0;"></span>
+                        <strong style="line-height: 1;">4</strong>
+                    </span>
+                    <strong>m</strong> &rarr; terceiro pedaço. (Aplique a propriedade das raízes vistas na Fase 4: Raiz em cima / Raiz em baixo, depois divida)
+                </div>
                 <div class="input-group">
-                    <span>&radic;(9/4) =</span>
+    
+                    <div style="display: inline-flex; align-items: center;">
+                        <span style="font-size: 52px; margin-right: -2px; margin-top: 4px;">&radic;</span>
+                        <span style="display: inline-flex; flex-direction: column; align-items: center; border-top: 2px solid currentColor; padding-top: 2px;">
+                            <span style="line-height: 1;">9</span>
+                            <span style="width: 100%; height: 2px; background-color: currentColor; margin: 2px 0;"></span>
+                            <span style="line-height: 1;">4</span>
+                        </span>
+                    </div>
+                    
+                    <span style="margin: 0 10px;">=</span>
                     <input type="text" class="largo" id="fita_raiz" placeholder="?">
                     <span>m</span>
                 </div>
             </div>
+
+
+
             <div class="btn-container">
                 <button onclick="verificarFitaPasso1()">Validar Conversões</button>
                 <button class="btn-dica" onclick="confirmarDica('dicaFita1','fita_p1')">Dica</button>
@@ -1013,7 +1159,13 @@
         </div>
         <div id="passo1-fase7">
             <p style="font-size:18px;"><strong>1º Passo:</strong> Acumulação Total.</p>
-            <div class="input-group"><span>Total =</span> <input type="number" id="f7_minutos" placeholder="Duração completa em Minutos"> <span>min</span></div>
+            
+            <div class="input-group">
+                <span>Total =</span> 
+                <input type="number" id="f7_minutos" placeholder="Duração completa em Minutos" style="width: 480px; text-align: center; max-width: 100%;"> 
+                <span>min</span>
+            </div>
+
             <div class="btn-container">
                 <button onclick="verificarF7Passo1()">Validar</button>
                 <button class="btn-dica" onclick="confirmarDica('dicaF7p1','f7_p1')">Dica</button>
@@ -1090,9 +1242,11 @@
             <p style="font-size: 18px; margin-bottom: 15px; color: #f8fafc;">Antes de gerar o seu arquivo de fuga, deixe um registro para o seu professor: <strong>Qual foi o enigma que mais desafiou a sua mente hoje e qual foi a lógica que você usou para superá-lo?</strong></p>
             <textarea id="texto_metacognitivo" rows="4" style="width: 100%; box-sizing: border-box; padding: 15px; font-size: 18px; border-radius: 6px; border: 2px solid #334155; background: #0f172a; color: #fde047; font-family: inherit; resize: vertical;" placeholder="Escreva o seu diário de bordo aqui..."></textarea>
             
-            <div class="btn-container" style="margin-top: 15px; justify-content: flex-start;">
+            <div class="btn-container" style="margin-top: 15px; justify-content: center;">
                 <button id="btn_salvar_diario" onclick="salvarDiarioBordo()" style="background:#22c55e;">💾 Salvar Reflexão</button>
             </div>
+
+
             <div id="feedback_diario" class="feedback" style="margin-top: 10px; text-align: left;"></div>
         </div>
 
