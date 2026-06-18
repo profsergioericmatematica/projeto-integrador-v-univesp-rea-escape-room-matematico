@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Escape Room: Fundamentos Matemáticos Visuais</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+
+<header>
+    <div class="nome-missao">REA: Superando Fragilidades Matemáticas</div>
+    <button id="btn-tema" class="btn-tema-header" onclick="alternarTema()">☀️ Tema Claro</button>
+</header>
+
+<div id="barra-progresso-container" style="width:100%; background:#334155; border-radius:10px; margin-bottom:30px; height:24px; overflow:hidden;">
+    <div id="barra-progresso-preenchida" style="width:0%; height:100%; background:linear-gradient(90deg, #22c55e, #38bdf8); border-radius:10px; transition: width 0.5s ease;"></div>
+</div>
+<p id="progresso-texto" style="text-align:center; margin-top:5px; font-size:16px; color:#94a3b8;">Progresso: 0/32 etapas concluídas</p>
+
+<div class="overlay" id="overlay-calc" onclick="fecharCalculadora()"></div>
+<div class="calculadora-popup" id="calc-popup">
+    <input type="text" class="calc-display" id="calc-display" readonly value="0">
+    <div class="calc-botoes">
+        <button onclick="calcInput('7')">7</button><button onclick="calcInput('8')">8</button><button onclick="calcInput('9')">9</button><button onclick="calcInput('/')">&divide;</button>
+        <button onclick="calcInput('4')">4</button><button onclick="calcInput('5')">5</button><button onclick="calcInput('6')">6</button><button onclick="calcInput('*')">&times;</button>
+        <button onclick="calcInput('1')">1</button><button onclick="calcInput('2')">2</button><button onclick="calcInput('3')">3</button><button onclick="calcInput('-')">&minus;</button>
+        <button onclick="calcInput('0')">0</button><button onclick="calcInput('.')">.</button><button onclick="calcCalcular()">=</button><button onclick="calcInput('+')">+</button>
+        <button onclick="calcLimpar()" style="grid-column:span 2;">C</button>
+        <button onclick="calcCopiar()" style="grid-column:span 2;background:#8b5cf6;">📋 Copiar</button>
+        <button onclick="fecharCalculadora()" style="grid-column:span 4;background:#ef4444;">Fechar</button>
+    </div>
+</div>
+
+<div class="overlay" id="overlay-cadeado" onclick="fecharCadeado()"></div>
+<div class="calculadora-popup" id="cadeado-popup" style="max-width: 450px; text-align: center;">
+    <h2 style="color: #ef4444; margin-top: 0;">🔐 CADEADO DIGITAL</h2>
+    <p style="font-size: 18px; color: #f8fafc; margin-bottom: 20px;">Insira a Senha Mestra de 7 dígitos coletada em seus rascunhos.</p>
+    <div style="display: flex; justify-content: center; margin: 20px 0;">
+        <input type="text" id="senha_mestra" maxlength="7" style="width: 100%; letter-spacing: 15px; text-align: center; font-size: 32px; background: #0f172a; color: #fde047; border: 2px solid #38bdf8; border-radius: 6px; padding: 15px;" placeholder="_______">
+    </div>
+    <div id="erro_senha" class="feedback" style="margin-bottom: 15px; min-height: 24px;"></div>
+    <div class="btn-container" style="margin-top: 0; flex-direction: column;">
+        <button onclick="verificarSenhaMestra()" style="background: #ef4444; width: 100%; font-size: 20px; margin: 0;">Destrancar Porta</button>
+        <button onclick="fecharCadeado()" style="background: #64748b; width: 100%; margin-top: 10px;">Voltar</button>
+    </div>
+</div>
+
+<div class="container">
+
+    <div id="tela1" class="enigma-box active">
+        <h1>Protocolo de Aprendizagem I.A.</h1>
+        <div style="margin: 25px 0; text-align: center; background: rgba(56, 189, 248, 0.1); padding: 20px; border-radius: 8px; border: 1px dashed #38bdf8;">
+            <label for="nome_aluno" style="font-size: 20px; color: #38bdf8; font-weight: bold; display: block; margin-bottom: 10px;">Identificação Obrigatória:</label>
+            <input type="text" id="nome_aluno" placeholder="Digite seu primeiro nome" style="text-align: center; font-size: 20px; padding: 10px; border-radius: 6px; border: 2px solid #334155; background: #0f172a; color: #fde047; width: 100%; max-width: 300px;">
+        </div>
+        <p>Atenção, aluno. Você está trancado no laboratório de matemática pura. Para sair, não basta adivinhar senhas; você precisará <strong>aprender as leis do universo numérico a partir do zero</strong>.</p>
+        <p>Eu serei o seu professor. Vou ensinar a você como os entes matemáticos se comportam na sua essência visual e lógica.</p>
+        
+        <div style="background: rgba(239, 68, 68, 0.1); border: 2px dashed #ef4444; padding: 15px; margin: 15px 0; border-radius: 8px;">
+            <p style="margin: 0; color: #f8fafc;">⚠️ <strong>Diretriz de Segurança:</strong> Ao concluir 100% de cada fase, o sistema emitirá uma mensagem de sucesso acompanhada de um ícone de chave (🔑) e um número. <strong>Anote esses números no seu rascunho</strong>, pois eles formam o Código de Fuga final.</p>
+        </div>
+
+        <p class="aviso-pontuacao">⭐ Sistema de Estrelas: <strong>⭐⭐⭐</strong> sem erros/dicas | <strong>⭐⭐</strong> 1 erro ou 1 dica | <strong>⭐</strong> 2+ erros/dicas.</p>
+        <div class="btn-container"><button onclick="iniciarJogo()">Iniciar Aula de Fuga</button></div>
+
+        
+
+ <!--       <div style="margin-top: 50px; padding: 20px; border: 2px dashed #f59e0b; background: rgba(245, 158, 11, 0.1); border-radius: 8px;">
+            <h3 style="color: #fde047; font-size: 20px; margin-top: 0;">🛠️ Menu Provisório de Testes</h3>
+            <p style="font-size: 16px; margin-bottom: 15px;">Selecione a fase para onde deseja saltar diretamente:</p>
+            <select id="menu-testes" style="padding: 10px; font-size: 16px; border-radius: 6px; margin-bottom: 15px; width: 100%; max-width: 400px; cursor: pointer;">
+                <option value="fase1">Fase 1 (Parte 1) - Pitágoras</option>
+                <option value="fase1_pt2">Fase 1 (Parte 2) - Simplificação √20</option>
+                <option value="fase1_pt3">Fase 1 (Parte 3) - Tirolesa</option>
+                <option value="fase2">Fase 2 (Parte 1) - Triângulo Retângulo</option>
+                <option value="fase2_pt2">Fase 2 (Parte 2) - Circunferência</option>
+                <option value="fase3">Fase 3 - O Finito e o Infinito</option>
+                <option value="fase4">Fase 4 - Potências e Dízimas</option>
+                <option value="fase5">Fase 5 (Parte 1) - Áreas e Raízes</option>
+                <option value="fase5_pt2">Fase 5 (Parte 2) - Raiz de 180</option>
+                <option value="fase6">Fase 6 (Parte 1) - Caixinha Cúbica 3D</option>
+                <option value="fase6_pt2">Fase 6 (Parte 2) - Sobra da Fita</option>
+                <option value="fase7">Fase 7 - Estrutura do Tempo</option>
+                <option value="tela_sucesso">TELA FINAL (Relatório de Sucesso)</option>
+            </select>
+            <br>
+            <button onclick="mudarTela('tela1', document.getElementById('menu-testes').value)" style="background: #f59e0b; color: #0f172a; padding: 10px 20px; font-size: 16px; text-transform: none; border-radius: 6px;">Saltar para Fase Selecionada 🚀</button>
+        </div> -->
+
+    </div>
+
+    <div id="fase1" class="enigma-box">
+        <h2>Fase 1: Dissecando a Geometria</h2>
+        <p class="aviso-pontuacao">⭐ Sistema de Estrelas</p>
+        
+       <div class="mentor">
+            <p><strong>Assistente I.A. diz:</strong> "O projeto abaixo mostra a planta de um canal de água (<strong>Trapézio Isósceles</strong>). O nosso objetivo é descobrir o comprimento exato da parede inclinada (linha vermelha).</p>
+            <p>Um Triângulo Retângulo possui um canto perfeitamente reto (90 graus). Os dois lados que formam esse formato em 'L' são chamados de <strong>Catetos</strong>, enquanto o lado maior e inclinado é a nossa incógnita, a <strong>Hipotenusa</strong>."</p>
+            
+           
+            <p class="pergunta-socratica">❓ <strong>Reflexão Geométrica:</strong> Observe com atenção as medidas indicadas no topo e no fundo do canal. Considerando que este canal é perfeitamente simétrico, como a diferença de tamanho entre a parte de cima e a de baixo se distribui pelas duas extremidades laterais? Como você pode usar essa lógica espacial para deduzir o tamanho da base amarela do nosso triângulo?</p>
+            <p class="pergunta-socratica">❓ Em relação ao cateto vertical do triângulo amarelo: existe alguma linha de referência ou projeção geométrica na figura que revele a profundidade exata deste canal?</p>
+            
+            <div class="svg-container" style="background-color: #0b1120; border: 2px solid #38bdf8; position: relative;">
+                <svg width="100%" viewBox="0 0 600 300" style="max-width:600px;margin:0 auto;display:block; font-family: 'Segoe UI', sans-serif;">
+                    <defs>
+                        <pattern id="blueprint-grid" width="30" height="30" patternUnits="userSpaceOnUse">
+                            <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#1e293b" stroke-width="1.5"/>
+                        </pattern>
+                        <filter id="neon-glow-red" x="-20%" y="-20%" width="140%" height="140%">
+                            <feGaussianBlur stdDeviation="3" result="blur"/>
+                            <feMerge>
+                                <feMergeNode in="blur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+
+                    <rect width="100%" height="100%" fill="url(#blueprint-grid)" rx="8" />
+
+                    <polygon points="150,80 450,80 390,200 210,200" fill="rgba(14, 165, 233, 0.05)" stroke="#0ea5e9" stroke-width="2" stroke-dasharray="5,5"/>
+
+                    <line x1="150" y1="45" x2="450" y2="45" stroke="#94a3b8" stroke-width="2"/>
+                    <polygon points="150,45 160,40 160,50" fill="#94a3b8"/>
+                    <polygon points="450,45 440,40 440,50" fill="#94a3b8"/>
+                    <text x="300" y="35" fill="#f8fafc" font-size="16" text-anchor="middle" font-weight="bold" letter-spacing="1">LARGURA DO TOPO = 10m</text>
+
+                    <line x1="210" y1="220" x2="390" y2="220" stroke="#94a3b8" stroke-width="2"/>
+                    <polygon points="210,220 220,215 220,225" fill="#94a3b8"/>
+                    <polygon points="390,220 380,215 380,225" fill="#94a3b8"/>
+                    <text x="300" y="245" fill="#f8fafc" font-size="16" text-anchor="middle" font-weight="bold" letter-spacing="1">FUNDO = 6m</text>
+
+                    <polygon points="150,80 150,200 210,200" fill="rgba(234, 179, 8, 0.1)"/>
+                    
+                    <line x1="150" y1="80" x2="150" y2="200" stroke="#eab308" stroke-width="4" stroke-dasharray="6,4"/>
+                    <text x="135" y="145" fill="#eab308" font-weight="bold" font-size="15" text-anchor="middle" transform="rotate(-90, 135, 145)">ALTURA = 4m</text>
+
+                    <line x1="150" y1="200" x2="210" y2="200" stroke="#eab308" stroke-width="4"/>
+                    <text x="180" y="215" fill="#eab308" font-weight="bold" font-size="15" text-anchor="middle">Base (?)</text>
+
+                    <polyline points="150,185 165,185 165,200" fill="none" stroke="#eab308" stroke-width="2"/>
+
+                    <line x1="150" y1="80" x2="150" y2="220" stroke="#64748b" stroke-width="1" stroke-dasharray="4,4"/>
+                    <line x1="210" y1="80" x2="210" y2="220" stroke="#64748b" stroke-width="1" stroke-dasharray="4,4"/>
+                    <line x1="390" y1="80" x2="390" y2="220" stroke="#64748b" stroke-width="1" stroke-dasharray="4,4"/>
+                    <line x1="450" y1="80" x2="450" y2="220" stroke="#64748b" stroke-width="1" stroke-dasharray="4,4"/>
+
+                    <line x1="150" y1="80" x2="210" y2="200" stroke="#ef4444" stroke-width="5" filter="url(#neon-glow-red)"/>
+                    <text x="210" y="150" fill="#ef4444" font-weight="bold" font-size="16" text-anchor="start">HIPOTENUSA (?)</text>
+                </svg>
+            </div>
+            
+            <p>"Para revelar o tamanho real da linha vermelha, precisaremos da regra de ouro da geometria espacial: o <strong>Teorema de Pitágoras</strong>.</p>
+            <p>A essência desta lei nos diz que a área geométrica de um quadrado construído sobre a hipotenusa será exatamente igual à junção das áreas dos quadrados formados por cada um dos catetos. Pensando nisso, qual é o conceito matemático para se calcular a 'área de um quadrado' a partir da sua medida de lado? Aplique esse conceito mental na equação abaixo utilizando as duas medidas que você deduziu!"</p>
+        </div>
+
+
+        <div class="input-group">
+            <span style="font-size:18px;">Hipotenusa&sup2; = </span>
+            <input type="number" id="cat1" placeholder="Cateto 1"> &sup2; +
+            <input type="number" id="cat2" placeholder="Cateto 2"> &sup2;
+        </div>
+        <div class="input-group" style="background:#1e293b;border:1px dashed #38bdf8;">
+            <span style="font-size:18px;color:#38bdf8;">Total: Hipotenusa&sup2; = </span>
+            <input type="text" class="xlargo" id="soma_quadrados" placeholder="Some o quadrado dos dois catetos">
+        </div>
+        <div class="btn-container">
+            <button onclick="verificarPit()">Validar Teorema</button>
+            <button class="btn-dica" onclick="confirmarDica('dica1','pitagoras')">Dica</button>
+            <button class="btn-dica" style="background:#8b5cf6;" onclick="abrirCalculadora('soma_quadrados')">🧮 Calculadora</button>
+        </div>
+        <div id="dica1" class="caixa-dica">
+            <strong>🧠 Pista:</strong>
+            <p>Imagine uma mesa de 8 metros com uma toalha de 4 metros centralizada nela. Sobram 4 metros, certo? Se a figura é simétrica, quanto dessa sobra cai para cada lado?</p>
+            <p>Aplique essa lógica à largura do canal! Para a fórmula: "elevar ao quadrado" significa calcular a área (multiplicar o número por ele mesmo). O que a regra manda fazer com essas duas "áreas" encontradas?</p>
+        </div>
+        <div id="erro1" class="feedback"></div>
+        <button id="btn-avancar1" class="btn-avancar hidden" onclick="mudarTela('fase1','fase1_pt2')">Avançar ➔</button>
+    </div>
+
+    <div id="fase1_pt2" class="enigma-box">
+        <h2>Fase 1 (Continuação): Simplificando a Raiz</h2>
+        <p class="aviso-pontuacao">⭐ Sistema de Estrelas</p>
+        <div class="mentor">
+            <strong>Assistente I.A. diz:</strong> "No passo anterior, você encontrou a Hipotenusa elevada ao quadrado.<br><br>
+            A medida real é a raiz quadrada desse total (&radic;20). Como o número não possui raiz exata inteira, precisamos usar a <strong>Decomposição em Fatores Primos</strong>. Um número primo é aquele que só se divide por 1 e por ele mesmo (2, 3, 5, 7...).<br><br>
+            Observe a animação dividir o nosso total apenas por números primos até chegar a 1:"
+
+            <div style="display: flex; justify-content: center; font-family: 'Courier New', Courier, monospace; font-size: 22px; margin: 20px 0; color: #f8fafc;">
+                <div style="display: grid; grid-template-columns: 60px auto auto; text-align: right; gap: 0;">
+                    <div style="border-right: 2px solid #fde047; padding: 2px 15px; min-height: 40px;" id="num1"></div>
+                    <div style="padding: 2px 15px; text-align: left; min-height: 40px;" id="div1"></div>
+                    <div style="padding: 2px 15px; min-height: 40px;"></div>
+                    <div style="border-right: 2px solid #fde047; padding: 2px 15px; min-height: 40px;" id="num2"></div>
+                    <div style="padding: 2px 15px; text-align: left; min-height: 40px;" id="div2"></div>
+                    <div style="padding: 2px 15px; min-height: 40px;"></div>
+                    <div style="border-right: 2px solid #fde047; border-bottom: 2px solid #fde047; padding: 2px 15px; min-height: 40px;" id="num3"></div>
+                    <div style="border-bottom: 2px solid #fde047; padding: 2px 15px; text-align: left; min-height: 40px;" id="div3"></div>
+                    <div style="border-bottom: 2px solid #fde047; padding: 2px 15px; min-height: 40px;"></div>
+                    <div style="border-right: 2px solid #fde047; padding: 2px 15px; min-height: 40px;" id="num4"></div>
+                    <div style="padding: 2px 15px; text-align: left; min-height: 40px;"></div>
+                    <div style="padding: 2px 15px; min-height: 0px;" id="resultadoFatoracao"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="perguntasFatoracao" style="display: none;">
+            <div class="mentor">
+                <p>A matemática tem uma regra fundamental: <strong>A raiz quadrada anula uma potência quadrada</strong>. Ou seja, &radic;(a&sup2;) = a.</p>
+                <p>❓ Veja a fatoração concluída na tela. Identifique os números repetidos e agrupe-os em uma potência quadrada (elevada a 2).</p>
+                <p>❓ Pela propriedade matemática, separe as raízes. A base que está elevada ao quadrado anulará a raiz e ficará livre no exterior. O número que não tem quadrado continua lá dentro.</p>
+            </div>
+            
+            <p style="font-size:20px; margin-top:20px;"><strong>1º Passo:</strong> Aplique a propriedade preenchendo os campos abaixo:</p>
+            <div class="raiz-bloco">
+                <input type="number" id="raiz20_fora" placeholder="Fora"> <span>&radic;</span> <input type="number" id="raiz20_dentro" placeholder="Dentro">
+            </div>
+            <div class="btn-container">
+                <button onclick="verificarRaiz20Passo1()">Validar Simplificação</button>
+                <button class="btn-dica" onclick="confirmarDica('dica2-passo1', 'raiz20_simp')">Dica</button>
+                <button class="btn-dica" style="background:#8b5cf6;" onclick="abrirCalculadora('')">🧮 Calculadora</button>
+            </div>
+            <div id="dica2-passo1" class="caixa-dica">
+                <strong>🧠 Pista Lógica — Exemplo com &radic;12:</strong>
+                <p>Que tal fatorar 12? Divida por 2 (dá 6), depois por 2 (dá 3), e por 3 (dá 1). Agora agrupe os fatores iguais em pares. O que acontece com cada par quando aplicamos a raiz? Teste com outro número, como 18, para entender o padrão. Depois volte à sua fatoração da √20 e veja quem forma par e quem fica sozinho.</p>
+            </div>
+            <div id="erro2_pt2_passo1" class="feedback"></div>
+        </div>
+
+        <div id="passo2-raiz20" class="hidden">
+            <p style="margin-top:30px;"><strong>2º Passo: A Fórmula de Aproximação Linear</strong></p>
+            <div class="mentor" style="background:#1e293b;border-color:#38bdf8;">
+                <strong>Assistente I.A. diz:</strong><br><br>
+                "Você acabou de provar algebricamente que a parede mede <strong>2&radic;5 metros</strong>. Mas quanto vale a &radic;5 de forma decimal?<br><br>
+                Para descobrir valores decimais sem usar botões mágicos da calculadora, a matemática usa a <strong>Aproximação Linear</strong>. Você soma a raiz do Quadrado Perfeito anterior com uma fração formada pela distância entre eles. Veja a fórmula:"
+                
+                <div style="background:#0f172a; padding:15px; border-radius:8px; margin: 15px 0; border: 1px solid #38bdf8;">
+                    <p style="text-align:center; font-weight:bold; color:#38bdf8; margin-top:0;">Método de Ajuste</p>
+                    <div style="display:flex; justify-content:center; align-items:center; font-size:18px; color:#f8fafc; flex-wrap:wrap; gap:10px;">
+                        <span>&radic;N &approx; </span> Raiz Exata do Quadrado Perfeito Anterior + </span>
+                        <div style="display:flex; flex-direction:column; align-items:center;">
+                            <span style="border-bottom:2px solid #f8fafc; padding:0 5px;">Seu Número (N) &minus; Quadrado Perfeito Anterior</span>
+                            <span style="padding:0 5px;">2 &times; Raiz Exata do Quadrado Perfeito Anterior</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <p>❓ Olhe para o número que ficou dentro da sua raiz (o <strong>5</strong>). Qual é o Quadrado Perfeito exato (1, 4, 9, 16...) que vem imediatamente antes dele? (<span style="color:#fde047;">Dica: é o 4</span>). Use a raiz exata dele (que é <strong>2</strong>) e o próprio quadrado nas posições da fórmula abaixo.</p>
+                
+                <div class="input-group" style="background:transparent; border:none; padding:15px 0; justify-content:center;">
+                    <div style="display:flex; align-items:center; gap:10px; font-size: 24px; font-weight:bold; color:#fde047; flex-wrap:wrap; justify-content:center;">
+                        <span>&radic;5 &approx; </span>
+                        <input type="number" id="f1_r_exata1" style="width:70px; font-size:20px; padding:10px; text-align:center;" placeholder="?">
+                        <span> + </span>
+                        <div style="display:flex; flex-direction:column; align-items:center;">
+                            <div style="border-bottom: 2px solid #fde047; padding-bottom: 5px; display:flex; align-items:center; gap:5px;">
+                                <input type="number" id="f1_r_seu" style="width:70px; font-size:20px; padding:10px; text-align:center;" placeholder="?">
+                                <span> &minus; </span>
+                                <input type="number" id="f1_r_quad" style="width:70px; font-size:20px; padding:10px; text-align:center;" placeholder="?">
+                            </div>
+                            <div style="padding-top: 5px; display:flex; align-items:center; gap:5px;">
+                                <span>2 &times; </span>
+                                <input type="number" id="f1_r_exata2" style="width:70px; font-size:20px; padding:10px; text-align:center;" placeholder="?">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="btn-container" style="margin-top:0;">
+                    <button onclick="verificarRaiz20Formula()">Montar Fórmula</button>
+                    <button class="btn-dica" onclick="confirmarDica('dica2-passo2','raiz20_formula')">Dica</button>
+                    <button class="btn-dica" style="background:#8b5cf6;" onclick="abrirCalculadora('')">🧮 Calculadora</button>
+                </div>
+                <div id="erro_formula_raiz20" class="feedback"></div>
+                
+                <div id="dica2-passo2" class="caixa-dica">
+                    <strong>🧠 Exemplo Didático (Montando para &radic;10):</strong>
+                    <p>O quadrado perfeito (1, 4, 9, 16...) que vem imediatamente antes de 10 é o 9. A sua raiz exata é 3.</p>
+                    <p>A fórmula fica estruturada assim:</p>
+                    <div style="display:flex; align-items:center; justify-content:center; gap:8px; font-size:20px; font-weight:bold; margin: 20px 0; flex-wrap:wrap;">
+                        <span>&radic;10 &approx; 3 + </span>
+                        <div style="display:flex; flex-direction:column; align-items:center;">
+                            <span style="border-bottom: 2px solid #ffedd5; padding: 0 5px; margin-bottom: 2px;">10 &minus; 9</span>
+                            <span style="padding: 0 5px; margin-top: 2px;">2 &times; 3</span>
+                        </div>
+                        <span> = 3,16... &approx; 3,17</span>
+                    </div>
+                    <p>🚩 Analise o seu número dentro da raiz. Qual é o quadrado perfeito que vem imediatamente antes dele? Quem é a raiz exata desse quadrado? Encaixe essas peças nas posições correspondentes!</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="passo3-raiz20" class="hidden">
+            <p style="margin-top:30px;"><strong>3º Passo: Calculando a Medida Real</strong></p>
+            <div class="mentor">
+                <p>Excelente! Você montou a fórmula:</p>
+                <div style="display:flex; align-items:center; gap:8px; font-size:20px; font-weight:bold; margin: 15px 0; flex-wrap:wrap;">
+                    <span>&radic;5 &approx; 2 + </span>
+                    <span style="font-size:36px; font-weight:normal; color:#94a3b8;">(</span>
+                    <div style="display:flex; flex-direction:column; align-items:center;">
+                        <span style="border-bottom: 2px solid #e2e8f0; padding: 0 8px; margin-bottom: 2px;">5 &minus; 4</span>
+                        <span style="padding: 0 8px; margin-top: 2px;">2 &times; 2</span>
+                    </div>
+                    <span style="font-size:36px; font-weight:normal; color:#94a3b8;">)</span>
+                </div>
+                <p>Resolvendo:</p>
+                <div style="display:flex; align-items:center; gap:8px; font-size:20px; font-weight:bold; margin: 15px 0; flex-wrap:wrap;">
+                    <span>&radic;5 &approx; 2 + </span>
+                    <div style="display:flex; flex-direction:column; align-items:center;">
+                        <span style="border-bottom: 2px solid #e2e8f0; padding: 0 10px; margin-bottom: 2px;">1</span>
+                        <span style="padding: 0 10px; margin-top: 2px;">4</span>
+                    </div>
+                    <span> = 2 + 0,25</span>
+                </div>
+                <p style="font-size:22px; font-weight:bold; margin: 20px 0;">Logo, &radic;5 = 2,25</p>
+                <p>❓ Para finalizar: A parede real é a multiplicação desse decimal pelo número que havia ficado do lado de fora da sua raiz no passo 1 (o <strong>2</strong>).</p>
+            </div>
+            <div class="input-group">
+                <span style="font-size:18px;">Medida da Parede Completa: </span>
+                <input type="text" class="largo" id="raiz20_aprox" placeholder="?">
+                <span>metros</span>
+            </div>
+            <div class="btn-container">
+                <button onclick="verificarRaiz20Passo2()">Finalizar Parede</button>
+                <button class="btn-dica" onclick="confirmarDica('dica2-passo3','raiz20_aprox')">Dica</button>
+                <button class="btn-dica" style="background:#8b5cf6;" onclick="abrirCalculadora('raiz20_aprox')">🧮 Calculadora</button>
+            </div>
+            <div id="dica2-passo3" class="caixa-dica">
+                <strong>🧠 Pista:</strong>
+                <p>Você descobriu o valor decimal aproximado para a "peça" que estava dentro da raiz. Considerando que existe um número pacientemente aguardando do lado de fora dessa raiz, qual operação matemática deve uni-los para obtermos o comprimento real?</p>
+            </div>
+            <div id="erro2_pt2_passo2" class="feedback"></div>
+            <button id="btn-avancar2" class="btn-avancar hidden" onclick="mudarTela('fase1_pt2','fase1_pt3')">Avançar para o Desafio ➔</button>
+        </div>
+    </div> <div id="fase1_pt3" class="enigma-box">
+        <h2>Fase 1: O Desafio da Tirolesa</h2>
+        <p class="aviso-pontuacao">⭐ Sistema de Estrelas</p>
+        <div class="mentor">
+            <strong>Assistente I.A. diz:</strong> "No canal de água, aprendemos a fundação matemática pura:<br>
+            <strong>
+            <p>① Identificar a Base e a Altura (Catetos)</p>
+            <p>② Aplicar Pitágoras (Elevar e Somar)</p>
+            <p>③ Simplificação Algébrica (Fatoração e anulação de potências quadradas)</p>
+            <p>④ Fórmula de Aproximação Linear.</p>
+            </strong>
+            Você tem as ferramentas do pensamento. Vamos aplicar a mesma lógica geométrica para calcular o cabo de uma tirolesa!"
+        </div>
+
+        <div class="svg-container">
+            <svg width="100%" viewBox="0 0 650 364" style="max-width:650px;margin:0 auto;display:block;">
+                <line x1="65" y1="312" x2="585" y2="312" stroke="#94a3b8" stroke-width="5"/>
+                <text x="325" y="345" fill="#94a3b8" font-size="21" font-weight="bold" text-anchor="middle">Distância Chão = 20m</text>
+                <rect x="130" y="156" width="390" height="156" fill="rgba(148,163,184,0.1)" stroke="#64748b" stroke-width="3" stroke-dasharray="7,7"/>
+                <polygon points="130,156 520,156 520,52" fill="rgba(253,224,71,0.15)"/>
+                <rect x="104" y="156" width="26" height="156" fill="#38bdf8"/>
+                <text x="258" y="234" fill="#38bdf8" font-size="21" font-weight="bold" text-anchor="end">Torre A: 8m</text>
+                <rect x="520" y="52" width="26" height="260" fill="#38bdf8"/>
+                <text x="379" y="202" fill="#38bdf8" font-size="21" font-weight="bold" text-anchor="start">Torre B: 12m</text>
+                <line x1="130" y1="156" x2="520" y2="156" stroke="#fde047" stroke-width="5"/>
+                <text x="325" y="143" fill="#fde047" font-size="18" font-weight="bold" text-anchor="middle">Cateto Horizontal = ?</text>
+                <line x1="520" y1="52" x2="520" y2="156" stroke="#fde047" stroke-width="5" stroke-dasharray="8,5"/>
+                <text x="507" y="111" fill="#fde047" font-size="18" font-weight="bold" text-anchor="end">Cateto Vertical = ?</text>
+                <polyline points="501,156 501,137 520,137" fill="none" stroke="#fde047" stroke-width="3"/>
+                <line x1="130" y1="156" x2="520" y2="52" stroke="#ef4444" stroke-width="7"/>
+                <text x="286" y="91" fill="#ef4444" font-size="21" font-weight="bold" text-anchor="middle" transform="rotate(-15,325,104)">Cabo (Hipotenusa)</text>
+            </svg>
+        </div>
+
+        <div id="passo1-tirolesa">
+            <p style="font-size:18px;"><strong>1º Passo:</strong> Descubra as medidas dos catetos do triângulo superior desenhado pelas linhas tracejadas.</p>
+            <div class="input-group">
+                <span>Cateto Vertical = </span>
+                <input type="number" id="f1_catV" placeholder="?"> <span>m</span>
+            </div>
+            <div class="input-group" style="margin-top:5px;">
+                <span>Cateto Horizontal = </span>
+                <input type="number" id="f1_catH" placeholder="?"> <span>m</span>
+            </div>
+            <div class="btn-container">
+                <button onclick="verificarF1Passo3_1()">Validar</button>
+                <button class="btn-dica" onclick="confirmarDica('dicaTirolesa1','tirolesa_p1')">Dica</button>
+                <button class="btn-dica" style="background:#8b5cf6;" onclick="abrirCalculadora('')">🧮 Calculadora</button>
+            </div>
+            <div id="dicaTirolesa1" class="caixa-dica">
+                <strong>🧠 Pista:</strong>
+                <p>Imagine que você construiu uma ponte perfeitamente horizontal ligando o topo da Torre A até a Torre B. Que distância essa ponte cobriria? E a partir dessa ponte imaginária, quantos metros a Torre B ainda sobe?</p>
+            </div>
+            <div id="erro_f1p3_1" class="feedback"></div>
+        </div>
+
+        <div id="passo2-tirolesa" class="hidden">
+            <p style="font-size:18px;"><strong>2º Passo:</strong> Aplique o Teorema de Pitágoras com os novos valores para descobrir a Hipotenusa&sup2;.</p>
+            <div class="input-group">
+                <span>Hipotenusa&sup2; = </span>
+                <input type="number" id="f1_cabo2" placeholder="Soma dos Quadrados" style="width: 380px;">
+            </div>
+            <div class="btn-container">
+                <button onclick="verificarF1Passo3_2()">Calcular Soma</button>
+                <button class="btn-dica" onclick="confirmarDica('dicaTirolesa2','tirolesa_p2')">Dica</button>
+                <button class="btn-dica" style="background:#8b5cf6;" onclick="abrirCalculadora('f1_cabo2')">🧮 Calculadora</button>
+            </div>
+            <div id="dicaTirolesa2" class="caixa-dica">
+                <strong>🧠 Pista:</strong>
+                <p>Você tem os dois lados do "L". Se fôssemos desenhar um quadrado perfeito usando cada um desses lados, qual seria o tamanho (área) de cada quadrado? O que a lei de Pitágoras manda fazer com essas duas áreas?</p>
+            </div>
+            <div id="erro_f1p3_2" class="feedback"></div>
+        </div>
+
+        <div id="passo3-tirolesa" class="hidden">
+            <p style="font-size:18px;"><strong>3º Passo:</strong> O cabo mede <strong>&radic;416</strong>. Vamos isolar as potências usando a fatoração algébrica:</p>
+            <div class="mentor" style="background:#1e293b;border-color:#22c55e;">
+                <div style="display:flex;justify-content:center;font-family:'Courier New',Courier,monospace;font-size:20px;margin:15px 0;color:#f8fafc;overflow-x:auto;">
+                    <div style="display:grid;grid-template-columns:60px auto;text-align:right;">
+                        <div style="border-right:2px solid #22c55e;padding:2px 10px;">416</div><div style="padding:2px 10px;text-align:left;">2</div>
+                        <div style="border-right:2px solid #22c55e;padding:2px 10px;">208</div><div style="padding:2px 10px;text-align:left;">2</div>
+                        <div style="border-right:2px solid #22c55e;padding:2px 10px;">104</div><div style="padding:2px 10px;text-align:left;">2</div>
+                        <div style="border-right:2px solid #22c55e;padding:2px 10px;">52</div><div style="padding:2px 10px;text-align:left;">2</div>
+                        <div style="border-right:2px solid #22c55e;padding:2px 10px;">26</div><div style="padding:2px 10px;text-align:left;">2</div>
+                        <div style="border-right:2px solid #22c55e;border-bottom:2px solid #22c55e;padding:2px 10px;">13</div><div style="border-bottom:2px solid #22c55e;padding:2px 10px;text-align:left;">13</div>
+                        <div style="border-right:2px solid #22c55e;padding:2px 10px;">1</div>
+                    </div>
+                </div>
+                "❓ Observe a tabela de fatores primos. Quantos '2' encontramos? Agrupe-os logicamente em potências quadradas (ex: 2&sup2;) para que a raiz as anule."
+            </div>
+            <div class="raiz-bloco">
+                <input type="number" id="f1_fora416" placeholder="Fora"> <span>&radic;</span> <input type="number" id="f1_dentro416" placeholder="Dentro">
+            </div>
+            <div class="btn-container">
+                <button onclick="verificarF1Passo3_3()">Simplificar Raiz</button>
+                <button class="btn-dica" onclick="confirmarDica('dicaTirolesa3','tirolesa_p3')">Dica</button>
+                <button class="btn-dica" style="background:#8b5cf6;" onclick="abrirCalculadora('')">🧮 Calculadora</button>
+            </div>
+            <div id="dicaTirolesa3" class="caixa-dica">
+                <strong>🧠 Pista:</strong>
+                <p>Lembra do princípio do "passe livre"? Cada par de números iguais na fatoração forma uma potência, que tem a chave para anular a raiz e ir para o lado de fora.</p>
+                <p>Se mais de um número diferente ganhar esse passe livre, o que eles devem fazer entre si do lado de fora? E o que acontece com os números solitários lá dentro?</p>
+            </div>
+            <div id="erro_f1p3_3" class="feedback"></div>
+        </div>
+
+        <div id="passo4-tirolesa" class="hidden">
+            <p style="font-size:18px;"><strong>4º Passo:</strong> Determine o valor decimal real.</p>
+            <div class="mentor">
+                <strong>Nota do Sistema:</strong> Para focar a sua energia na lógica final em vez de contas extensas, o laboratório informa que a aproximação linear da raiz que ficou dentro é de <strong>5,1</strong>.
+            </div>
+            <div class="input-group">
+                <span style="font-size:18px;">Cabo &approx; </span>
+                <input type="text" class="largo" id="f1_caboAprox" placeholder="?"> <span>metros</span>
+            </div>
+            <div class="btn-container">
+                <button onclick="verificarF1Passo3_4()">Instalar Tirolesa</button>
+                <button class="btn-dica" onclick="confirmarDica('dicaTirolesa4','tirolesa_p4')">Dica</button>
+                <button class="btn-dica" style="background:#8b5cf6;" onclick="abrirCalculadora('f1_caboAprox')">🧮 Calculadora</button>
+            </div>
+            <div id="dicaTirolesa4" class="caixa-dica">
+                <strong>🧠 Pista:</strong>
+                <p>A Nota do Sistema acaba de revelar o valor exato em metros da raiz irracional que sobrou. Como você já possuía um fator externo aguardando para agir sobre essa raiz, qual é a operação final?</p>
+            </div>
+            <div id="erro_f1p3_4" class="feedback"></div>
+        </div>
+        <button id="btn-avancar_tirolesa" class="btn-avancar hidden" onclick="mudarTela('fase1_pt3','fase2')">Avançar para Fase 2 ➔</button>
+    </div>
+
+    <div id="fase2" class="enigma-box">
+        <h2>Fase 2: Aplicando o Teorema de Pitágoras</h2>
+        <p class="aviso-pontuacao">⭐ Sistema de Estrelas</p>
+        <div class="mentor">
+            <p><strong>Assistente I.A. diz:</strong> "Você acabou de provar que compreende a essência estrutural dos triângulos. Chegou o momento de dar um passo além e agir sem o auxílio do nosso passo a passo detalhado."</p>
+            <p class="pergunta-socratica">❓ <strong>Reflexão Espacial:</strong> Observe a figura projetada à nossa frente. Olhando para o símbolo do ângulo perfeitamente reto, como você pode identificar com certeza quais linhas representam a estrutura base (os catetos) e qual linha representa a nossa grande incógnita transversal?</p>
+            <p class="pergunta-socratica">❓ <strong>Resgate de Memória:</strong> Qual foi a relação de 'áreas de quadrados' que deduzimos no canal de água para descobrir a medida do lado maior? Recupere esse exato raciocínio lógico, aplique-o às novas medidas reveladas no holograma e estruture a equação abaixo.</p>
+        </div>
+        <div class="svg-container">
+            <svg width="100%" viewBox="0 0 400 250" style="max-width:400px;margin:0 auto;display:block;"><polygon points="50,200 350,200 50,50" fill="rgba(253,224,71,0.15)" stroke="#fde047" stroke-width="3"/><polyline points="50,180 70,180 70,200" fill="none" stroke="#fde047" stroke-width="2"/><line x1="50" y1="200" x2="50" y2="50" stroke="#fde047" stroke-width="4" stroke-dasharray="6,4"/><text x="30" y="130" fill="#fde047" font-weight="bold" font-size="16" text-anchor="middle" transform="rotate(-90,30,130)">9 cm</text><line x1="50" y1="200" x2="350" y2="200" stroke="#fde047" stroke-width="4"/><text x="200" y="230" fill="#fde047" font-weight="bold" font-size="16" text-anchor="middle">12 cm</text><line x1="50" y1="50" x2="350" y2="200" stroke="#ef4444" stroke-width="5"/><text x="220" y="120" fill="#ef4444" font-weight="bold" font-size="16">Hipotenusa (?)</text></svg>
+        </div>
+
+        <div id="passo1-fase2">
+            <div class="input-group">
+                <span>Hipotenusa&sup2; =</span> <input type="number" id="f2_cat1" placeholder="Cateto"> &sup2; + <input type="number" id="f2_cat2" placeholder="Cateto"> &sup2;
+            </div>
+            <div class="btn-container">
+                <button onclick="verificarF2Passo1()">Validar</button>
+                <button class="btn-dica" onclick="confirmarDica('dicaF2p1','f2_p1')">Dica</button>
+                <button class="btn-dica" style="background:#8b5cf6;" onclick="abrirCalculadora('')">🧮 Calculadora</button>
+            </div>
+            <div id="dicaF2p1" class="caixa-dica">
+                <strong>🧠 Pista:</strong>
+                <p>Observe o canto perfeitamente quadrado da figura (o ângulo de 90 graus). Se você fosse construir um quadrado perfeito encostado em cada uma das linhas que formam esse 'L', quais seriam as medidas iniciais desses dois lados?</p>
+            </div>
+            <div id="erro_f2p1" class="feedback"></div>
+        </div>
+
+        <div id="passo2-fase2" class="hidden">
+            <div class="input-group">
+                <span>Hipotenusa&sup2; =</span>
+                <input type="number" id="f2_soma" placeholder="Soma dos Quadrados" style="width: 350px;">
+            </div>
+            <div class="btn-container">
+                <button onclick="verificarF2Passo2()">Validar</button>
+                <button class="btn-dica" onclick="confirmarDica('dicaF2p2','f2_p2')">Dica</button>
+                <button class="btn-dica" style="background:#8b5cf6;" onclick="abrirCalculadora('f2_soma')">🧮 Calculadora</button>
+            </div>
+            <div id="dicaF2p2" class="caixa-dica">
+                <strong>🧠 Pista Lógica — Analogia do Construtor:</strong>
+                <p>Imagine que um triângulo tivesse lados de tamanho 5 e 3. A área geométrica que eles projetam seria 25 (5 &times; 5) e 9 (3 &times; 3). A lei universal manda juntar essas duas áreas (25 + 9 = 34).</p>
+                <p>Como você aplica essa mesma lei de expansão e soma com os valores do nosso holograma atual?</p>
+            </div>
+            <div id="erro_f2p2" class="feedback"></div>
+        </div>
+
+        <div id="passo3-fase2" class="hidden">
+            <div class="input-group">
+                <span>Hipotenusa = &radic;(Soma dos Quadrados) = </span> 
+                <input type="number" id="f2_hip" placeholder="?"> 
+                <span>cm</span>
+            </div>
+            <div class="btn-container">
+                <button onclick="verificarF2Passo3()">Validar Raiz Exata</button>
+                <button class="btn-dica" onclick="confirmarDica('dicaF2p3','f2_p3')">Dica</button>
+                <button class="btn-dica" style="background:#8b5cf6;" onclick="abrirCalculadora('f2_hip')">🧮 Calculadora</button>
+            </div>
+            <div id="dicaF2p3" class="caixa-dica">
+                <strong>🧠 Pista:</strong>
+                <p>A soma total encontrada representa uma "área gigante" desenhada sobre a linha inclinada vermelha. Qual operação matemática desfaz uma área para revelar apenas a medida reta do lado?</p>
+                <p>Teste na sua calculadora valores análogos "redondos" (como 10 &times; 10 ou 20 &times; 20) para cercar mentalmente qual valor multiplicado por si mesmo gera o seu alvo exato!</p>
+            </div>
+            <div id="erro_f2p3" class="feedback"></div>
+        </div>
+
+        <button id="btn-avancar_fase2" class="btn-avancar hidden" onclick="mudarTela('fase2','fase2_pt2')">Avançar para Circunferência ➔</button>
+    </div>
+
+    <div id="fase2_pt2" class="enigma-box">
+        <h2>Fase 2: Geometria de Circunferência</h2>
+        <p class="aviso-pontuacao">⭐ Sistema de Estrelas</p>
+        <div class="mentor">
+            <p><strong>Assistente I.A. diz:</strong> "A matemática geométrica possui uma regra elegante e irrefutável: <strong>Todo triângulo retângulo desenhado com os seus vértices a tocar os limites de um círculo tem a sua Hipotenusa a passar exatamente no centro. Isso forma o Diâmetro.</strong></p>
+            <p>O Diâmetro é a reta completa de ponta a ponta. O Raio é a distância exata do Centro à borda."</p>
+            <p class="pergunta-socratica">❓ <strong>Reflexão Geométrica:</strong> Se a lei nos diz que o Diâmetro é a própria Hipotenusa, como você pode utilizar as medidas dos dois catetos visíveis na imagem para encontrá-lo? E, sabendo que o raio representa exatamente a metade dessa travessia, qual será a sua dedução algébrica final para o enigma?</p>
+        </div>
+
+        <div class="svg-container">
+            <svg width="100%" viewBox="0 0 400 300" style="max-width:400px;margin:0 auto;display:block;"><circle cx="200" cy="150" r="130" fill="none" stroke="#38bdf8" stroke-width="3"/><line x1="70" y1="150" x2="330" y2="150" stroke="#94a3b8" stroke-width="3" stroke-dasharray="8,4"/><text x="200" y="140" fill="#94a3b8" font-size="14" text-anchor="middle">AB (Diâmetro / Hipotenusa)</text><circle cx="70" cy="150" r="4" fill="#fde047"/><text x="50" y="155" fill="#fde047" font-weight="bold">A</text><circle cx="330" cy="150" r="4" fill="#fde047"/><text x="345" y="155" fill="#fde047" font-weight="bold">B</text><circle cx="250" cy="30" r="4" fill="#ef4444"/><text x="255" y="25" fill="#ef4444" font-weight="bold">C</text><line x1="70" y1="150" x2="250" y2="30" stroke="#fde047" stroke-width="3"/><text x="125" y="80" fill="#fde047" font-weight="bold" font-size="16">6 cm</text><line x1="330" y1="150" x2="250" y2="30" stroke="#fde047" stroke-width="3"/><text x="260" y="120" fill="#fde047" font-weight="bold" font-size="16">4 cm</text><circle cx="200" cy="150" r="5" fill="#38bdf8"/><text x="200" y="170" fill="#38bdf8" font-weight="bold" font-size="14" text-anchor="middle">Centro</text><polyline points="238,38 246,49 258,42" fill="none" stroke="#f8fafc" stroke-width="2"/></svg>
+        </div>
+
+        <div id="passo1-circ">
+            <div class="input-group"><span>Diâmetro&sup2; = Quadrado dos Catetos = </span> <input type="number" id="circ_ab2" placeholder="Total"></div>
+            <div class="btn-container">
+                <button onclick="verificarCircPasso1()">Validar</button>
+                <button class="btn-dica" onclick="confirmarDica('dicaCirc1','circ_p1')">Dica</button>
+                <button class="btn-dica" style="background:#8b5cf6;" onclick="abrirCalculadora('circ_ab2')">🧮 Calculadora</button>
+            </div>
+            <div id="dicaCirc1" class="caixa-dica">
+                <strong>🧠 Pista:</strong>
+                <p>O triângulo aprisionado na circunferência obedece fielmente à mesma regra da etapa anterior. Em outro cenário, com lados 3 e 5, as áreas formadas seriam 9 e 25 (total 34).</p>
+                <p>De que forma essa exata lógica espacial de potenciação atua nas linhas indicadas na nossa figura circular?</p>
+            </div>
+            <div id="erro_circ1" class="feedback"></div>
+        </div>
+
+        <div id="passo2-circ" class="hidden">
+            <p style="font-size:18px;"><strong>2º Passo – Simplificação Algébrica</strong><br>
+            A animação vai fatorar o resultado.</p>
+            <div style="display:flex;justify-content:center;font-family:'Courier New',Courier,monospace;font-size:24px;margin:20px 0;color:#f8fafc;">
+                <div style="display:grid;grid-template-columns:60px auto auto;text-align:right;gap:0;">
+                    <div style="border-right:2px solid #fde047;padding:2px 15px;min-height:40px;" id="f52_num1"></div><div style="padding:2px 15px;text-align:left;min-height:40px;" id="f52_div1"></div><div style="padding:2px 15px;min-height:40px;"></div><div style="border-right:2px solid #fde047;padding:2px 15px;min-height:40px;" id="f52_num2"></div><div style="padding:2px 15px;text-align:left;min-height:40px;" id="f52_div2"></div><div style="padding:2px 15px;min-height:40px;"></div><div style="border-right:2px solid #fde047;border-bottom:2px solid #fde047;padding:2px 15px;min-height:40px;" id="f52_num3"></div><div style="border-bottom:2px solid #fde047;padding:2px 15px;text-align:left;min-height:40px;" id="f52_div3"></div><div style="border-bottom:2px solid #fde047;padding:2px 15px;min-height:40px;"></div><div style="border-right:2px solid #fde047;padding:2px 15px;min-height:40px;" id="f52_num4"></div><div style="padding:2px 15px;text-align:left;min-height:40px;"></div><div style="padding:2px 15px;min-height:40px;" id="resultadoFatoracao52"></div>
+                </div>
+            </div>
+            <div class="input-group">
+                <span>Diâmetro Simplificado =</span>
+                <input type="number" id="circ_fora" placeholder="Fora" style="width:200px;">
+                <span>&radic;</span>
+                <input type="number" id="circ_dentro" placeholder="Dentro" style="width:200px;">
+            </div>
+            <div class="btn-container">
+                <button onclick="verificarCircPasso2()">Validar</button>
+                <button class="btn-dica" onclick="confirmarDica('dicaCirc2','circ_p2')">Dica</button>
+                <button class="btn-dica" style="background:#8b5cf6;" onclick="abrirCalculadora('')">🧮 Calculadora</button>
+            </div>
+            <div id="dicaCirc2" class="caixa-dica">
+                <strong>🧠 Pista Lógica — Exemplo com √24:</strong>
+                <p>Fatore 24: 2³ × 3. Se agruparmos os fatores iguais em pares, ficamos com 2² × 2 × 3. Qual fator pode 'sair' da raiz por estar elevado ao quadrado? E qual precisa continuar lá dentro? Teste esse raciocínio com outro número, como 20, e depois aplique à sua fatoração da tela.</p>
+            </div>
+            <div id="erro_circ2" class="feedback"></div>
+        </div>
+
+        <div id="passo3-circ" class="hidden">
+            <p style="font-size:18px;"><strong>3º Passo – Encontrar o Raio</strong><br>
+            A álgebra ensina: se dividimos uma expressão por 2, nós só alteramos os múltiplos externos que não estão presos em propriedades complexas como raízes inquebráveis.</p>
+            <div class="input-group"><span>Raio = Diâmetro &divide; 2 = &radic;</span> <input type="number" id="circ_raio" placeholder="O que sobra dentro"> <span>cm</span></div>
+            <div class="btn-container">
+                <button onclick="verificarCircPasso3()">Validar Raio</button>
+                <button class="btn-dica" onclick="confirmarDica('dicaCirc3','circ_p3')">Dica</button>
+                <button class="btn-dica" style="background:#8b5cf6;" onclick="abrirCalculadora('circ_raio')">🧮 Calculadora</button>
+            </div>
+            <div id="dicaCirc3" class="caixa-dica">
+                <strong>🧠 Pista:</strong>
+                <p>Pense no multiplicador externo como "caixas". Se você tem "4 caixas contendo &radic;3" e precisa dividir tudo por 2, você fica com "2 caixas contendo &radic;3" (o conteúdo interior não muda, apenas a quantidade externa).</p>
+                <p>Aplique isso ao seu Diâmetro Simplificado: ao dividi-lo pela metade exata, o que ocorre com a raiz retida e o que acontece com o fator liberto de fora?</p>
+            </div>
+            <div id="erro_circ3" class="feedback"></div>
+        </div>
+        <button id="btn-avancar_fase2b" class="btn-avancar hidden" onclick="mudarTela('fase2_pt2','fase3')">Avançar para Fase 3 ➔</button>
+    </div>
+
+    <div id="fase3" class="enigma-box">
+        <h2>Fase 3: O Finito e o Infinito</h2>
+        <p class="aviso-pontuacao">⭐ Sistema de Estrelas</p>
+        <div class="mentor">
+            <p><strong>Assistente I.A. diz:</strong> "O universo numérico é dividido em duas naturezas: os valores <strong>Finitos</strong> (que possuem um fim delimitado) e as <strong>Dízimas Infinitas</strong> (que ecoam eternamente, marcadas pelo padrão visual '...')."</p>
+            <p class="pergunta-socratica">❓ <strong>Reconhecimento de Padrões:</strong> Observe os números do painel. Alguns terminam, outros se repetem infinitamente. Quando o decimal termina, em quantas partes (10, 100, 1000…) o inteiro foi dividido? E quando ele não termina nunca, qual número no denominador da fração parece funcionar? Experimente transformar 0,111… em fração para descobrir.</p>
+        </div>
+        <div id="passo1-fase3">
+            <p style="font-size:18px;"><strong>1º Passo:</strong> Use essa lógica para criar as frações originais (sem simplificar ainda):</p>
+            <div class="input-group" style="gap:40px;">
+                <div><p><strong>0,5</strong> (Finito)</p><input type="number" id="nf1" placeholder="Num"><br><div style="height:2px;background:#fff;margin:5px 0;"></div><input type="number" id="df1" placeholder="Den"></div>
+                <div><p><strong>0,555...</strong> (Dízima)</p><input type="number" id="ni1" placeholder="Num"><br><div style="height:2px;background:#fff;margin:5px 0;"></div><input type="number" id="di1" placeholder="Den"></div>
+            </div>
+            <div class="input-group" style="gap:40px;margin-top:20px;">
+                <div><p><strong>0,75</strong> (Finito)</p><input type="number" id="nf2" placeholder="Num"><br><div style="height:2px;background:#fff;margin:5px 0;"></div><input type="number" id="df2" placeholder="Den"></div>
+                <div><p><strong>0,333...</strong> (Dízima)</p><input type="number" id="ni2" placeholder="Num"><br><div style="height:2px;background:#fff;margin:5px 0;"></div><input type="number" id="di2" placeholder="Den"></div>
+            </div>
+            <div class="btn-container">
+                <button onclick="verificarF3Passo1()">Validar Frações</button>
+                <button class="btn-dica" onclick="confirmarDica('dica3','fracoes')">Dica</button>
+                <button class="btn-dica" style="background:#8b5cf6;" onclick="abrirCalculadora('')">🧮 Calculadora</button>
+            </div>
+            <div id="dica3" class="caixa-dica">
+                <strong>🧠 Pista Lógica — Exemplo com 0,8 e 0,888...:</strong>
+                <p>Se você lê "0,8" em voz alta, diz "oito décimos", ou seja, 8 partes de 10 (8/10). E se fossem duas casas, como "0,85", seriam 85 partes de 100.</p>
+                <p>Mas, se o número perde o limite e vira uma dízima como 0,888..., como poderíamos representá-lo? Lembra da aula anterior? 1/9 = 0,111…, 2/9 = 0,222… Será que existe uma conexão entre o dígito que se repete e o numerador de uma fração com denominador 9?</p>
+                <p>🚩 Observe os seus quatro enigmas. Quais deles são finitos (base 10 ou 100) e quais são infinitos e repetitivos? Use essa pista para descobrir a base.</p>
+            </div>
+            <div id="erro_f3p1" class="feedback"></div>
+        </div>
+
+        <div id="passo2-fase3" class="hidden" style="border-top:1px solid #4CAF50;margin-top:20px;padding-top:20px;">
+            <p style="font-size:18px;"><strong>2º Passo: O Marceneiro</strong></p>
+            <div class="mentor">
+                <p><strong>Assistente I.A. diz:</strong> "Você decodificou a linguagem do infinito! Agora, o nosso sistema precisa aplicar esse conceito ao mundo físico, projetando o espaço ocupado por uma tábua de madeira."</p>
+                <p class="pergunta-socratica">❓ <strong>Reflexão Espacial:</strong> Imagine visualmente a superfície retangular dessa tábua deitada no chão. Sabendo o seu comprimento exato e a sua largura (em dízima), como você pode relacionar espacialmente essas duas dimensões para descobrir toda a Área preenchida? Converta a medida infinita com a sua nova chave e faça essas proporções interagirem!"</p>
+            </div>
+            <div id="marceneiro-p1">
+                <div class="input-group">
+                    <span style="font-size:20px;">0,666... =</span>
+                    <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+                        <input type="number" id="marc_num" placeholder="Numerador" style="width:220px;font-size:24px;text-align:center;">
+                        <div style="width:220px;height:3px;background:#e2e8f0;border-radius:2px;"></div>
+                        <input type="number" id="marc_den" placeholder="Denominador" style="width:220px;font-size:24px;text-align:center;">
+                    </div>
+                </div>
+                <div class="btn-container">
+                    <button onclick="verificarMarceneiroP1()">Validar</button>
+                    <button class="btn-dica" onclick="confirmarDica('dicaMarceneiroP1','marceneiro')">Dica</button>
+                    <button class="btn-dica" style="background:#8b5cf6;" onclick="abrirCalculadora('')">🧮 Calculadora</button>
+                </div>
+                <div id="dicaMarceneiroP1" class="caixa-dica">
+                    <strong>🧠 Pista:</strong>
+                    <p>A largura da tábua apresenta o comportamento visual de "eco" (0,666...). Lembre-se da regra da base do infinito que você acabou de aplicar no painel anterior com o 0,333 e o 0,555.</p>
+                    <p>Se o número 6 é o dígito que se repete indefinidamente, qual deve ser a base do seu denominador?</p>
+                </div>
+                <div id="erro_marc_p1" class="feedback"></div>
+            </div>
+            <div id="marceneiro-p2" class="hidden">
+                <div class="input-group">
+                    <span style="font-size:18px;">Área (9 &times; Fração) =</span>
+                    <input type="number" id="areaMarceneiro" placeholder="?">
+                    <span style="font-size:18px;">m&sup2;</span>
+                </div>
+                <div class="btn-container">
+                    <button onclick="verificarF3Passo2()">Calcular Área</button>
+                    <button class="btn-dica" onclick="confirmarDica('dicaMarceneiro','marceneiro_p2')">Dica</button>
+                    <button class="btn-dica" style="background:#8b5cf6;" onclick="abrirCalculadora('areaMarceneiro')">🧮 Calculadora</button>
+                </div>
+                <div id="dicaMarceneiro" class="caixa-dica">
+                    <strong>🧠 Pista Lógica — Analogia do Estoque:</strong>
+                    <p>Se você tem 7 caixas, e cada caixa contém a fração de (5/7) de um produto, ao juntar tudo, o 7 que multiplica o grupo anula o 7 que divide a base, restando 5 produtos inteiros soltos.</p>
+                    <p>Observe as dimensões da sua tábua: o comprimento em metros (inteiro) e a base da fração (divisor) não são o mesmo número? Como eles se comportam quando se chocam na multiplicação?</p>
+                </div>
+                <div id="erro_f3p2" class="feedback"></div>
+            </div>
+        </div>
+        <button id="btn-avancar_fase3" class="btn-avancar hidden" onclick="mudarTela('fase3','fase4')">Avançar para Fase 4 ➔</button>
+    </div>
+
+    <div id="fase4" class="enigma-box">
+        <h2>Fase 4: Potências e Dízimas</h2>
+        <p class="aviso-pontuacao">⭐ Sistema de Estrelas</p>
+        <div class="mentor">
+            <p><strong>Assistente I.A. diz:</strong> "O laboratório exige agora a síntese de propriedades avançadas. O nosso Desafio é decodificar e calcular o valor final de <strong>m &times; n</strong>, sabendo que <strong>m = (1,777...)<sup>0,5</sup></strong> e <strong>n = (2/3)<sup>&minus;2</sup></strong>."</p>
+            <p class="pergunta-socratica">❓ <strong>Reflexão sobre Dízimas:</strong> Observe o número 1,777... Ele possui uma parte cravada (inteira) e uma repetição infinita (decimal). Como você pode isolar mentalmente a parte sólida desse 'eco' decimal para, usando a lógica da fase anterior, fundir as duas partes utilizando uma mesma base fracionária?</p>
+            <p class="pergunta-socratica">❓ <strong>Decodificando Expoentes:</strong> Sabemos que elevar um número à potência '2' equivale a construir a área de um quadrado perfeito. Sendo assim, o que o expoente 0,5 (que representa exatamente a fração 1/2) realizaria como operação geométrica inversa? E quanto ao expoente de 'n': se um sinal de subtração (negativo) costuma indicar um sentido 'oposto', qual seria o efeito lógico desse sinal sobre os andares (numerador e denominador) da sua fração base?</p>
+        </div>
+        <div id="passo1-fase4">
+            <p style="font-size:18px;"><strong>1º Passo:</strong> Uma dízima mista (ex: 1,777...) é uma soma matemática do inteiro com a fração da dízima.</p>
+            <div class="input-group">
+                <span style="font-size:20px;">Fração Final de 1,777... =</span>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+                    <input type="number" id="f4_num" placeholder="Numerador" style="width:260px;font-size:24px;text-align:center;">
+                    <div style="width:260px;height:3px;background:#e2e8f0;border-radius:2px;"></div>
+                    <input type="number" id="f4_den" placeholder="Denominador" style="width:260px;font-size:24px;text-align:center;">
+                </div>
+            </div>
+            <div class="btn-container">
+                <button onclick="verificarF4Passo1()">Validar</button>
+                <button class="btn-dica" onclick="confirmarDica('dicaF4p1','f4_p1')">Dica</button>
+                <button class="btn-dica" style="background:#8b5cf6;" onclick="abrirCalculadora('')">🧮 Calculadora</button>
+            </div>
+            <div id="dicaF4p1" class="caixa-dica">
+                <strong>🧠 Pista Lógica — Juntando Inteiros e Dízimas:</strong>
+                <p>Quantos nonos cabem em 1 inteiro? Se você já sabe transformar 0,777… em fração, como pode juntar essa parte com o 1 inteiro usando o mesmo denominador?</p>
+                <p>🚩 Aplique esse raciocínio ao número 1,777… do desafio. Primeiro, escreva a parte decimal como fração. Depois, expresse o inteiro como uma fração com o mesmo denominador e some.</p>
+            </div>
+            <div id="erro_f4p1" class="feedback"></div>
+        </div>
+        
+        <div id="passo2-fase4" class="hidden">
+            <p style="font-size:18px;"><strong>2º Passo:</strong> Obtenha 'm' transformando o expoente 0,5 em raiz quadrada do numerador e denominador.</p>
+            <div class="input-group">
+                <span style="font-size:20px;">m =</span>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+                    <input type="number" id="f4_m_num" placeholder="Numerador" style="width:260px;font-size:24px;text-align:center;">
+                    <div style="width:260px;height:3px;background:#e2e8f0;border-radius:2px;"></div>
+                    <input type="number" id="f4_m_den" placeholder="Denominador" style="width:260px;font-size:24px;text-align:center;">
+                </div>
+            </div>
+            <div class="btn-container">
+                <button onclick="verificarF4Passo2()">Validar</button>
+                <button class="btn-dica" onclick="confirmarDica('dicaF4p2','f4_p2')">Dica</button>
+                <button class="btn-dica" style="background:#8b5cf6;" onclick="abrirCalculadora('')">🧮 Calculadora</button>
+            </div>
+            <div id="dicaF4p2" class="caixa-dica">
+                <strong>🧠 Pista Lógica — Operação Inversa:</strong>
+                <p>O expoente 0,5 pede a raiz quadrada. Lembre-se: √(a/b) = √a / √b. Então, extraia a raiz do numerador e do denominador da sua fração. Que número multiplicado por si mesmo dá o numerador? E o denominador?</p>
+            </div>
+            <div id="erro_f4p2" class="feedback"></div>
+        </div>
+        <div id="passo3-fase4" class="hidden">
+            <p style="font-size:18px;"><strong>3º Passo:</strong> Obtenha 'n'. n = (2/3)<sup>&minus;2</sup>. Inverta a fração para remover o negativo, depois eleve ao quadrado ambas as partes.</p>
+            <div class="input-group">
+                <span style="font-size:20px;">n =</span>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+                    <input type="number" id="f4_n_num" placeholder="Numerador" style="width:260px;font-size:24px;text-align:center;">
+                    <div style="width:260px;height:3px;background:#e2e8f0;border-radius:2px;"></div>
+                    <input type="number" id="f4_n_den" placeholder="Denominador" style="width:260px;font-size:24px;text-align:center;">
+                </div>
+            </div>
+            <div class="btn-container">
+                <button onclick="verificarF4Passo3()">Validar</button>
+                <button class="btn-dica" onclick="confirmarDica('dicaF4p3','f4_p3')">Dica</button>
+                <button class="btn-dica" style="background:#8b5cf6;" onclick="abrirCalculadora('')">🧮 Calculadora</button>
+            </div>
+            <div id="dicaF4p3" class="caixa-dica">
+                <strong>🧠 Pista Lógica — O Espelho:</strong>
+                <p>Um expoente negativo inverte a fração. Por exemplo, (a/b)^-1 = b/a. Depois, a potência positiva se aplica normalmente. Experimente com (1/2)^-1 e veja o resultado. Agora aplique essa ideia ao seu (2/3)^-2, mas cuidado: o expoente não é apenas -1.</p>
+            </div>
+            <div id="erro_f4p3" class="feedback"></div>
+        </div>
+        <div id="passo4-fase4" class="hidden">
+            <p style="font-size:18px;"><strong>4º Passo:</strong> Multiplique m &times; n. Simplifique se as bases se cancelarem na cruz.</p>
+            <div class="input-group"><span>m &times; n =</span> <input type="text" class="largo" id="f4_resultado" placeholder="?"></div>
+            <div class="btn-container">
+                <button onclick="verificarF4Passo4()">Validar Multiplicação</button>
+                <button class="btn-dica" onclick="confirmarDica('dicaF4p4','f4_p4')">Dica</button>
+                <button class="btn-dica" style="background:#8b5cf6;" onclick="abrirCalculadora('f4_resultado')">🧮 Calculadora</button>
+            </div>
+            <div id="dicaF4p4" class="caixa-dica">
+                <strong>🧠 Pista Lógica — O Padrão de Cancelamento:</strong>
+                <p>Ao multiplicar duas frações, você funde os andares. Por exemplo: (2/5) &times; (5/8).</p>
+                <p>Você poderia multiplicar tudo (10/40) e depois simplificar... mas observe o padrão visual inteligente: o número 5 multiplica em cima e divide na mesma proporção embaixo. Eles se anulam imediatamente, sobrando apenas o 2 e o 8 (2/8).</p>
+                <p>🚩 Olhe para as duas frações que você encontrou para 'm' e 'n'. Existe algum cruzamento numérico idêntico que permita esse cancelamento visual e direto?</p>
+            </div>
+            <div id="erro_f4p4" class="feedback"></div>
+            <div id="solucao-completa-f4" class="hidden" style="margin-top: 30px; border-top: 2px dashed #22c55e; padding-top: 20px;">
+                <h3 style="color: #22c55e;">🌟 Excelente trabalho algébrico!</h3>
+            </div>
+        </div>
+        <button id="btn-avancar_fase4" class="btn-avancar hidden" onclick="mudarTela('fase4','fase5')" style="margin-top: 25px;">Avançar para Fase 5 ➔</button>
+    </div>
+
+    <div id="fase5" class="enigma-box">
+        <h2>Fase 5: Cercando o Irracional</h2>
+        <p class="aviso-pontuacao">⭐ Sistema de Estrelas</p>
+        <div class="mentor">
+            <p><strong>Assistente I.A. diz:</strong> "Entramos agora no território dos números que não se comportam de forma exata. Mas, antes de dominá-los, precisamos entender a sua origem geométrica perfeita. Observe atentamente a malha do Piso 1 projetada no nosso holograma:"</p>
+            
+            <div class="svg-container">
+                <svg width="100%" viewBox="0 0 400 180" style="max-width:400px;margin:0 auto;display:block;"><rect x="150" y="30" width="100" height="100" fill="rgba(56,189,248,0.2)" stroke="#38bdf8" stroke-width="3"/><path d="M 175 30 L 175 130 M 200 30 L 200 130 M 225 30 L 225 130 M 150 55 L 250 55 M 150 80 L 250 80 M 150 105 L 250 105" stroke="#38bdf8" stroke-width="1"/><text x="200" y="85" fill="#f8fafc" font-size="20" font-weight="bold" text-anchor="middle">Área: 16</text><text x="140" y="85" fill="#22c55e" font-size="18" text-anchor="end">Lado = 4</text><text x="200" y="155" fill="#22c55e" font-size="18" text-anchor="middle">Lado = 4</text><text x="200" y="20" fill="#fde047" font-size="16" text-anchor="middle">&radic;16 = 4</text></svg>
+            </div>
+            
+            <p class="pergunta-socratica">❓ <strong>Reflexão Espacial:</strong> Baseado exclusivamente na figura geométrica acima, qual é a ligação lógica entre a quantidade total de blocos azuis dispostos no chão (a Área interna) e a quantidade de margens verdes (o Lado perfeito da raiz)? Utilizando essa mesma lógica de progressão espacial, que dimensão física e reta de parede construiria perfeitamente os nossos grandes pátios com áreas de 169 e 196 blocos?"</p>
+        </div>
+        <div class="input-group">
+            <span>&radic;169 = Lado de</span> <input type="number" id="raiz_baixa" placeholder="?">
+            <span>&radic;196 = Lado de</span> <input type="number" id="raiz_alta" placeholder="?">
+        </div>
+        <div class="btn-container">
+            <button onclick="verificarRaizes()">Verificar Lados Geométricos</button>
+            <button class="btn-dica" onclick="confirmarDica('dica5','limites')">Dica</button>
+            <button class="btn-dica" style="background:#8b5cf6;" onclick="abrirCalculadora('')">🧮 Calculadora</button>
+        </div>
+        <div id="dica5" class="caixa-dica">
+            <strong>🧠 Pista Lógica — Explorando Fronteiras:</strong>
+            <p>Sabemos que um pátio de 100 azulejos tem lados de 10 (pois 10 &times; 10 = 100) e um pátio de 400 azulejos tem lados de 20 (20 &times; 20 = 400).</p>
+            <p>Se as nossas novas áreas são 169 e 196, em que espaço numérico exato essas raízes habitam?</p>
+            <p>🚩 Teste essas fronteiras lógicas multiplicando bases vizinhas na sua calculadora (11, 12, etc.) até descobrir quem constrói perfeitamente as nossas áreas!</p>
+        </div>
+        <div id="erro_fase5" class="feedback"></div>
+        <button id="btn-avancar_fase5" class="btn-avancar hidden" onclick="mudarTela('fase5','fase5_pt2')">Analisar Número Irracional ➔</button>
+    </div>
+
+    <div id="fase5_pt2" class="enigma-box">
+        <h2>Fase 5: Desvendando a Raiz de 180</h2>
+        <p class="aviso-pontuacao">⭐ Sistema de Estrelas</p>
+        <div class="mentor">
+            <p><strong>Assistente I.A. diz:</strong> "Você acabou de descobrir que pátios com áreas de 169 e 196 formam recintos matemáticos exatos. Porém, o laboratório nos entregou agora um pátio projetado com exatos <strong>180 blocos</strong> isolados."</p>
+            <p class="pergunta-socratica">❓ <strong>Reflexão sobre o Irracional:</strong> O que aconteceria geometricamente se tentássemos construir um quadrado perfeito usando todos esses 180 azulejos sem sobrinhas e sem quebrá-los? Como a estrutura perfeita não se sustenta, o nosso sistema desconstruiu o número para enxergarmos a sua fundação primordial: <strong>180 = 2&sup2; &times; 3&sup2; &times; 5</strong>. Observando a regra de cancelamento aprendida na tirolesa, quem possui o formato quadrado para cruzar o limite da raiz e quem ficará aprisionado lá dentro?"</p>
+        </div>
+
+        <div id="passo1-raiz180">
+            <p style="font-size:18px;"><strong>1º Passo:</strong> Aplique a propriedade de anulação (&radic;(a&sup2;) = a) nos fatores com potência 2. Multiplique-os fora.</p>
+            <div class="raiz-bloco">
+                <input type="number" id="raiz180_fora" placeholder="Fora"> <span>&radic;</span> <input type="number" id="raiz180_dentro" placeholder="Dentro">
+            </div>
+            <div class="btn-container">
+                <button onclick="verificarRaiz180Passo1()">Validar Lógica</button>
+                <button class="btn-dica" onclick="confirmarDica('dica5-passo1','raiz180_simp')">Dica</button>
+                <button class="btn-dica" style="background:#8b5cf6;" onclick="abrirCalculadora('raiz180_fora')">🧮 Calculadora</button>
+            </div>
+            <div id="dica5-passo1" class="caixa-dica">
+                <strong>🧠 Pista Lógica — Analogia do Passe Livre:</strong>
+                <p>Pegue um número como 72. Fatore: 2³ × 3². Agora agrupe em pares: 2² × 3² × 2. Os fatores com expoente 2 podem sair da raiz (porque √(x²)=x), mas o que está sozinho não pode. Que tal fazer o mesmo com o 180? Quais fatores formam pares? Quais não?</p>
+            </div>
+            <div id="erro_fase5_pt2_passo1" class="feedback"></div>
+        </div>
+
+        <div id="passo-reta" class="hidden">
+            <h3 style="margin-top:30px;">A Fórmula da Ajuste de Precisão</h3>
+            <div class="mentor">
+                <p><strong>Assistente I.A. diz:</strong> "Chegamos ao momento de determinar a sintonia fina do valor, projetando os números não exatos em uma régua de aproximação estruturada."</p>
+                <p class="pergunta-socratica">❓ <strong>Resgate de Memória:</strong> Para calibrar a nossa fórmula de aproximação linear (a exata equação que você deduziu com sucesso na Fase 1), precisamos olhar as margens. Levando em conta que a Área de 180 blocos está fisicamente ensanduichada entre as áreas de 169 e 196, qual desses dois quadrados perfeitos representa a última fundação exata que o número 180 deixou para trás antes de se tornar fragmentado?"</p>
+            </div>
+            
+            <div style="background:#1e293b; padding:15px; border-radius:8px; margin: 15px 0; border: 1px solid #fde047;">
+                <div style="display:flex; justify-content:center; align-items:center; font-size:18px; color:#f8fafc; flex-wrap:wrap; gap:10px;">
+                    <span>&radic;180 &approx; 13 + </span>
+                    <div style="display:flex; flex-direction:column; align-items:center;">
+                        <span style="border-bottom:2px solid #f8fafc; padding:0 5px;">180 &minus; 169</span>
+                        <span style="padding:0 5px;">2 &times; 13</span>
+                    </div>
+                </div>
+            </div>
+            
+            <p style="font-size:18px; margin-top:20px;">Use a lógica de aproximação e frações para responder ao teste adicional:</p>
+            
+            <div class="svg-container">
+                <svg width="100%" viewBox="0 0 600 100" style="max-width:600px;margin:0 auto;display:block;"><line x1="50" y1="60" x2="550" y2="60" stroke="#f8fafc" stroke-width="3"/><text x="50" y="80" fill="#f8fafc" font-size="12" text-anchor="middle">0</text><text x="150" y="80" fill="#f8fafc" font-size="12" text-anchor="middle">1</text><text x="250" y="80" fill="#f8fafc" font-size="12" text-anchor="middle">2</text><text x="350" y="80" fill="#f8fafc" font-size="12" text-anchor="middle">3</text><text x="450" y="80" fill="#f8fafc" font-size="12" text-anchor="middle">4</text><text x="550" y="80" fill="#f8fafc" font-size="12" text-anchor="middle">5</text><circle cx="75" cy="60" r="5" fill="#ef4444"/><text x="75" y="50" fill="#ef4444" font-size="10" font-weight="bold" text-anchor="middle">O</text><circle cx="264" cy="60" r="5" fill="#22c55e"/><text x="264" y="50" fill="#22c55e" font-size="10" font-weight="bold" text-anchor="middle">P</text><circle cx="519" cy="60" r="5" fill="#fde047"/><text x="519" y="50" fill="#fde047" font-size="10" font-weight="bold" text-anchor="middle">M</text></svg>
+            </div>
+            
+            <div class="input-group" style="gap:30px;">
+                <div><span>&radic;22 &rarr;</span> <select id="reta_raiz"><option value="">?</option><option value="M">M</option><option value="O">O</option><option value="P">P</option></select></div>
+                <div><span>25/99 (um pouco mais que 0) &rarr;</span> <select id="reta_frac1"><option value="">?</option><option value="M">M</option><option value="O">O</option><option value="P">P</option></select></div>
+                <div><span>193/90 (2 e um pouco mais) &rarr;</span> <select id="reta_frac2"><option value="">?</option><option value="M">M</option><option value="O">O</option><option value="P">P</option></select></div>
+            </div>
+            <div class="btn-container">
+                <button onclick="verificarReta()">Validar Associações</button>
+                <button class="btn-dica" onclick="confirmarDica('dicaReta','reta')">Dica</button>
+                <button class="btn-dica" style="background:#8b5cf6;" onclick="abrirCalculadora('')">🧮 Calculadora</button>
+            </div>
+            <div id="dicaReta" class="caixa-dica">
+                <strong>🧠 Pista Lógica — A Moeda de Troca:</strong>
+                <p>Para comparar naturezas diferentes de números em uma régua, transforme tudo em dinheiro (decimais puros na calculadora).</p>
+                <p>Exemplo: Para saber a posição da &radic;8, pense na raiz exata anterior, a &radic;4 (que é 2) e a posterior, &radic;9 (que é 3), logo &radic;8 é quase 3 (aprox 2,82). Para uma fração como 40/99, simplesmente divida (dá 0,40).</p>
+                <p>🚩 Faça o mesmo: estime o quadrado perfeito vizinho de 22 para encontrar sua raiz decimal aproximada, e divida as suas duas frações. Quem está grudado no zero e quem já cruzou a marca do 4?</p>
+            </div>
+            <div id="erro_reta" class="feedback"></div>
+        </div>
+
+        <div id="passo2-raiz180" class="hidden">
+            <p style="margin-top:30px;"><strong>Último Passo:</strong> Resolva a fórmula acima em rascunho para encontrar o valor decimal aproximado de √180. Com esse valor, qual é a medida total do cabo? (Lembre-se: o número que estava fora da raiz já foi usado apenas para simplificar; agora a raiz já está completa, então basta inserir o resultado da aproximação.)</p>
+            <p>Preencha com o valor aproximado para finalizar e cortar o cabo! (Aceita-se um corte com precisão entre 13.40 e 13.42).</p>
+            <div class="input-group">
+                <span style="font-size:18px;">Medida do Cabo: </span>
+                <input type="text" class="largo" id="raiz180_aprox" placeholder="?"> <span>Metros</span>
+            </div>
+            <div class="btn-container">
+                <button onclick="verificarRaiz180Passo2()">Cortar Cabo e Fugir</button>
+                <button class="btn-dica" onclick="confirmarDica('dicaRaiz180p2','raiz180_aprox')">Dica</button>
+                <button class="btn-dica" style="background:#8b5cf6;" onclick="abrirCalculadora('raiz180_aprox')">🧮 Calculadora</button>
+            </div>
+            <div id="dicaRaiz180p2" class="caixa-dica">
+                <strong>🧠 Pista Lógica — A Fusão Final:</strong>
+                <p>Quando temos uma expressão como 4√3, o valor real é obtido combinando o número de fora com a raiz já calculada. Qual operação matemática faz essa combinação? Use o valor decimal que você achou para a raiz e combine com o fator externo que estava esperando.</p>
+            </div>
+            <div id="erro_fase5_pt2_passo2" class="feedback"></div>
+        </div>
+        <button id="btn-avancar_fase5b" class="btn-avancar hidden" onclick="mudarTela('fase5_pt2','fase6')">Avançar para Fase 6 ➔</button>
+    </div>
+
+    <div id="fase6" class="enigma-box">
+        <h2>Fase 6: Caixinha Cúbica em 3D</h2>
+        <p class="aviso-pontuacao">⭐ Sistema de Estrelas</p>
+       <div class="mentor">
+            <p><strong>Assistente I.A. diz:</strong> "Entramos agora na terceira dimensão. Diferente das áreas planas que calculamos até aqui, um objeto 3D possui espaço interno real (Volume)."</p>
+            <p class="pergunta-socratica">❓ <strong>Reflexão Espacial:</strong> Observe as linhas pontilhadas na estrutura projetada. Tratando-se de um cubo perfeito, o que a simetria visual nos diz sobre a relação entre o seu comprimento, a sua altura e a sua profundidade? Sabendo que o volume total de 512 cm³ foi gerado pela expansão idêntica dessas três dimensões simultâneas, qual é o raciocínio matemático mental para 'desfazer' essa expansão tripla e revelar a medida original de apenas uma aresta?"</p>
+        </div>
+        <div class="svg-container">
+            <svg width="100%" viewBox="0 0 300 250" style="max-width:300px;margin:0 auto;display:block;"><polygon points="100,50 130,20 220,20 190,50" fill="rgba(253,224,71,0.1)" stroke="#fde047" stroke-width="2"/><polygon points="100,50 190,50 190,140 100,140" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="2"/><polygon points="190,50 220,20 220,110 190,140" fill="rgba(239,68,68,0.1)" stroke="#ef4444" stroke-width="2"/><line x1="130" y1="20" x2="130" y2="110" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,5"/><line x1="130" y1="110" x2="220" y2="110" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,5"/><line x1="100" y1="140" x2="130" y2="110" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,5"/><text x="160" y="100" fill="#f8fafc" font-size="16" text-anchor="middle" font-weight="bold">V = 512 cm³</text></svg>
+        </div>
+        <div id="passo1-fase6">
+            <div class="input-group">
+                <span>Aresta =</span>
+                <input type="number" id="f6_aresta" placeholder="?">
+                <span>cm</span>
+            </div>
+            <div class="btn-container">
+                <button onclick="verificarF6Passo1()">Validar</button>
+                <button class="btn-dica" onclick="confirmarDica('dicaF6p1','f6_p1')">Dica</button>
+                <button class="btn-dica" style="background:#8b5cf6;" onclick="abrirCalculadora('f6_aresta')">🧮 Calculadora</button>
+            </div>
+            <div id="dicaF6p1" class="caixa-dica">
+                <strong>🧠 Pista Lógica — A Caixa Menor:</strong>
+                <p>Imagine um cubo de 64 cm³. Que número multiplicado por si mesmo três vezes resulta em 64? (Teste 3×3×3 e 5×5×5 para cercar o valor). Agora faça o mesmo cerco para o volume de 512 cm³: quais números inteiros podem ser candidatos?</p>
+            </div>
+            <div id="erro_f6p1" class="feedback"></div>
+        </div>
+        <div id="passo2-fase6" class="hidden">
+            <p style="font-size:18px;"><strong>2º Passo:</strong> Um cubo é contornado por varetas (arestas). Tem a tampa (4 arestas), o chão (4 arestas) e os pilares de suporte (4 arestas). Quanto Arame Total usamos para contornar todo o seu formato?</p>
+            <div class="input-group"><span>Arame total =</span> <input type="number" id="f6_total" placeholder="?"> <span>cm</span></div>
+            <div class="btn-container">
+                <button onclick="verificarF6Passo2()">Validar</button>
+                <button class="btn-dica" onclick="confirmarDica('dicaF6p2','f6_p2')">Dica</button>
+                <button class="btn-dica" style="background:#8b5cf6;" onclick="abrirCalculadora('f6_total')">🧮 Calculadora</button>
+            </div>
+            <div id="dicaF6p2" class="caixa-dica">
+                <strong>🧠 Pista Lógica — As Vigas do Quarto:</strong>
+                <p>Olhe para a imagem transparente do cubo. Imagine que ele é o quarto vazio onde você está. Quantas linhas rígidas (vigas) formam o contorno do chão? Quantas formam o contorno do teto? E quantas colunas em pé unem o chão ao teto?</p>
+                <p>🚩 Conte fisicamente todas essas 'linhas' estruturais usando o desenho e faça a operação para descobrir o tamanho do fio inteiro esticado.</p>
+            </div>
+            <div id="erro_f6p2" class="feedback"></div>
+        </div>
+        <button id="btn-avancar_fase6a" class="btn-avancar hidden" onclick="mudarTela('fase6','fase6_pt2')">Avançar ➔</button>
+    </div>
+
+    <div id="fase6_pt2" class="enigma-box">
+        <h2>Fase 6: A Sobra da Fita</h2>
+        <p class="aviso-pontuacao">⭐ Sistema de Estrelas</p>
+        <div class="mentor">
+            <p><strong>Assistente I.A. diz:</strong> "O laboratório exige que você controle recursos físicos. Você possui um rolo principal de fita e três fragmentos retirados (<strong>2,5 m</strong>, <strong>3/4 m</strong> e <strong>&radic;(9/4) m</strong>), cada um expresso em um formato matemático diferente."</p>
+            <p class="pergunta-socratica">❓ <strong>Reflexão Analítica:</strong> Tentar operar misturando raízes puras, frações de divisão e números quebrados é como tentar subtrair líquidos de centímetros. Para descobrirmos com segurança e lógica o que restou no rolo, para qual 'linguagem universal e plana' devemos traduzir e nivelar todas essas grandezas geométricas antes de realizar o corte final?"</p>
+        </div>
+        <div id="passo1-fita">
+            <div style="margin-bottom: 25px; text-align: center;">
+                <p><strong>&radic;144 m</strong> &rarr; comprimento <strong>total</strong> do rolo.</p>
+                <div class="input-group">
+                    <span>&radic;144 =</span>
+                    <input type="text" class="largo" id="fita_total" placeholder="?">
+                    <span>m</span>
+                </div>
+            </div>
+            <div style="margin-bottom: 25px; text-align: center;">
+                <p><strong>3/4 m</strong> &rarr; segundo pedaço.</p>
+                <div class="input-group">
+                    <span>3/4 =</span>
+                    <input type="text" class="largo" id="fita_frac" placeholder="?">
+                    <span>m</span>
+                </div>
+            </div>
+            <div style="margin-bottom: 25px; text-align: center;">
+                <p><strong>&radic;(9/4) m</strong> &rarr; terceiro pedaço. (Aplique a propriedade das raízes vistas na Fase 4: Raiz em cima / Raiz em baixo, depois divida o resultado)</p>
+                <div class="input-group">
+                    <span>&radic;(9/4) =</span>
+                    <input type="text" class="largo" id="fita_raiz" placeholder="?">
+                    <span>m</span>
+                </div>
+            </div>
+            <div class="btn-container">
+                <button onclick="verificarFitaPasso1()">Validar Conversões</button>
+                <button class="btn-dica" onclick="confirmarDica('dicaFita1','fita_p1')">Dica</button>
+                <button class="btn-dica" style="background:#8b5cf6;" onclick="abrirCalculadora('')">🧮 Calculadora</button>
+            </div>
+            <div id="dicaFita1" class="caixa-dica">
+                <strong>🧠 Pista Lógica — Tradução Universal:</strong>
+                <p>Para comparar medidas caóticas, traduza tudo para "dinheiro" (decimais puros). Se cortarmos 1/4 m, isso equivale a dividir 1 real por 4 (dá 0,25). Para uma raiz fracionada como &radic;(16/9), tiramos a raiz de cima e a raiz de baixo (fica 4/3) e, depois, dividimos a sobra.</p>
+                <p>🚩 Aplique esses mesmos processos mentais para "traduzir" o seu Rolo Total e os seus dois últimos cortes nas caixas!</p>
+            </div>
+            <div id="erro_fita1" class="feedback"></div>
+        </div>
+        <div id="passo2-fita" class="hidden">
+            <p style="font-size:18px;"><strong>2º Passo:</strong> Use o Total convertido e subtraia os pedaços (2,5 + 2º Pedaço convertido + 3º Pedaço convertido).</p>
+            <div class="input-group"><span>Sobraram =</span> <input type="text" class="largo" id="fita_sobra" placeholder="?"> <span>m</span></div>
+            <div class="btn-container">
+                <button onclick="verificarFitaPasso2()">Calcular Sobra</button>
+                <button class="btn-dica" onclick="confirmarDica('dicaFita2','fita_p2')">Dica</button>
+                <button class="btn-dica" style="background:#8b5cf6;" onclick="abrirCalculadora('fita_sobra')">🧮 Calculadora</button>
+            </div>
+            <div id="dicaFita2" class="caixa-dica">
+                <strong>🧠 Pista Lógica — O Acúmulo de Retalhos:</strong>
+                <p>Se de uma tábua bruta de 10m, você remover uma placa de 2m e outra de 3m, o seu cérebro primeiro soma todo o resíduo cortado (5m) e então subtrai o bloco central da origem absoluta.</p>
+                <p>🚩 Reúna mentalmente as três fatias (já traduzidas para decimais puros) da fase anterior. O que deve ser feito com esse montante inteiro em relação à fita mestre?</p>
+            </div>
+            <div id="erro_fita2" class="feedback"></div>
+        </div>
+        <button id="btn-avancar_fase6b" class="btn-avancar hidden" onclick="mudarTela('fase6_pt2','fase7')">Avançar para Fase 7 ➔</button>
+    </div>
+
+    <div id="fase7" class="enigma-box">
+        <h2>Fase 7: A Estrutura do Tempo</h2>
+        <p class="aviso-pontuacao">⭐ Sistema de Estrelas</p>
+       <div class="mentor">
+            <p><strong>Assistente I.A. diz:</strong> "O Desafio Final lida com a dimensão mais traiçoeira: o Tempo. Ele obedece a um sistema de limites exclusivos e não utiliza a nossa confortável base perfeita das centenas e dezenas."</p>
+            <p class="pergunta-socratica">❓ <strong>Consolidação de Dados:</strong> Analise as informações fornecidas pelo painel: o filme possui uma longa duração contínua de <strong>216 minutos</strong> e sofre uma pausa programada de <strong>10 minutos</strong>. A sessão se inicia às <strong>21h10</strong>. Antes de tentarmos transpor esses dados para o relógio da parede, como você pode consolidar toda a experiência real gasta no laboratório em um único grande bloco inicial?"</p>
+        </div>
+        <div id="passo1-fase7">
+            <p style="font-size:18px;"><strong>1º Passo:</strong> Acumulação Total.</p>
+            <div class="input-group"><span>Total =</span> <input type="number" id="f7_minutos" placeholder="Duração completa em Minutos"> <span>min</span></div>
+            <div class="btn-container">
+                <button onclick="verificarF7Passo1()">Validar</button>
+                <button class="btn-dica" onclick="confirmarDica('dicaF7p1','f7_p1')">Dica</button>
+                <button class="btn-dica" style="background:#8b5cf6;" onclick="abrirCalculadora('f7_minutos')">🧮 Calculadora</button>
+            </div>
+            <div id="dicaF7p1" class="caixa-dica">
+                <strong>🧠 Pista:</strong>
+                <p>Considere uma viagem de ônibus de 120 minutos que faz uma parada técnica de 15 minutos em um posto. A experiência inteira exigida para os passageiros soma uma linha contínua de 135 minutos.</p>
+                <p>🚩 Faça essa consolidação unificando os dois blocos de tempo apresentados no nosso caso.</p>
+            </div>
+            <div id="erro_f7p1" class="feedback"></div>
+        </div>
+        <div id="passo2-fase7" class="hidden">
+            <p style="font-size:18px;"><strong>2º Passo:</strong> Sabemos que o tempo opera a cada 60 elementos. Desdobre o total de minutos que descobriu separando os "blocos perfeitos de 60" (Horas Inteiras) e o restante (Minutos Remanescentes).</p>
+            <div class="input-group">
+                <span>=</span> <input type="number" id="f7_horas" placeholder="h"> <span>h</span>
+                <input type="number" id="f7_minResto" placeholder="min"> <span>min</span>
+            </div>
+            <div class="btn-container">
+                <button onclick="verificarF7Passo2()">Validar</button>
+                <button class="btn-dica" onclick="confirmarDica('dicaF7p2','f7_p2')">Dica</button>
+                <button class="btn-dica" style="background:#8b5cf6;" onclick="abrirCalculadora('')">🧮 Calculadora</button>
+            </div>
+            <div id="dicaF7p2" class="caixa-dica">
+                <strong>🧠 Pista Lógica — Caixas de Ovos:</strong>
+                <p>Imagine que você tem 130 ovos para guardar, mas a embalagem-padrão comporta exatos 60 ovos por vez. Duas embalagens completas abrigam 120 ovos. O que sobra avulso são 10 ovos impossíveis de preencher uma nova caixa.</p>
+                <p>🚩 O nosso tempo funciona agrupando blocos padronizados de 60 minutos. Quantas "caixas" absolutas de horas você enche e quantos minutos sobram avulsos e fragmentados?</p>
+            </div>
+            <div id="erro_f7p2" class="feedback"></div>
+        </div>
+        <div id="passo3-fase7" class="hidden">
+            <p style="font-size:18px;"><strong>3º Passo:</strong> Aplique a Lógica Circular (Sistema 24 horas).</p>
+            <div class="mentor">
+                <p><strong>Assistente I.A. diz:</strong> "As engrenagens de tempo estão isoladas. Você possui as horas e minutos do seu evento limpos, além do marco exato de início na linha temporal."</p>
+                <p class="pergunta-socratica">❓ <strong>Reflexão Cíclica:</strong> O relógio da humanidade funciona como um círculo fechado, não como uma reta que sobe ao infinito. Ao fundir as novas horas e os minutos com a nossa base inicial (21h10), o que acontece logicamente com a contagem do dia quando a sua soma geométrica ultrapassa o limite diário estabelecido pelo nosso sistema civil?"</p>
+            </div>
+            <div class="input-group">
+                <span>Horário final =</span>
+                <input type="text" class="largo" id="f7_horario" placeholder="Ex: 14h47">
+            </div>
+            <div class="btn-container">
+                <button onclick="verificarF7Passo3()">Validar Fuga</button>
+                <button class="btn-dica" onclick="confirmarDica('dicaF7p3','f7_p3')">Dica</button>
+                <button class="btn-dica" style="background:#8b5cf6;" onclick="abrirCalculadora('')">🧮 Calculadora</button>
+            </div>
+            <div id="dicaF7p3" class="caixa-dica">
+                <strong>🧠 Pista Lógica — A Catraca do Tempo:</strong>
+                <p>Se começamos uma festa às 22h e ela dura 3 horas, a soma matemática crua indicaria "25h". Como o relógio é uma catraca modular que encerra um ciclo ao bater 24, essa marcação "25h" transborda e equivale à 01h da manhã.</p>
+                <p>🚩 Incorpore as suas novas horas agrupadas à base de início (21). A barreira final de 24 horas foi atravessada? Como o relógio civil resolve o excesso?</p>
+            </div>
+            <div id="erro_f7p3" class="feedback"></div>
+        </div>
+        <button id="btn-avancar_fase7" class="btn-avancar hidden" onclick="abrirCadeado()">Inserir Senha Mestra ➔</button>
+    </div>
+
+    <div id="tela_sucesso" class="enigma-box">
+        <h1 style="color:#22c55e;font-size:36px;">🏆 VOCÊ DOMINOU A MATEMÁTICA!</h1>
+
+
+
+
+        <p style="font-size:20px;">O laboratório está aberto. O seu processo cerebral tornou-se visível e lógico.</p>
+        <div class="relatorio-box" id="relatorio-box">
+            <h3 style="color:#fde047;">📊 Relatório de Estrelas e Desempenho</h3>
+            <div id="relatorio-conteudo"></div>
+            <hr>
+            <h4>📋 Detalhamento de Dicas Utilizadas</h4>
+            <div id="lista-dicas"></div>
+        </div>
+
+        
+        <div id="diario-bordo" style="margin-top: 30px; background: rgba(56, 189, 248, 0.05); border: 2px dashed #38bdf8; border-radius: 8px; padding: 25px; text-align: left;">
+            <h3 style="color: #38bdf8; margin-top: 0; font-size: 24px;">🧠 A Última Barreira Cognitiva</h3>
+            <p style="font-size: 18px; margin-bottom: 15px; color: #f8fafc;">Antes de gerar o seu arquivo de fuga, deixe um registro para o seu professor: <strong>Qual foi o enigma que mais desafiou a sua mente hoje e qual foi a lógica que você usou para superá-lo?</strong></p>
+            <textarea id="texto_metacognitivo" rows="4" style="width: 100%; box-sizing: border-box; padding: 15px; font-size: 18px; border-radius: 6px; border: 2px solid #334155; background: #0f172a; color: #fde047; font-family: inherit; resize: vertical;" placeholder="Escreva o seu diário de bordo aqui..."></textarea>
+            
+            <div class="btn-container" style="margin-top: 15px; justify-content: flex-start;">
+                <button id="btn_salvar_diario" onclick="salvarDiarioBordo()" style="background:#22c55e;">💾 Salvar Reflexão</button>
+            </div>
+            <div id="feedback_diario" class="feedback" style="margin-top: 10px; text-align: left;"></div>
+        </div>
+
+        <div style="margin-top:30px;display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
+            <button id="btn_baixar_relatorio" onclick="baixarRelatorio()" style="display:none; background:#8b5cf6;padding:14px 28px;font-size:18px;">📥 Baixar Relatório</button>
+            <button id="btn_recomecar" onclick="reiniciarJogo()" style="display:none; background:#f59e0b;padding:14px 28px;font-size:18px;">🔄 Recomeçar</button>
+        </div>
+
+
+    </div>
+
+    
+    <!-- Fase 8 (secreta) -->
+    <div id="fase8" class="enigma-box">
+        <h2 style="color: #fde047;">🌀 A Sala do Arquiteto</h2>
+        <div class="mentor" style="border-left-color: #fde047; ;">
+            <p><strong>Assistente I.A. diz (em tons baixos):</strong> "Você encontrou o que não deveria. Esta sala guarda o padrão primordial que rege a natureza: a <strong>Proporção Áurea</strong>."</p>
+            <div class="svg-container" style="background: #0b1120;">
+                    <svg width="30%" viewBox="0 0 680 420" xmlns="http://www.w3.org/2000/svg" style="display: block; margin: 0 auto;">
+        
+                        
+                        <defs>
+                            <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                                <rect width="20" height="20" fill="#fff3a6" />
+                                <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#fbd971" stroke-width="1.5"/>
+                            </pattern>
+                        </defs>
+
+                        <rect width="680" height="420" fill="url(#grid)" />
+
+                        <g fill="none" stroke="#111111" stroke-width="2">
+                            <rect x="0" y="0" width="420" height="420" />
+                            <rect x="420" y="0" width="260" height="260" />
+                            <rect x="520" y="260" width="160" height="160" />
+                            <rect x="420" y="320" width="100" height="100" />
+                            <rect x="420" y="260" width="60" height="60" />
+                            <rect x="480" y="260" width="40" height="40" />
+                            <rect x="480" y="300" width="20" height="20" />
+                            <rect x="500" y="300" width="20" height="20" />
+                        </g>
+
+                        <g fill="#000000" text-anchor="middle" dominant-baseline="central">
+                            <text x="210" y="210" font-size="64">?</text>
+                            <text x="550" y="130" font-size="64">13</text>
+                            <text x="600" y="340" font-size="48">8</text>
+                            <text x="470" y="370" font-size="32">5</text>
+                            <text x="450" y="290" font-size="24">3</text>
+                            <text x="500" y="280" font-size="18">2</text>
+                            <text x="490" y="310" font-size="11">1</text>
+                            <text x="510" y="310" font-size="11">1</text>
+                        </g>
+
+                        <path d="M 0 420
+                                A 420 420 0 0 1 420 0
+                                A 260 260 0 0 1 680 260
+                                A 160 160 0 0 1 520 420
+                                A 100 100 0 0 1 420 320
+                                A 60 60 0 0 1 480 260
+                                A 40 40 0 0 1 520 300
+                                A 20 20 0 0 1 500 320
+                                A 20 20 0 0 1 480 300"
+                            fill="none" stroke="#1da851" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+
+                        <circle cx="420" cy="0" r="6" fill="#ffffff" />
+                        
+                    </svg>
+                
+            </div>
+            <p><strong>Desafio:</strong> A sequência que rege esta espiral é: <span style="color:#fde047;">1, 1, 2, 3, 5, 8, 13, ...</span></p>
+            <p>Qual é o <strong>próximo número</strong> dessa sequência?</p>
+        </div>
+        <div class="input-group">
+            <span>Próximo termo =</span>
+            <input type="number" id="f8_resposta" placeholder="?" style="width:200px; font-size:28px;">
+        </div>
+        <div class="btn-container">
+            <button onclick="verificarFase8()" style="background:#8b5cf6;">Validar</button>
+            <!-- NENHUM BOTÃO DE DICA -->
+        </div>
+        <div id="erro_f8" class="feedback"></div>
+        <div id="f8_parabens" style="display:none; margin-top:30px; border-top:2px solid #fde047; padding-top:20px;">
+            <h3 style="color:#22c55e;">🌟 Você transcendeu a matemática! A natureza se revelou a você.</h3>
+            <p style="font-size:20px;">A porta principal foi destrancada. Siga para a sala de controle.</p>
+            <button onclick="mudarTela('fase8', 'tela_sucesso')" class="btn-avancar">Acessar Relatório Final ➔</button>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+        <div><strong>Título: Educação Baseada em Evidências - Intervenção Pedagógica a partir dos Dados da Prova Paulista do 1º Bimestre de 2026</strong></div>
+        <div>Projeto Integrador V | Universidade Virtual do Estado de São Paulo - UNIVESP</div>
+        <div class="footer-autores">
+            Desenvolvido por: Antonio Antunes Junior, Giovani Machado de Lima, Lilian Maria de Souza Lino, Priscilla Santiago Zamorra, Renata Helena Arantes e Oliveira, Rodrigo Aires de Medeiros Correa, Sergio Eric Reis de Oliveira, Vitor Correa Uberti.
+        </div>
+        <div class="footer-legal">
+            Versão 1.0 | Licença MIT &copy; 2026
+        </div>
+    </footer>
+
+<script src="script/script.js"></script>
+
+</body>
+</html>
