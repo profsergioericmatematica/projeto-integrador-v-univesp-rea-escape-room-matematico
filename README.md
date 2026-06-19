@@ -64,26 +64,31 @@ O jogo possui 32 etapas de validação no total. Cada etapa pode render até 3 e
 A soma das estrelas de todas as etapas no final do jogo define a patente do aluno. Cada patente reflete um nível de maturidade cognitiva e autonomia matemática:
 
 1. 🪦 Prisioneiro dos Números (0 a 19 Estrelas)
+   
 Diagnóstico: O aluno apresentou dependência quase total das dicas e cometeu múltiplos erros por etapa. Reflete uma grave defasagem nos conceitos fundamentais (como operações básicas e compreensão visual da geometria).
 
 Ação Pedagógica: Requer intervenção direta e retomada da base matemática. O aluno ainda está "preso" na decoreba e não consegue visualizar a lógica.
 
 2. 🏃 Aprendiz em Fuga (20 a 38 Estrelas)
+   
 Diagnóstico: O aluno conseguiu compreender a dinâmica em algumas fases mais fáceis, mas ainda tropeça fortemente quando os conceitos exigem abstração (como frações e raízes não exatas). Utilizou muitas dicas para conseguir avançar.
 
 Ação Pedagógica: Precisa de reforço na tradução da linguagem matemática para o mundo real. Entende a teoria superficialmente, mas falha na aplicação.
 
 3. 🧩 Sobrevivente Lógico (39 a 57 Estrelas)
+   
 Diagnóstico: É o nível intermediário. O aluno sobreviveu ao laboratório com um misto de acertos autônomos e alguns escorregões (especialmente nas fases 3D ou de Tempo). Sabe se virar, mas a sua precisão ainda oscila.
 
 Ação Pedagógica: O foco deve ser em lapidar a atenção aos detalhes (sinais, leitura atenta das unidades de medida) e reduzir a impulsividade ao validar as respostas.
 
 4. 🧪 Especialista Matemático (58 a 76 Estrelas)
+   
 Diagnóstico: Um excelente desempenho. O aluno tem grande clareza espacial e lógica, resolvendo a maioria dos enigmas de primeira. Os erros cometidos foram pontuais ou por distração, e o uso de dicas foi estratégico e raro.
 
 Ação Pedagógica: Aluno autônomo. Pode ser estimulado com desafios maiores ou atuar como monitor/tutor para auxiliar colegas das patentes iniciais.
 
 5. 🏆 Mestre do Escapismo (77 a 96 Estrelas)
+   
 Diagnóstico: A elite do laboratório. O aluno dominou completamente a linguagem dos números, demonstrando precisão cirúrgica, raciocínio rápido e zero (ou quase zero) dependência de dicas. Visualiza perfeitamente a matemática no espaço.
 
 Ação Pedagógica: Alcançou o topo da taxonomia proposta. Como recompensa extra no sistema, apenas alunos que gabaritam o jogo de forma quase perfeita costumam decifrar o padrão sem ajudas para aceder à Sala do Arquiteto (Fase 8).
