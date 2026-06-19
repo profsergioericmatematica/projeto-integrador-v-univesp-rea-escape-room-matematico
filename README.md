@@ -54,10 +54,12 @@ Diário de Bordo Metacognitivo: O aluno é convidado a registrar o seu raciocín
 
 O jogo possui 32 etapas de validação no total. Cada etapa pode render até 3 estrelas, o que significa que a pontuação máxima do laboratório é de 96 estrelas. A distribuição por etapa funciona assim:
 
-Desempenho	Estrelas	Condição
-⭐⭐⭐ Excelente	3 estrelas	0 erros e 0 dicas (acertou de primeira)
-⭐⭐ Regular	2 estrelas	Soma de erros + dicas = 1 ou 2
-⭐ Insuficiente	1 estrela	Soma de erros + dicas ≥ 3
+| Desempenho | Estrelas | Condição |
+| :--- | :--- | :--- |
+| ⭐⭐⭐ Excelente | 3 estrelas | 0 erros e 0 dicas (acertou de primeira) |
+| ⭐⭐ Regular | 2 estrelas | Soma de erros + dicas = 1 ou 2 |
+| ⭐ Insuficiente | 1 estrela | Soma de erros + dicas ≥ 3 |
+
 🎖️ As 5 Patentes de Fuga
 A soma das estrelas de todas as etapas no final do jogo define a patente do aluno. Cada patente reflete um nível de maturidade cognitiva e autonomia matemática:
 
