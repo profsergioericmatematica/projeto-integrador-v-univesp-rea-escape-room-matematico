@@ -620,7 +620,7 @@ function mudarTela(atual, proxima, idFaseAtual = null) {
 // 🟢 NOVO: Objeto com o contexto de cada botão da calculadora
 const contextosCalculadora = {
     'soma_quadrados': 'Dica: Calcule o quadrado de cada cateto e some-os (a² + b²).',
-    'raiz20_aprox': 'Dica: Multiplique o fator externo pelo valor decimal da raiz (ex: 2 × 2.23).',
+    'raiz20_aprox': 'Dica: Multiplique o fator externo pelo valor decimal da raiz.',
     'f1_cabo2': 'Dica: Eleve os catetos da tirolesa ao quadrado e some-os.',
     'f1_caboAprox': 'Dica: Multiplique o fator de fora pela aproximação decimal da raiz.',
     'f2_soma': 'Dica: Some as áreas projetadas dos dois catetos.',
@@ -631,10 +631,27 @@ const contextosCalculadora = {
     'f4_resultado': 'Dica: Multiplique a fração m pela fração n. Lembre-se de cortar nas diagonais!',
     'raiz180_fora': 'Dica: Extraia os fatores com potência 2 de dentro da raiz e multiplique-os fora.',
     'raiz180_aprox': 'Dica: Multiplique o fator externo pela raiz decimal aproximada de 180.',
-    'f6_aresta': 'Dica: Extraia a raiz cúbica do volume (Que número vezes ele mesmo 3x dá 512?).',
+    'f6_aresta': 'Dica: Extraia a raiz cúbica do volume (Que número vezes ele mesmo 3 vezes que dá 512?).',
     'f6_total': 'Dica: Um cubo possui 12 arestas (linhas). Multiplique a aresta por 12.',
     'fita_sobra': 'Dica: Converta para decimais, some os 3 retalhos e subtraia do rolo total.',
-    'f7_minutos': 'Dica: Some os minutos de exibição do filme com o tempo de intervalo.'
+    'f7_minutos': 'Dica: Some os minutos de exibição do filme com o tempo de intervalo.',
+
+    // 🟢 NOVOS: Contextos para as calculadoras genéricas de rascunho
+    'ctx_raiz20_simp': 'Dica: Divida 20 por números primos (2, 3, 5...). Qual deles forma par?',
+    'ctx_tirolesa_catetos': 'Dica: A base é igual ao chão. A altura é a diferença entre as duas torres.',
+    'ctx_tirolesa_simp': 'Dica: Fatore 416 por 2 várias vezes. Agrupe em pares para tirá-los da raiz.',
+    'ctx_f2_catetos': 'Dica: Os catetos são sempre as duas retas que formam o ângulo de 90 graus.',
+    'ctx_circ_simp': 'Dica: Fatore 52. Qual número forma um par (potência 2) para sair da raiz?',
+    'ctx_f3_fracoes': 'Dica: Finitos (divida por 10, 100...). Infinitos com repetição (divida por 9, 99...).',
+    'ctx_marc_fracao': 'Dica: Como tem repetição infinita (0,666...), o denominador deve usar a base 9.',
+    'ctx_f4_fracao': 'Dica: Some o inteiro (9/9) com a fração gerada pela dízima.',
+    'ctx_f4_raiz': 'Dica: Expoente 0,5 equivale à raiz quadrada. Tire a raiz do número de cima e do de baixo.',
+    'ctx_f4_inverte': 'Dica: O sinal negativo inverte a fração. O "2" eleva a parte de cima e de baixo ao quadrado.',
+    'ctx_limites_raizes': 'Dica: Teste multiplicações exatas. Que número vezes ele mesmo dá 169? E 196?',
+    'ctx_reta_associa': 'Dica: Divida as frações na calculadora (ex: 25 ÷ 99) para descobrir a posição decimal.',
+    'ctx_fita_converte': 'Dica: Em √(9/4), tire a raiz de 9 e a raiz de 4 separadamente. Depois divida.',
+    'ctx_f7_horas': 'Dica: Divida o total de minutos por 60 para descobrir quantas horas inteiras cabem.',
+    'ctx_f7_final': 'Dica: Some as horas ao horário inicial. Se passar das 24h, o ciclo do relógio zera.'
 };
 
 let calcCurrentInput = '', calcDestino = null;

@@ -204,7 +204,7 @@ button:hover { background-color: #0369a1; transform: scale(1.02); }
 /* CALCULADORA POPUP: Sobrepõe a tela (modal) com z-index alto e bloqueia interação com o fundo */
 .calculadora-popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%); background: #1e293b; border: 2px solid #38bdf8; border-radius: 12px; padding: 20px; z-index: 1000; box-shadow: 0 10px 30px rgba(0,0,0,0.8); width: min(90%,500px); }
 .calculadora-popup.active { display: block; }
-.calc-display { width: 100%; padding: 10px; font-size: 24px; text-align: right; background: #0f172a; color: #fde047; border: 2px solid #334155; border-radius: 6px; margin-bottom: 10px; box-sizing: border-box; }
+.calc-display { width: 100% !important; padding: 10px; font-size: 24px; text-align: right; background: #0f172a; color: #fde047; border: 2px solid #334155; border-radius: 6px; margin-bottom: 10px; box-sizing: border-box; }
 .calc-botoes { display: grid; grid-template-columns: repeat(4,1fr); gap: 5px; }
 .calc-botoes button { padding: 15px 8px; font-size: 20px; margin: 0; width: 100%; min-width: 48px; min-height: 48px; }
 
