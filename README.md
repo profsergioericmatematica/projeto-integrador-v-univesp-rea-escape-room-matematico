@@ -40,7 +40,7 @@ O projeto foi organizado de forma modular para facilitar a manutenção e o depl
     └── Relatorio_Teste_de_Bancada_número_3...txt (1 erro em cada campo)
 ```
 
-## 🚀 Funcionalidades e Maturidade Técnica 
+## 🚀 Funcionalidades e Maturidade Técnica
 
 ## 🧠 Motor Pedagógico
 
@@ -49,6 +49,44 @@ Jornada progressiva: 8 fases e 32 etapas de validação com dificuldade crescent
 Sistema de Estrelas e Patentes: Penaliza o uso indiscriminado de dicas e erros sucessivos, classificando o aluno de Prisioneiro dos Números até Mestre do Escapismo.
 
 Diário de Bordo Metacognitivo: O aluno é convidado a registrar o seu raciocínio final. Ao salvar, a interface é selada visualmente (🔒).
+
+🌟 Como as Estrelas são calculadas?
+
+O jogo possui 32 etapas de validação no total. Cada etapa pode render até 3 estrelas, o que significa que a pontuação máxima do laboratório é de 96 estrelas. A distribuição por etapa funciona assim:
+
+Desempenho	Estrelas	Condição
+⭐⭐⭐ Excelente	3 estrelas	0 erros e 0 dicas (acertou de primeira)
+⭐⭐ Regular	2 estrelas	Soma de erros + dicas = 1 ou 2
+⭐ Insuficiente	1 estrela	Soma de erros + dicas ≥ 3
+🎖️ As 5 Patentes de Fuga
+A soma das estrelas de todas as etapas no final do jogo define a patente do aluno. Cada patente reflete um nível de maturidade cognitiva e autonomia matemática:
+
+1. 🪦 Prisioneiro dos Números (0 a 19 Estrelas)
+Diagnóstico: O aluno apresentou dependência quase total das dicas e cometeu múltiplos erros por etapa. Reflete uma grave defasagem nos conceitos fundamentais (como operações básicas e compreensão visual da geometria).
+
+Ação Pedagógica: Requer intervenção direta e retomada da base matemática. O aluno ainda está "preso" na decoreba e não consegue visualizar a lógica.
+
+2. 🏃 Aprendiz em Fuga (20 a 38 Estrelas)
+Diagnóstico: O aluno conseguiu compreender a dinâmica em algumas fases mais fáceis, mas ainda tropeça fortemente quando os conceitos exigem abstração (como frações e raízes não exatas). Utilizou muitas dicas para conseguir avançar.
+
+Ação Pedagógica: Precisa de reforço na tradução da linguagem matemática para o mundo real. Entende a teoria superficialmente, mas falha na aplicação.
+
+3. 🧩 Sobrevivente Lógico (39 a 57 Estrelas)
+Diagnóstico: É o nível intermediário. O aluno sobreviveu ao laboratório com um misto de acertos autônomos e alguns escorregões (especialmente nas fases 3D ou de Tempo). Sabe se virar, mas a sua precisão ainda oscila.
+
+Ação Pedagógica: O foco deve ser em lapidar a atenção aos detalhes (sinais, leitura atenta das unidades de medida) e reduzir a impulsividade ao validar as respostas.
+
+4. 🧪 Especialista Matemático (58 a 76 Estrelas)
+Diagnóstico: Um excelente desempenho. O aluno tem grande clareza espacial e lógica, resolvendo a maioria dos enigmas de primeira. Os erros cometidos foram pontuais ou por distração, e o uso de dicas foi estratégico e raro.
+
+Ação Pedagógica: Aluno autônomo. Pode ser estimulado com desafios maiores ou atuar como monitor/tutor para auxiliar colegas das patentes iniciais.
+
+5. 🏆 Mestre do Escapismo (77 a 96 Estrelas)
+Diagnóstico: A elite do laboratório. O aluno dominou completamente a linguagem dos números, demonstrando precisão cirúrgica, raciocínio rápido e zero (ou quase zero) dependência de dicas. Visualiza perfeitamente a matemática no espaço.
+
+Ação Pedagógica: Alcançou o topo da taxonomia proposta. Como recompensa extra no sistema, apenas alunos que gabaritam o jogo de forma quase perfeita costumam decifrar o padrão sem ajudas para aceder à Sala do Arquiteto (Fase 8).
+
+Nota ao Professor: Esta estrutura, além de engajar o aluno, dá ao professor uma escala muito clara de "temperatura" sobre a turma, permitindo intervenções personalizadas com base em dados concretos.
 
 ## 🛡️ Segurança e Resiliência (Edge Cases)
 
@@ -203,5 +241,5 @@ Sergio Eric Reis de Oliveira
 Vitor Correa Uberti
 
 ## 📄 Licença
-
-Este projeto é um Recurso Educacional Aberto distribuído sob a licença MIT – livre para uso, cópia, modificação e distribuição, seja para fins académicos ou comerciais. Consulte o arquivo LICENSE para mais detalhes. © 2026.
+E
+ste projeto é um Recurso Educacional Aberto distribuído sob a licença MIT – livre para uso, cópia, modificação e distribuição, seja para fins académicos ou comerciais. Consulte o arquivo LICENSE para mais detalhes. © 2026.
