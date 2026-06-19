@@ -251,5 +251,5 @@ Sergio Eric Reis de Oliveira
 Vitor Correa Uberti
 
 ## 📄 Licença
-E
-ste projeto é um Recurso Educacional Aberto distribuído sob a licença MIT – livre para uso, cópia, modificação e distribuição, seja para fins académicos ou comerciais. Consulte o arquivo LICENSE para mais detalhes. © 2026.
+
+Este projeto é um Recurso Educacional Aberto distribuído sob a licença MIT – livre para uso, cópia, modificação e distribuição, seja para fins académicos ou comerciais. Consulte o arquivo LICENSE para mais detalhes. © 2026.
