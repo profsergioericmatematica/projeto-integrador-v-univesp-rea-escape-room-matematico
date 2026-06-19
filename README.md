@@ -61,6 +61,7 @@ O jogo possui 32 etapas de validação no total. Cada etapa pode render até 3 e
 | ⭐ Insuficiente | 1 estrela | Soma de erros + dicas ≥ 3 |
 
 🎖️ As 5 Patentes de Fuga
+
 A soma das estrelas de todas as etapas no final do jogo define a patente do aluno. Cada patente reflete um nível de maturidade cognitiva e autonomia matemática:
 
 1. 🪦 Prisioneiro dos Números (0 a 19 Estrelas)
