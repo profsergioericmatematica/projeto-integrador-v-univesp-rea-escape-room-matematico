@@ -9,7 +9,7 @@
 <body>
 
 <header>
-    <div class="nome-missao">REA: Superando Fragilidades Matemáticas</div>
+    <div class="nome-missao">REA: Escape Room Matemático – Fundamentos Visuais</div>
     <button id="btn-tema" class="btn-tema-header" onclick="alternarTema()" aria-label="Alternar para o Tema de Alto Contraste Claro">☀️ Tema Claro</button>
 </header>
 
@@ -58,29 +58,126 @@
 <main class="container">
 
     <section id="tela1" class="enigma-box active">
-        <h1>Protocolo de Aprendizagem I.A.</h1>
-        
-        <p>
-        <strong>Bem-vindo ao Escape Room Matemático – um Recurso Educacional Aberto (REA) que une diversão e diagnóstico pedagógico.</strong><br><br>
-        Você está trancado no laboratório de matemática pura. Para escapar, não basta adivinhar: você precisará <strong>compreender a essência visual e lógica dos números</strong>.<br><br>
-        Cada fase ensina um conceito fundamental – de Pitágoras a cálculos de tempo – e ao final você poderá baixar um <strong>relatório completo</strong> com seus acertos, erros, dicas usadas e muito mais. Professores podem usar esses dados para identificar fragilidades e planejar intervenções personalizadas.
+        <h1>🧩 Escape Room Matemático</h1>
+
+        <!-- ===== TEXTO CURTO DE CONTEXTUALIZAÇÃO ===== -->
+        <p style="font-size: 18px; color: #94a3b8; max-width: 600px; margin: 0 auto 20px;">
+            Um Recurso Educacional Aberto (REA) que une gamificação e diagnóstico pedagógico. 
+            Escolha uma opção abaixo para começar ou conhecer o projeto.
         </p>
-        <p>Eu serei o seu professor. Vou ensinar a você como os entes matemáticos se comportam na sua essência visual e lógica.</p>
-        
-        <div style="background: rgba(239, 68, 68, 0.1); border: 2px dashed #ef4444; padding: 15px; margin: 15px 0; border-radius: 8px;">
-            <p id="instrucao-diretriz" style="margin: 0; color: #f8fafc;">⚠️ <strong>Diretriz de Segurança:</strong> Ao concluir 100% de cada fase, o sistema emitirá uma mensagem de sucesso acompanhada de um ícone de chave (🔑) e um número. <strong>Anote esses números no seu rascunho</strong>, pois eles formam o Código de Fuga final.</p>
+
+        <!-- ===== BOTÕES INICIAIS (SEMPRE VISÍVEIS) ===== -->
+        <div id="botoes-iniciais" style="display: flex; flex-direction: column; align-items: center; gap: 15px; margin: 20px 0 30px;">
+            <button onclick="abrirSobre()" style="background: #38bdf8; color: #0f172a; width: 100%; max-width: 400px; font-size: 18px;">📖 Sobre o Projeto</button>
+            <button onclick="abrirRevisao()" style="background: #f59e0b; color: #0f172a; width: 100%; max-width: 400px; font-size: 18px;">📚 Revisão Teórica</button>
+            <button onclick="revelarJogo()" id="btn-ir-jogo" style="background: #22c55e; width: 100%; max-width: 400px; font-size: 18px;">🎮 Ir para o Jogo</button>
+
         </div>
 
-        <p class="aviso-pontuacao">⭐ Sistema de Estrelas: <strong>⭐⭐⭐</strong> sem erros/dicas | <strong>⭐⭐</strong> 1 erro ou 1 dica | <strong>⭐</strong> 2+ erros/dicas.</p>
+        <!-- ===== CONTEÚDO DO JOGO (INICIALMENTE OCULTO) ===== -->
+        <div id="conteudo-jogo" style="display: none;">
+            <hr style="border-color: #334155; margin: 20px 0;">
 
-        <div style="margin: 25px 0; text-align: center; background: rgba(56, 189, 248, 0.1); padding: 20px; border-radius: 8px; border: 1px dashed #38bdf8;">
-            <label id="instrucao-nome" for="nome_aluno" style="font-size: 20px; color: #38bdf8; font-weight: bold; display: block; margin-bottom: 10px;">Identificação Obrigatória:</label>
-            <input type="text" id="nome_aluno" placeholder="Digite seu primeiro nome" aria-required="true" aria-describedby="instrucao-nome" style="text-align: center; font-size: 20px; padding: 10px; border-radius: 6px; border: 2px solid #334155; background: #0f172a; color: #fde047; width: 100%; max-width: 300px;">
+            <p>
+            <strong>Bem-vindo ao Escape Room Matemático – um Recurso Educacional Aberto (REA) que une diversão e diagnóstico pedagógico.</strong><br><br>
+            Você está trancado no laboratório de matemática pura. Para escapar, não basta adivinhar: você precisará <strong>compreender a essência visual e lógica dos números</strong>.<br><br>
+            Cada fase ensina um conceito fundamental – de Pitágoras a cálculos de tempo – e ao final você poderá baixar um <strong>relatório completo</strong> com seus acertos, erros, dicas usadas e muito mais. Professores podem usar esses dados para identificar fragilidades e planejar intervenções personalizadas.
+            </p>
+            <p>Eu serei o seu professor. Vou ensinar a você como os entes matemáticos se comportam na sua essência visual e lógica.</p>
+
+            <!-- Diretriz de Segurança -->
+            <div style="background: rgba(239, 68, 68, 0.1); border: 2px dashed #ef4444; padding: 15px; margin: 15px 0; border-radius: 8px;">
+                <p id="instrucao-diretriz" style="margin: 0; color: #f8fafc;">⚠️ <strong>Diretriz de Segurança:</strong> Ao concluir 100% de cada fase, o sistema emitirá uma mensagem de sucesso acompanhada de um ícone de chave (🔑) e um número. <strong>Anote esses números no seu rascunho</strong>, pois eles formam o Código de Fuga final.</p>
+            </div>
+
+            <!-- Sistema de Estrelas -->
+            <p class="aviso-pontuacao">⭐ Sistema de Estrelas: <strong>⭐⭐⭐</strong> sem erros/dicas | <strong>⭐⭐</strong> 1 erro ou 1 dica | <strong>⭐</strong> 2+ erros/dicas.</p>
+
+            <!-- Campo de Nome -->
+            <div style="margin: 25px 0; text-align: center; background: rgba(56, 189, 248, 0.1); padding: 20px; border-radius: 8px; border: 1px dashed #38bdf8;">
+                <label id="instrucao-nome" for="nome_aluno" style="font-size: 20px; color: #38bdf8; font-weight: bold; display: block; margin-bottom: 10px;">Identificação Obrigatória:</label>
+                <input type="text" id="nome_aluno" placeholder="Digite seu primeiro nome" aria-required="true" aria-describedby="instrucao-nome" style="text-align: center; font-size: 20px; padding: 10px; border-radius: 6px; border: 2px solid #334155; background: #0f172a; color: #fde047; width: 100%; max-width: 300px;">
+            </div>
+
+            <!-- Botão Iniciar -->
+            <div class="btn-container">
+                <button onclick="iniciarJogo()">Iniciar Aula de Fuga</button>
+            </div>
         </div>
 
-        <div class="btn-container"><button onclick="iniciarJogo()">Iniciar Aula de Fuga</button></div>
+        <!-- ===== MODAIS (SEMPRE FUNCIONAIS) ===== -->
+        <!-- Modal Sobre o Projeto -->
+        <div id="modal-sobre" class="modal-overlay" style="display: none;">
+            <div class="modal-box">
+                <h2 style="color: #38bdf8;">📖 Sobre o Projeto</h2>
+                <div style="text-align: left; font-size: 18px; line-height: 1.6; max-height: 60vh; overflow-y: auto; padding-right: 10px;">
+                    <p><strong>Título:</strong> Educação Baseada em Evidências - Intervenção Pedagógica a partir dos Dados da Prova Paulista do 1º Bimestre de 2026</p>
+                    <p><strong>Projeto Integrador V</strong> | Universidade Virtual do Estado de São Paulo - UNIVESP</p>
+                    <hr style="border-color: #334155; margin: 15px 0;">
+                    <p>Este <strong>Recurso Educacional Aberto (REA)</strong> utiliza a mecânica de <em>Escape Room</em> para ensinar e diagnosticar habilidades matemáticas essenciais, com base nos descritores de defasagem da Prova Paulista.</p>
+                    <p>O aluno assume o papel de um prisioneiro em um laboratório de matemática pura e, guiado por uma assistente I.A., precisa resolver enigmas geométricos e algébricos. O sistema registra cada tentativa, erro e dica, gerando um relatório detalhado para o professor.</p>
+                    <p><strong>Equipe de desenvolvimento:</strong> Antonio Antunes Junior, Giovani Machado de Lima, Lilian Maria de Souza Lino, Priscilla Santiago Zamorra, Renata Helena Arantes e Oliveira, Rodrigo Aires de Medeiros Correa, Sergio Eric Reis de Oliveira, Vitor Correa Uberti.</p>
+                    <p><strong>Licença:</strong> MIT © 2026</p>
+                </div>
+                <button onclick="fecharModal('modal-sobre')" style="background: #64748b; margin-top: 20px;">Voltar</button>
+            </div>
+        </div>
 
-        
+        <!-- Modal Revisão Teórica -->
+        <div id="modal-revisao" class="modal-overlay" style="display: none;">
+            <div class="modal-box">
+                <h2 style="color: #f59e0b;">📚 Revisão Teórica</h2>
+                <div style="text-align: left; font-size: 17px; line-height: 1.6; max-height: 60vh; overflow-y: auto; padding-right: 10px;">
+                    <h3 style="color: #38bdf8;">Fase 1 – Geometria e Tirolesa</h3>
+                    <ul>
+                        <li><strong>Teorema de Pitágoras:</strong> a² + b² = c². Área do quadrado sobre a hipotenusa é a soma das áreas dos quadrados sobre os catetos.</li>
+                        <li><strong>Simplificação de radicais:</strong> fatoração em primos, pares saem da raiz, ímpares ficam.</li>
+                        <li><strong>Aproximação linear:</strong> √N ≈ raiz do quadrado perfeito anterior + (N – Q²) / (2 · raiz anterior).</li>
+                    </ul>
+                    <h3 style="color: #38bdf8;">Fase 2 – Triângulos e Circunferência</h3>
+                    <ul>
+                        <li>Triângulo retângulo inscrito num círculo: a hipotenusa é o diâmetro.</li>
+                        <li>Raio = metade do diâmetro.</li>
+                    </ul>
+                    <h3 style="color: #38bdf8;">Fase 3 – Finito e Infinito</h3>
+                    <ul>
+                        <li>Decimais finitos → fração com denominador potência de 10 (10, 100, …).</li>
+                        <li>Dízimas periódicas → fração com denominador 9, 99, … (ex: 0,333… = 3/9).</li>
+                    </ul>
+                    <h3 style="color: #38bdf8;">Fase 4 – Potências e Dízimas Mistas</h3>
+                    <ul>
+                        <li>Dízima mista: separar parte inteira e decimal, transformar ambas em frações de mesmo denominador.</li>
+                        <li>Expoente 0,5 = raiz quadrada.</li>
+                        <li>Expoente negativo inverte a fração (a/b)^−n = (b/a)^n.</li>
+                    </ul>
+                    <h3 style="color: #38bdf8;">Fase 5 – Irracionais e Raiz de 180</h3>
+                    <ul>
+                        <li>Raízes não exatas estão entre dois quadrados perfeitos consecutivos.</li>
+                        <li>Simplificação: 180 = 2² · 3² · 5 → √180 = 6√5.</li>
+                        <li>Aproximação por interpolação linear.</li>
+                    </ul>
+                    <h3 style="color: #38bdf8;">Fase 6 – Geometria 3D e Fita</h3>
+                    <ul>
+                        <li>Volume do cubo: V = a³ → aresta = ∛V.</li>
+                        <li>Cubo tem 12 arestas.</li>
+                        <li>Conversão de unidades: raízes, frações → decimais.</li>
+                    </ul>
+                    <h3 style="color: #38bdf8;">Fase 7 – Tempo</h3>
+                    <ul>
+                        <li>Soma de minutos e intervalo.</li>
+                        <li>Conversão para horas (÷60) e minutos restantes.</li>
+                        <li>Sistema 24h: se ultrapassar 24, subtrai 24.</li>
+                    </ul>
+                    <h3 style="color: #38bdf8;">Fase 8 (Secreta) – Fibonacci</h3>
+                    <ul>
+                        <li>Sequência de Fibonacci: cada termo é a soma dos dois anteriores (1, 1, 2, 3, 5, 8, 13, 21…).</li>
+                        <li>Proporção Áurea.</li>
+                    </ul>
+                    <p style="margin-top: 15px; font-style: italic; color: #94a3b8;">Os conceitos são aplicados gradualmente, com perguntas socráticas e dicas estratégicas.</p>
+                </div>
+                <button onclick="fecharModal('modal-revisao')" style="background: #64748b; margin-top: 20px;">Voltar</button>
+            </div>
+        </div>
     </section>
 
     <section id="fase1" class="enigma-box">

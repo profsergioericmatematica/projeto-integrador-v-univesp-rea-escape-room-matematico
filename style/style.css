@@ -496,3 +496,79 @@ body.tema-claro .aviso-pontuacao { background-color: #ffffff !important; color: 
     stroke-width: 22px !important; 
     filter: brightness(1.3);
 }
+
+/* =========================================
+   MODAIS (POP-UPS) - SOBRE E REVISÃO
+========================================= */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 2000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-box {
+    background: #1e293b;
+    border: 2px solid #38bdf8;
+    border-radius: 12px;
+    padding: 30px 35px;
+    max-width: 700px;
+    width: 100%;
+    max-height: 90vh;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+    overflow-y: auto;
+    color: #e2e8f0;
+}
+
+.modal-box h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.modal-box ul {
+    padding-left: 20px;
+    margin: 10px 0;
+}
+
+.modal-box ul li {
+    margin-bottom: 8px;
+}
+
+/* Tema claro para os modais */
+body.tema-claro .modal-overlay {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+body.tema-claro .modal-box {
+    background: #ffffff;
+    border-color: #0284c7;
+    color: #1e293b;
+}
+
+body.tema-claro .modal-box h2 {
+    color: #0284c7;
+}
+
+body.tema-claro .modal-box h3 {
+    color: #0284c7;
+}
+
+body.tema-claro .modal-box p,
+body.tema-claro .modal-box li {
+    color: #1e293b;
+}
+
+body.tema-claro .modal-box hr {
+    border-color: #cbd5e1;
+}

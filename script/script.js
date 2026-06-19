@@ -1574,6 +1574,51 @@ function verificarF7Passo3() {
     atualizarProgresso();
 }
 
+
+// ========== ABRIR E FECHAR MODAIS ==========
+function abrirSobre() {
+    document.getElementById('modal-sobre').style.display = 'flex';
+}
+function abrirRevisao() {
+    document.getElementById('modal-revisao').style.display = 'flex';
+}
+function fecharModal(id) {
+    document.getElementById(id).style.display = 'none';
+}
+
+// Fechar modais clicando no overlay (fundo)
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+        overlay.addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+            }
+        });
+    });
+});
+
+// ========== REVELAR CONTEÚDO DO JOGO ==========
+function revelarJogo() {
+    document.getElementById('botoes-iniciais').style.display = 'none';
+    document.getElementById('conteudo-jogo').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+
+// ========== CONTROLE DA TELA INICIAL ==========
+function mostrarIdentificacao() {
+    document.getElementById('tela-inicial-botoes').style.display = 'none';
+    document.getElementById('tela-identificacao').style.display = 'block';
+    // Rola suavemente para a identificação
+    document.getElementById('tela-identificacao').scrollIntoView({ behavior: 'smooth' });
+}
+
+function voltarTelaInicial() {
+    document.getElementById('tela-identificacao').style.display = 'none';
+    document.getElementById('tela-inicial-botoes').style.display = 'flex';
+    window.scrollTo(0, 0);
+}
+
 // ========== TRAVAMENTO DO DIÁRIO DE BORDO ==========
 
 /**
