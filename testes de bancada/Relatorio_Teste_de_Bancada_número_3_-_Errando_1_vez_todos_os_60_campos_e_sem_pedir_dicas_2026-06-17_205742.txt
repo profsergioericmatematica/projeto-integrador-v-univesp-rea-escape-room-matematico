@@ -1,0 +1,568 @@
+====================================================
+    RELATÓRIO PEDAGÓGICO - ESCAPE ROOM MATEMÁTICO
+====================================================
+
+ALUNO(A): Teste de Bancada número 3 - Errando 1 vez todos os 60 campos e sem pedir dicas
+DATA DE CONCLUSÃO: 17/06/2026 às 20:57:42
+TOTAL DE ESTRELAS: 59 de 96
+PATENTE ALCANÇADA: Especialista Matemático
+
+----------------------------------------------------
+TOTAIS GERAIS DA JORNADA:
+----------------------------------------------------
+- Etapas Concluídas: 32/32
+- Campos Preenchidos Corretamente ao Final: 60/60
+- Total de Erros de Preenchimento nos Campos: 60
+- Quantidade de Campos Distintos que o aluno errou: 60/60
+- Total de Dicas Solicitadas: 0
+
+----------------------------------------------------
+ANÁLISE PEDAGÓGICA POR FASE (GABARITO VS DESEMPENHO)
+----------------------------------------------------
+>>> FASE 1 (PARTE 1) - O CANAL DE ÁGUA E A RAIZ DE 20
+[CONTEXTO]: O aluno deve calcular a parede inclinada de um canal (trapézio: topo=10m, fundo=6m, altura=4m), aplicar Pitágoras, simplificar a raiz e aproximar para decimal.
+[GABARITO ESPERADO]: Catetos: 4 e 2 | Soma²: 20 | Raiz Simplificada: 2√5 | Aproximação Decimal: 4.5
+[ERROS DO ALUNO NESTA FASE]:
+ - Fase 1 (Pitágoras) - Cateto 1: Errou 1 vez(es) -> Valores: [ 7 ]
+ - Fase 1 (Pitágoras) - Cateto 2: Errou 1 vez(es) -> Valores: [ 9 ]
+ - Fase 1 (Pitágoras) - Soma dos Quadrados: Errou 1 vez(es) -> Valores: [ 30 ]
+ - Fase 1 (Raiz 20) - Número de Fora: Errou 1 vez(es) -> Valores: [ 6 ]
+ - Fase 1 (Raiz 20) - Número de Dentro: Errou 1 vez(es) -> Valores: [ 9 ]
+ - Fase 1 (Aprox) - Raiz Exata 1: Errou 1 vez(es) -> Valores: [ 4 ]
+ - Fase 1 (Aprox) - Seu Número: Errou 1 vez(es) -> Valores: [ 3 ]
+ - Fase 1 (Aprox) - Quadrado Anterior: Errou 1 vez(es) -> Valores: [ 5 ]
+ - Fase 1 (Aprox) - Raiz Exata 2: Errou 1 vez(es) -> Valores: [ 7 ]
+ - Fase 1 (Raiz 20) - Medida Aproximada: Errou 1 vez(es) -> Valores: [ 5 ]
+
+>>> FASE 1 (PARTE 2) - O DESAFIO DA TIROLESA
+[CONTEXTO]: Instalar um cabo entre duas torres (12m e 8m) com distância de 20m. Exige encontrar catetos por subtração, aplicar Pitágoras (√416) e aproximar o valor.
+[GABARITO ESPERADO]: Cateto Vert: 4 | Cateto Horiz: 20 | Soma²: 416 | Raiz Simplificada: 4√26 | Aproximação Final: 20.4
+[ERROS DO ALUNO NESTA FASE]:
+ - Tirolesa - Cateto Vertical: Errou 1 vez(es) -> Valores: [ 6 ]
+ - Tirolesa - Cateto Horizontal: Errou 1 vez(es) -> Valores: [ 22 ]
+ - Tirolesa - Soma dos Quadrados: Errou 1 vez(es) -> Valores: [ 500 ]
+ - Tirolesa (Simp) - Número de Fora: Errou 1 vez(es) -> Valores: [ 7 ]
+ - Tirolesa (Simp) - Número de Dentro: Errou 1 vez(es) -> Valores: [ 8 ]
+ - Tirolesa - Aproximação Final: Errou 1 vez(es) -> Valores: [ 52 ]
+
+>>> FASE 2 (PARTE 1) - TRIÂNGULO RETÂNGULO SIMPLES
+[CONTEXTO]: Fixação do Teorema de Pitágoras num triângulo retângulo direto da imagem.
+[GABARITO ESPERADO]: Catetos: 12 e 9 | Soma²: 225 | Hipotenusa (√225): 15
+[ERROS DO ALUNO NESTA FASE]:
+ - Fase 2 (Triângulo) - Cateto 1: Errou 1 vez(es) -> Valores: [ 5 ]
+ - Fase 2 (Triângulo) - Cateto 2: Errou 1 vez(es) -> Valores: [ 7 ]
+ - Fase 2 (Triângulo) - Soma dos Quadrados: Errou 1 vez(es) -> Valores: [ 34 ]
+ - Fase 2 (Triângulo) - Hipotenusa: Errou 1 vez(es) -> Valores: [ 12 ]
+
+>>> FASE 2 (PARTE 2) - TRIÂNGULO NA CIRCUNFERÊNCIA
+[CONTEXTO]: Entender que a hipotenusa de um triângulo inscrito é o diâmetro. Catetos dados: 6 e 4. Simplificar a raiz gerada e dividir por 2 para achar o raio.
+[GABARITO ESPERADO]: Soma (Diâmetro²): 52 | Diâmetro (Simplificado): 2√13 | Raio (Metade): 13 (dentro da raiz)
+[ERROS DO ALUNO NESTA FASE]:
+ - Circunferência - Soma AB²: Errou 1 vez(es) -> Valores: [ 67 ]
+ - Circunferência (Simp) - Número de Fora: Errou 1 vez(es) -> Valores: [ 4 ]
+ - Circunferência (Simp) - Número de Dentro: Errou 1 vez(es) -> Valores: [ 7 ]
+ - Circunferência - Cálculo do Raio: Errou 1 vez(es) -> Valores: [ 9 ]
+
+>>> FASE 3 - CONVERSÃO DE FRAÇÕES E O MARCENEIRO
+[CONTEXTO]: Converter decimais finitos e infinitos em frações. Depois, usar o conceito para calcular a área de uma tábua de 9m × 0,666...m.
+[GABARITO ESPERADO]: 0,5 = 5/10 | 0,555... = 5/9 | 0,75 = 75/100 | 0,333... = 3/9 | 0,666... = 6/9 | Área Final: 6
+[ERROS DO ALUNO NESTA FASE]:
+ - Frações (0,5) - Numerador: Errou 1 vez(es) -> Valores: [ 1 ]
+ - Frações (0,5) - Denominador: Errou 1 vez(es) -> Valores: [ 2 ]
+ - Frações (0,555) - Numerador: Errou 1 vez(es) -> Valores: [ 3 ]
+ - Frações (0,555) - Denominador: Errou 1 vez(es) -> Valores: [ 4 ]
+ - Frações (0,75) - Numerador: Errou 1 vez(es) -> Valores: [ 5 ]
+ - Frações (0,75) - Denominador: Errou 1 vez(es) -> Valores: [ 6 ]
+ - Frações (0,333) - Numerador: Errou 1 vez(es) -> Valores: [ 7 ]
+ - Frações (0,333) - Denominador: Errou 1 vez(es) -> Valores: [ 8 ]
+ - Marceneiro (0,666) - Numerador: Errou 1 vez(es) -> Valores: [ 2 ]
+ - Marceneiro (0,666) - Denominador: Errou 1 vez(es) -> Valores: [ 7 ]
+ - Marceneiro - Cálculo da Área: Errou 1 vez(es) -> Valores: [ 5 ]
+
+>>> FASE 4 - POTÊNCIAS E DÍZIMAS MISTAS
+[CONTEXTO]: Resolver a expressão m × n, sabendo que m = √(1,777...) e n = (2/3)^-2. Exige conversão mista, extrair raiz de fração e inverter base de potência negativa.
+[GABARITO ESPERADO]: Fração de 1,777... = 16/9 | m = 4/3 | n = 9/4 | Resultado Final: 3
+[ERROS DO ALUNO NESTA FASE]:
+ - Potências (1,777) - Numerador: Errou 1 vez(es) -> Valores: [ 45 ]
+ - Potências (1,777) - Denominador: Errou 1 vez(es) -> Valores: [ 34 ]
+ - Potências (m) - Numerador: Errou 1 vez(es) -> Valores: [ 23 ]
+ - Potências (m) - Denominador: Errou 1 vez(es) -> Valores: [ 21 ]
+ - Potências (n) - Numerador: Errou 1 vez(es) -> Valores: [ 42 ]
+ - Potências (n) - Denominador: Errou 1 vez(es) -> Valores: [ 12 ]
+ - Potências - Resultado da Multiplicação: Errou 1 vez(es) -> Valores: [ 5 ]
+
+>>> FASE 5 - CERCANDO O IRRACIONAL (RETA NUMÉRICA E RAIZ 180)
+[CONTEXTO]: Estimar entre quais inteiros a √180 está. Simplificar a √180. Posicionar números irracionais/fracionários na reta e calcular um valor decimal cortado.
+[GABARITO ESPERADO]: Limites: 13 (√169) e 14 (√196) | √180 Simplificada: 6√5 | Reta: √22=M, 25/99=O, 193/90=P | Medida do Cabo (6×2,236): 13.416 (aprox aceita 13.4 a 13.42)
+[ERROS DO ALUNO NESTA FASE]:
+ - Limites - Raiz Baixa (169): Errou 1 vez(es) -> Valores: [ 14 ]
+ - Limites - Raiz Alta (196): Errou 1 vez(es) -> Valores: [ 13 ]
+ - Raiz 180 (Simp) - Número de Fora: Errou 1 vez(es) -> Valores: [ 3 ]
+ - Raiz 180 (Simp) - Número de Dentro: Errou 1 vez(es) -> Valores: [ 7 ]
+ - Reta Numérica - Posição √22: Errou 1 vez(es) -> Valores: [ P ]
+ - Reta Numérica - Posição 25/99: Errou 1 vez(es) -> Valores: [ M ]
+ - Reta Numérica - Posição 193/90: Errou 1 vez(es) -> Valores: [ O ]
+ - Raiz 180 - Medida do Cabo: Errou 1 vez(es) -> Valores: [ 15 ]
+
+>>> FASE 6 - GEOMETRIA 3D (CUBO) E COMPRIMENTO DE FITA
+[CONTEXTO]: Encontrar a aresta de um cubo de 512cm³ (raiz cúbica) e calcular 12 arestas. Depois, converter pedaços de fita (√144, 3/4 e √(9/4)) para decimal e calcular sobra.
+[GABARITO ESPERADO]: Aresta: 8 | Arame Total: 96 | Fita Total: 12 | Fita Fração (3/4): 0.75 | Fita Raiz √(9/4): 1.5 | Sobra Final: 7.25
+[ERROS DO ALUNO NESTA FASE]:
+ - Cubo - Medida da Aresta: Errou 1 vez(es) -> Valores: [ 6 ]
+ - Cubo - Arame Total: Errou 1 vez(es) -> Valores: [ 100 ]
+ - Fita - Conversão Total (√144): Errou 1 vez(es) -> Valores: [ 13 ]
+ - Fita - Conversão Fração (3/4): Errou 1 vez(es) -> Valores: [ 5 ]
+ - Fita - Conversão Raiz √(9/4): Errou 1 vez(es) -> Valores: [ 2 ]
+ - Fita - Cálculo da Sobra Final: Errou 1 vez(es) -> Valores: [ 8 ]
+
+>>> FASE 7 - OPERAÇÕES COM TEMPO (SESSÃO DE CINEMA)
+[CONTEXTO]: Filme (216m) + Intervalo (10m). Somar os minutos, converter para horas inteiras e minutos restantes, e por fim somar ao horário de início (21h10).
+[GABARITO ESPERADO]: Total Minutos: 226 | Conversão: 3 horas e 46 minutos | Término: 00h56
+[ERROS DO ALUNO NESTA FASE]:
+ - Tempo - Total de Minutos: Errou 1 vez(es) -> Valores: [ 140 ]
+ - Tempo - Conversão de Horas Inteiras: Errou 1 vez(es) -> Valores: [ 4 ]
+ - Tempo - Conversão de Minutos Restantes: Errou 1 vez(es) -> Valores: [ 14 ]
+ - Tempo - Horário Final de Término: Errou 1 vez(es) -> Valores: [ 14h32 ]
+
+>>> FASE 8 (SECRETA) - A SALA DO ARQUITETO
+[CONTEXTO]: Desafio bônus sobre a sequência de Fibonacci e a Proporção Áurea. O aluno deve identificar o próximo termo da sequência.
+[GABARITO ESPERADO]: Próximo termo: 21
+[ERROS DO ALUNO NESTA FASE]:
+ - Nenhum erro de campo. Desempenho perfeito.
+
+----------------------------------------------------
+PERSISTÊNCIA E TENTATIVAS POR CAMPO
+----------------------------------------------------
+Fase 1 (Pitágoras) - Cateto 1:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Fase 1 (Pitágoras) - Cateto 2:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Fase 1 (Pitágoras) - Soma dos Quadrados:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Fase 1 (Raiz 20) - Número de Fora:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Fase 1 (Raiz 20) - Número de Dentro:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Fase 1 (Aprox) - Raiz Exata 1:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Fase 1 (Aprox) - Seu Número:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Fase 1 (Aprox) - Quadrado Anterior:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Fase 1 (Aprox) - Raiz Exata 2:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Fase 1 (Raiz 20) - Medida Aproximada:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Tirolesa - Cateto Vertical:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Tirolesa - Cateto Horizontal:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Tirolesa - Soma dos Quadrados:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Tirolesa (Simp) - Número de Fora:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Tirolesa (Simp) - Número de Dentro:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Tirolesa - Aproximação Final:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Fase 2 (Triângulo) - Cateto 1:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Fase 2 (Triângulo) - Cateto 2:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Fase 2 (Triângulo) - Soma dos Quadrados:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Fase 2 (Triângulo) - Hipotenusa:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Circunferência - Soma AB²:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Circunferência (Simp) - Número de Fora:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Circunferência (Simp) - Número de Dentro:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Circunferência - Cálculo do Raio:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Frações (0,5) - Numerador:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Frações (0,5) - Denominador:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Frações (0,555) - Numerador:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Frações (0,555) - Denominador:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Frações (0,75) - Numerador:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Frações (0,75) - Denominador:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Frações (0,333) - Numerador:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Frações (0,333) - Denominador:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Marceneiro (0,666) - Numerador:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Marceneiro (0,666) - Denominador:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Marceneiro - Cálculo da Área:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Potências (1,777) - Numerador:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Potências (1,777) - Denominador:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Potências (m) - Numerador:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Potências (m) - Denominador:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Potências (n) - Numerador:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Potências (n) - Denominador:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Potências - Resultado da Multiplicação:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Limites - Raiz Baixa (169):
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Limites - Raiz Alta (196):
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Raiz 180 (Simp) - Número de Fora:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Raiz 180 (Simp) - Número de Dentro:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Reta Numérica - Posição √22:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Reta Numérica - Posição 25/99:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Reta Numérica - Posição 193/90:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Raiz 180 - Medida do Cabo:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Cubo - Medida da Aresta:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Cubo - Arame Total:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Fita - Conversão Total (√144):
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Fita - Conversão Fração (3/4):
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Fita - Conversão Raiz √(9/4):
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Fita - Cálculo da Sobra Final:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Tempo - Total de Minutos:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Tempo - Conversão de Horas Inteiras:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Tempo - Conversão de Minutos Restantes:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+Tempo - Horário Final de Término:
+   -> 2 tentativa(s) de validação.
+   -> 1 erro(s) cometido(s).
+   -> Conseguiu acertar no final? Sim
+
+----------------------------------------------------
+DETALHAMENTO DE DICAS UTILIZADAS:
+----------------------------------------------------
+Nenhuma dica foi utilizada pelo aluno.
+
+----------------------------------------------------
+DIÁRIO DE BORDO (METACOGNIÇÃO):
+----------------------------------------------------
+Teste de Bancada número 3 - Errando 1 vez todos os 60 campos e sem pedir dicas
+
+----------------------------------------------------
+PROGRESSÃO TEMPORAL (Ordem exata de cliques)
+----------------------------------------------------
+1. [20:47:22] ERRO: Fase 1 (Pitágoras) - Cateto 1 (Digitou: 7)
+2. [20:47:22] ERRO: Fase 1 (Pitágoras) - Cateto 2 (Digitou: 9)
+3. [20:47:22] ERRO: Fase 1 (Pitágoras) - Soma dos Quadrados (Digitou: 30)
+4. [20:47:32] ACERTO: Fase 1 (Pitágoras) - Cateto 1
+5. [20:47:32] ACERTO: Fase 1 (Pitágoras) - Cateto 2
+6. [20:47:32] ACERTO: Fase 1 (Pitágoras) - Soma dos Quadrados
+7. [20:47:46] ERRO: Fase 1 (Raiz 20) - Número de Fora (Digitou: 6)
+8. [20:47:46] ERRO: Fase 1 (Raiz 20) - Número de Dentro (Digitou: 9)
+9. [20:47:55] ACERTO: Fase 1 (Raiz 20) - Número de Fora
+10. [20:47:55] ACERTO: Fase 1 (Raiz 20) - Número de Dentro
+11. [20:48:14] ERRO: Fase 1 (Aprox) - Raiz Exata 1 (Digitou: 4)
+12. [20:48:14] ERRO: Fase 1 (Aprox) - Seu Número (Digitou: 3)
+13. [20:48:14] ERRO: Fase 1 (Aprox) - Quadrado Anterior (Digitou: 5)
+14. [20:48:14] ERRO: Fase 1 (Aprox) - Raiz Exata 2 (Digitou: 7)
+15. [20:48:25] ACERTO: Fase 1 (Aprox) - Raiz Exata 1
+16. [20:48:25] ACERTO: Fase 1 (Aprox) - Seu Número
+17. [20:48:25] ACERTO: Fase 1 (Aprox) - Quadrado Anterior
+18. [20:48:25] ACERTO: Fase 1 (Aprox) - Raiz Exata 2
+19. [20:48:32] ERRO: Fase 1 (Raiz 20) - Medida Aproximada (Digitou: 5)
+20. [20:48:37] ACERTO: Fase 1 (Raiz 20) - Medida Aproximada
+21. [20:48:46] ERRO: Tirolesa - Cateto Vertical (Digitou: 6)
+22. [20:48:46] ERRO: Tirolesa - Cateto Horizontal (Digitou: 22)
+23. [20:48:52] ACERTO: Tirolesa - Cateto Vertical
+24. [20:48:52] ACERTO: Tirolesa - Cateto Horizontal
+25. [20:48:57] ERRO: Tirolesa - Soma dos Quadrados (Digitou: 500)
+26. [20:49:01] ACERTO: Tirolesa - Soma dos Quadrados
+27. [20:49:07] ERRO: Tirolesa (Simp) - Número de Fora (Digitou: 7)
+28. [20:49:07] ERRO: Tirolesa (Simp) - Número de Dentro (Digitou: 8)
+29. [20:49:16] ACERTO: Tirolesa (Simp) - Número de Fora
+30. [20:49:16] ACERTO: Tirolesa (Simp) - Número de Dentro
+31. [20:49:22] ERRO: Tirolesa - Aproximação Final (Digitou: 52)
+32. [20:49:28] ACERTO: Tirolesa - Aproximação Final
+33. [20:49:35] ERRO: Fase 2 (Triângulo) - Cateto 1 (Digitou: 5)
+34. [20:49:35] ERRO: Fase 2 (Triângulo) - Cateto 2 (Digitou: 7)
+35. [20:49:41] ACERTO: Fase 2 (Triângulo) - Cateto 1
+36. [20:49:41] ACERTO: Fase 2 (Triângulo) - Cateto 2
+37. [20:49:49] ERRO: Fase 2 (Triângulo) - Soma dos Quadrados (Digitou: 34)
+38. [20:49:53] ACERTO: Fase 2 (Triângulo) - Soma dos Quadrados
+39. [20:49:59] ERRO: Fase 2 (Triângulo) - Hipotenusa (Digitou: 12)
+40. [20:50:08] ACERTO: Fase 2 (Triângulo) - Hipotenusa
+41. [20:50:16] ERRO: Circunferência - Soma AB² (Digitou: 67)
+42. [20:50:22] ACERTO: Circunferência - Soma AB²
+43. [20:50:29] ERRO: Circunferência (Simp) - Número de Fora (Digitou: 4)
+44. [20:50:29] ERRO: Circunferência (Simp) - Número de Dentro (Digitou: 7)
+45. [20:50:35] ACERTO: Circunferência (Simp) - Número de Fora
+46. [20:50:35] ACERTO: Circunferência (Simp) - Número de Dentro
+47. [20:50:41] ERRO: Circunferência - Cálculo do Raio (Digitou: 9)
+48. [20:50:46] ACERTO: Circunferência - Cálculo do Raio
+49. [20:51:08] ERRO: Frações (0,5) - Numerador (Digitou: 1)
+50. [20:51:08] ERRO: Frações (0,5) - Denominador (Digitou: 2)
+51. [20:51:08] ERRO: Frações (0,555) - Numerador (Digitou: 3)
+52. [20:51:08] ERRO: Frações (0,555) - Denominador (Digitou: 4)
+53. [20:51:08] ERRO: Frações (0,75) - Numerador (Digitou: 5)
+54. [20:51:08] ERRO: Frações (0,75) - Denominador (Digitou: 6)
+55. [20:51:08] ERRO: Frações (0,333) - Numerador (Digitou: 7)
+56. [20:51:08] ERRO: Frações (0,333) - Denominador (Digitou: 8)
+57. [20:51:29] ACERTO: Frações (0,5) - Numerador
+58. [20:51:29] ACERTO: Frações (0,5) - Denominador
+59. [20:51:29] ACERTO: Frações (0,555) - Numerador
+60. [20:51:29] ACERTO: Frações (0,555) - Denominador
+61. [20:51:29] ACERTO: Frações (0,75) - Numerador
+62. [20:51:29] ACERTO: Frações (0,75) - Denominador
+63. [20:51:29] ACERTO: Frações (0,333) - Numerador
+64. [20:51:29] ACERTO: Frações (0,333) - Denominador
+65. [20:51:41] ERRO: Marceneiro (0,666) - Numerador (Digitou: 2)
+66. [20:51:41] ERRO: Marceneiro (0,666) - Denominador (Digitou: 7)
+67. [20:51:47] ACERTO: Marceneiro (0,666) - Numerador
+68. [20:51:47] ACERTO: Marceneiro (0,666) - Denominador
+69. [20:52:06] ERRO: Marceneiro - Cálculo da Área (Digitou: 5)
+70. [20:52:11] ACERTO: Marceneiro - Cálculo da Área
+71. [20:52:19] ERRO: Potências (1,777) - Numerador (Digitou: 45)
+72. [20:52:19] ERRO: Potências (1,777) - Denominador (Digitou: 34)
+73. [20:52:27] ACERTO: Potências (1,777) - Numerador
+74. [20:52:27] ACERTO: Potências (1,777) - Denominador
+75. [20:52:35] ERRO: Potências (m) - Numerador (Digitou: 23)
+76. [20:52:35] ERRO: Potências (m) - Denominador (Digitou: 21)
+77. [20:52:42] ACERTO: Potências (m) - Numerador
+78. [20:52:42] ACERTO: Potências (m) - Denominador
+79. [20:52:48] ERRO: Potências (n) - Numerador (Digitou: 42)
+80. [20:52:48] ERRO: Potências (n) - Denominador (Digitou: 12)
+81. [20:52:58] ACERTO: Potências (n) - Numerador
+82. [20:52:58] ACERTO: Potências (n) - Denominador
+83. [20:53:03] ERRO: Potências - Resultado da Multiplicação (Digitou: 5)
+84. [20:53:06] ACERTO: Potências - Resultado da Multiplicação
+85. [20:53:17] ERRO: Limites - Raiz Baixa (169) (Digitou: 14)
+86. [20:53:17] ERRO: Limites - Raiz Alta (196) (Digitou: 13)
+87. [20:53:25] ACERTO: Limites - Raiz Baixa (169)
+88. [20:53:25] ACERTO: Limites - Raiz Alta (196)
+89. [20:53:34] ERRO: Raiz 180 (Simp) - Número de Fora (Digitou: 3)
+90. [20:53:34] ERRO: Raiz 180 (Simp) - Número de Dentro (Digitou: 7)
+91. [20:53:40] ACERTO: Raiz 180 (Simp) - Número de Fora
+92. [20:53:40] ACERTO: Raiz 180 (Simp) - Número de Dentro
+93. [20:54:14] ERRO: Reta Numérica - Posição √22 (Digitou: P)
+94. [20:54:14] ERRO: Reta Numérica - Posição 25/99 (Digitou: M)
+95. [20:54:14] ERRO: Reta Numérica - Posição 193/90 (Digitou: O)
+96. [20:54:25] ACERTO: Reta Numérica - Posição √22
+97. [20:54:25] ACERTO: Reta Numérica - Posição 25/99
+98. [20:54:25] ACERTO: Reta Numérica - Posição 193/90
+99. [20:54:32] ERRO: Raiz 180 - Medida do Cabo (Digitou: 15)
+100. [20:54:39] ACERTO: Raiz 180 - Medida do Cabo
+101. [20:54:44] ERRO: Cubo - Medida da Aresta (Digitou: 6)
+102. [20:54:50] ACERTO: Cubo - Medida da Aresta
+103. [20:54:53] ERRO: Cubo - Arame Total (Digitou: 100)
+104. [20:54:57] ACERTO: Cubo - Arame Total
+105. [20:55:06] ERRO: Fita - Conversão Total (√144) (Digitou: 13)
+106. [20:55:06] ERRO: Fita - Conversão Fração (3/4) (Digitou: 5)
+107. [20:55:06] ERRO: Fita - Conversão Raiz √(9/4) (Digitou: 2)
+108. [20:55:15] ACERTO: Fita - Conversão Total (√144)
+109. [20:55:15] ACERTO: Fita - Conversão Fração (3/4)
+110. [20:55:15] ACERTO: Fita - Conversão Raiz √(9/4)
+111. [20:55:20] ERRO: Fita - Cálculo da Sobra Final (Digitou: 8)
+112. [20:55:24] ACERTO: Fita - Cálculo da Sobra Final
+113. [20:55:31] ERRO: Tempo - Total de Minutos (Digitou: 140)
+114. [20:55:36] ACERTO: Tempo - Total de Minutos
+115. [20:55:42] ERRO: Tempo - Conversão de Horas Inteiras (Digitou: 4)
+116. [20:55:42] ERRO: Tempo - Conversão de Minutos Restantes (Digitou: 14)
+117. [20:55:47] ACERTO: Tempo - Conversão de Horas Inteiras
+118. [20:55:47] ACERTO: Tempo - Conversão de Minutos Restantes
+119. [20:55:56] ERRO: Tempo - Horário Final de Término (Digitou: 14h32)
+120. [20:56:02] ACERTO: Tempo - Horário Final de Término
