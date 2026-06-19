@@ -68,7 +68,7 @@ const matrizPedagogica = [
     },
     {
         titulo: "FASE 1 (PARTE 2) - O DESAFIO DA TIROLESA",
-        contexto: "Instalar um cabo entre ഇരു torres (12m e 8m) com distância de 20m. Exige encontrar catetos por subtração, aplicar Pitágoras (√416) e aproximar o valor.",
+        contexto: "Instalar um cabo entre duas torres (12m e 8m) com distância de 20m. Exige encontrar catetos por subtração, aplicar Pitágoras (√416) e aproximar o valor.",
         gabarito: "Cateto Vert: 4 | Cateto Horiz: 20 | Soma²: 416 | Raiz Simplificada: 4√26 | Aproximação Final: 20.4",
         campos: ['Tirolesa - Cateto Vertical', 'Tirolesa - Cateto Horizontal', 'Tirolesa - Soma dos Quadrados', 'Tirolesa (Simp) - Número de Fora', 'Tirolesa (Simp) - Número de Dentro', 'Tirolesa - Aproximação Final']
     },
@@ -185,6 +185,20 @@ function sanitizarHTML(texto) {
     };
     const reg = /[&<>"'/]/ig;
     return String(texto).replace(reg, (match) => (mapa[match]));
+}
+
+/**
+ * Verifica se duas frações são matematicamente equivalentes.
+ * Ex: fracaoEquivalente(1, 2, 5, 10) → true (1/2 = 5/10)
+ * @param {number} na - Numerador do aluno
+ * @param {number} da - Denominador do aluno
+ * @param {number} ng - Numerador do gabarito
+ * @param {number} dg - Denominador do gabarito
+ * @returns {boolean}
+ */
+function fracaoEquivalente(na, da, ng, dg) {
+    if (da === 0 || dg === 0) return false;
+    return (na * dg) === (ng * da);
 }
 
 // ========== FUNÇÕES DE REGISTRO ==========
@@ -1183,14 +1197,48 @@ function verificarF3Passo1() {
         fb.style.color = '#ef4444'; fb.innerHTML = '⚠️ Erro de Segurança: Todos os campos fracionários requerem números puros.'; return;
     }
 
-    if (nf1 === '5') { acertos++; registrarAcertoCampo(fase, 'Frações (0,5) - Numerador', nf1); aplicarFeedbackVisual('nf1', true); } else { registrarErroCampo(fase, 'Frações (0,5) - Numerador', nf1); aplicarFeedbackVisual('nf1', false); }
-    if (df1 === '10') { acertos++; registrarAcertoCampo(fase, 'Frações (0,5) - Denominador', df1); aplicarFeedbackVisual('df1', true); } else { registrarErroCampo(fase, 'Frações (0,5) - Denominador', df1); aplicarFeedbackVisual('df1', false); }
-    if (ni1 === '5') { acertos++; registrarAcertoCampo(fase, 'Frações (0,555) - Numerador', ni1); aplicarFeedbackVisual('ni1', true); } else { registrarErroCampo(fase, 'Frações (0,555) - Numerador', ni1); aplicarFeedbackVisual('ni1', false); }
-    if (di1 === '9') { acertos++; registrarAcertoCampo(fase, 'Frações (0,555) - Denominador', di1); aplicarFeedbackVisual('di1', true); } else { registrarErroCampo(fase, 'Frações (0,555) - Denominador', di1); aplicarFeedbackVisual('di1', false); }
-    if (nf2 === '75') { acertos++; registrarAcertoCampo(fase, 'Frações (0,75) - Numerador', nf2); aplicarFeedbackVisual('nf2', true); } else { registrarErroCampo(fase, 'Frações (0,75) - Numerador', nf2); aplicarFeedbackVisual('nf2', false); }
-    if (df2 === '100') { acertos++; registrarAcertoCampo(fase, 'Frações (0,75) - Denominador', df2); aplicarFeedbackVisual('df2', true); } else { registrarErroCampo(fase, 'Frações (0,75) - Denominador', df2); aplicarFeedbackVisual('df2', false); }
-    if (ni2 === '3') { acertos++; registrarAcertoCampo(fase, 'Frações (0,333) - Numerador', ni2); aplicarFeedbackVisual('ni2', true); } else { registrarErroCampo(fase, 'Frações (0,333) - Numerador', ni2); aplicarFeedbackVisual('ni2', false); }
-    if (di2 === '9') { acertos++; registrarAcertoCampo(fase, 'Frações (0,333) - Denominador', di2); aplicarFeedbackVisual('di2', true); } else { registrarErroCampo(fase, 'Frações (0,333) - Denominador', di2); aplicarFeedbackVisual('di2', false); }
+    // 0,5 → gabarito canônico 5/10; aceita qualquer equivalente (ex: 1/2, 2/4)
+    if (fracaoEquivalente(Number(nf1), Number(df1), 5, 10)) {
+        acertos++; registrarAcertoCampo(fase, 'Frações (0,5) - Numerador', nf1);   aplicarFeedbackVisual('nf1', true);
+        acertos++; registrarAcertoCampo(fase, 'Frações (0,5) - Denominador', df1); aplicarFeedbackVisual('df1', true);
+    } else {
+        registrarErroCampo(fase, 'Frações (0,5) - Numerador', nf1);   aplicarFeedbackVisual('nf1', false);
+        registrarErroCampo(fase, 'Frações (0,5) - Denominador', df1); aplicarFeedbackVisual('df1', false);
+    }
+
+    // 0,555... → gabarito canônico 5/9; aceita equivalentes (ex: 10/18)
+    if (fracaoEquivalente(Number(ni1), Number(di1), 5, 9)) {
+        acertos++; registrarAcertoCampo(fase, 'Frações (0,555) - Numerador', ni1);   aplicarFeedbackVisual('ni1', true);
+        acertos++; registrarAcertoCampo(fase, 'Frações (0,555) - Denominador', di1); aplicarFeedbackVisual('di1', true);
+    } else {
+        registrarErroCampo(fase, 'Frações (0,555) - Numerador', ni1);   aplicarFeedbackVisual('ni1', false);
+        registrarErroCampo(fase, 'Frações (0,555) - Denominador', di1); aplicarFeedbackVisual('di1', false);
+    }
+
+    // 0,75 → gabarito canônico 75/100; aceita equivalentes (ex: 3/4, 15/20)
+    if (fracaoEquivalente(Number(nf2), Number(df2), 75, 100)) {
+        acertos++; registrarAcertoCampo(fase, 'Frações (0,75) - Numerador', nf2);   aplicarFeedbackVisual('nf2', true);
+        acertos++; registrarAcertoCampo(fase, 'Frações (0,75) - Denominador', df2); aplicarFeedbackVisual('df2', true);
+    } else {
+        registrarErroCampo(fase, 'Frações (0,75) - Numerador', nf2);   aplicarFeedbackVisual('nf2', false);
+        registrarErroCampo(fase, 'Frações (0,75) - Denominador', df2); aplicarFeedbackVisual('df2', false);
+    }
+
+    // 0,333... → gabarito canônico 3/9; aceita equivalentes (ex: 1/3, 6/18)
+    if (fracaoEquivalente(Number(ni2), Number(di2), 3, 9)) {
+        acertos++; registrarAcertoCampo(fase, 'Frações (0,333) - Numerador', ni2);   aplicarFeedbackVisual('ni2', true);
+        acertos++; registrarAcertoCampo(fase, 'Frações (0,333) - Denominador', di2); aplicarFeedbackVisual('di2', true);
+    } else {
+        registrarErroCampo(fase, 'Frações (0,333) - Numerador', ni2);   aplicarFeedbackVisual('ni2', false);
+        registrarErroCampo(fase, 'Frações (0,333) - Denominador', di2); aplicarFeedbackVisual('di2', false);
+    }
+    
+
+
+
+
+
+
     const ok = (acertos === total); contabilizarCampos(fase, acertos); registrarTentativa(fase, ok); const fb=document.getElementById('erro_f3p1');
     if (ok) { fb.style.color='#22c55e'; fb.style.textAlign='center'; fb.innerHTML='✓ Frações corretas!'; fb.classList.add('celebrar'); setTimeout(() => fb.classList.remove('celebrar'), 600); mostrar('passo2-fase3'); } 
     else { fb.style.color='#f59e0b'; fb.style.textAlign='center'; fb.innerHTML=`🤔 Há um padrão escapando! (Acertos: ${acertos}/${total}). Verifique as bases: os números com fim usam a base redonda (10 ou 100). E os infinitos (...), qual é a base imediatamente vizinha que os sustenta?`; }
@@ -1575,16 +1623,65 @@ function verificarF7Passo3() {
 }
 
 
-// ========== ABRIR E FECHAR MODAIS ==========
-function abrirSobre() {
-    document.getElementById('modal-sobre').style.display = 'flex';
+// Controle dos modais informativos da tela inicial
+function abrirModal(idModal) {
+    const overlay = document.getElementById(idModal);
+    const caixa = overlay.querySelector('.modal-box');
+    overlay.style.display = 'flex';
+
+    // Focus trap: armazena o elemento que tinha foco antes de abrir
+    overlay._focusAntes = document.activeElement;
+
+    // Move o foco para a caixa do modal
+    caixa.setAttribute('tabindex', '-1');
+    caixa.focus();
+
+    // Fecha com a tecla Escape
+    overlay._escListener = function(e) {
+        if (e.key === 'Escape') fecharModal(idModal);
+    };
+    document.addEventListener('keydown', overlay._escListener);
+
+    // Focus trap: impede que o Tab saia do modal
+    overlay._trapListener = function(e) {
+        if (e.key !== 'Tab') return;
+        const focaveis = caixa.querySelectorAll(
+            'a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])'
+        );
+        const primeiro = focaveis[0];
+        const ultimo = focaveis[focaveis.length - 1];
+        if (e.shiftKey) {
+            if (document.activeElement === primeiro) { e.preventDefault(); ultimo.focus(); }
+        } else {
+            if (document.activeElement === ultimo) { e.preventDefault(); primeiro.focus(); }
+        }
+    };
+    document.addEventListener('keydown', overlay._trapListener);
 }
-function abrirRevisao() {
-    document.getElementById('modal-revisao').style.display = 'flex';
+
+function fecharModal(idModal) {
+    const overlay = document.getElementById(idModal);
+    overlay.style.display = 'none';
+
+    // Remove os listeners criados ao abrir
+    if (overlay._escListener) {
+        document.removeEventListener('keydown', overlay._escListener);
+        overlay._escListener = null;
+    }
+    if (overlay._trapListener) {
+        document.removeEventListener('keydown', overlay._trapListener);
+        overlay._trapListener = null;
+    }
+
+    // Devolve o foco ao elemento que o tinha antes
+    if (overlay._focusAntes) {
+        overlay._focusAntes.focus();
+        overlay._focusAntes = null;
+    }
 }
-function fecharModal(id) {
-    document.getElementById(id).style.display = 'none';
-}
+
+function abrirSobre()   { abrirModal('modal-sobre');   }
+function abrirRevisao() { abrirModal('modal-revisao'); }
 
 // Fechar modais clicando no overlay (fundo)
 document.addEventListener('DOMContentLoaded', function() {
