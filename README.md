@@ -42,6 +42,9 @@ O projeto foi organizado de forma modular para facilitar a manutenção e o depl
 
 ## 🚀 Funcionalidades e Maturidade Técnica
 
+- **Tela inicial contextualizada:** oferece acesso rápido a informações sobre o projeto e a uma revisão teórica, antes mesmo de iniciar o jogo.
+- **Modais de apoio:** pop-ups com conteúdo institucional e resumos matemáticos, mantendo o aluno informado sem sair da página.
+
 ## 🧠 Motor Pedagógico
 
 Jornada progressiva: 8 fases e 32 etapas de validação com dificuldade crescente.
@@ -202,17 +205,16 @@ Etapa Única: Como ensinado: Através do desenho de uma espiral áurea baseada e
 
 ## 💻 Como usar (Aluno)
 
-Faça o download ou clone o repositório.
-
-Abra o arquivo index.html em qualquer navegador web atual (Chrome, Edge, Firefox, Safari). Não requer instalação de servidor.
-
-Insira o seu nome e inicie a "Aula de Fuga".
-
-Use a calculadora (🧮) contextualizada para rascunhos mentais.
-
-Anote as Senhas-chave fornecidas ao final de cada fase concluída.
-
-Destranque o cadeado digital final, registre a sua experiência e clique em Baixar Relatório.
+1. Faça o download ou clone o repositório.
+2. Abra o arquivo `index.html` em qualquer navegador web atual (Chrome, Edge, Firefox, Safari). Não requer instalação de servidor.
+3. **Na tela inicial, você encontrará três opções:**
+   - **📖 Sobre o Projeto:** conheça o contexto acadêmico, a equipe e a licença do REA.
+   - **🎮 Ir para o Jogo:** acesse o conteúdo completo do Escape Room.
+   - **📚 Revisão Teórica:** consulte um resumo dos conceitos matemáticos abordados em cada fase.
+4. Após clicar em **"Ir para o Jogo"**, preencha o seu nome e clique em **"Iniciar Aula de Fuga"** para começar a jornada.
+5. Use a calculadora (🧮) contextualizada para rascunhos mentais.
+6. Anote as Senhas-chave fornecidas ao final de cada fase concluída.
+7. Destranque o cadeado digital final, registre a sua experiência e clique em **Baixar Relatório**.
 
 ## 👩‍🏫 Como usar (Professor)
 
