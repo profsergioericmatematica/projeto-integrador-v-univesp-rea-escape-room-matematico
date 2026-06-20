@@ -1260,8 +1260,13 @@ function verificarMarceneiroP1() {
         fb.style.color = '#ef4444'; fb.innerHTML = '⚠️ Erro de Segurança: Somente dados numéricos são permitidos.'; return;
     }
 
-    if (num === '6') { acertos++; registrarAcertoCampo(fase, 'Marceneiro (0,666) - Numerador', num); aplicarFeedbackVisual('marc_num', true); } else { registrarErroCampo(fase, 'Marceneiro (0,666) - Numerador', num); aplicarFeedbackVisual('marc_num', false); }
-    if (den === '9') { acertos++; registrarAcertoCampo(fase, 'Marceneiro (0,666) - Denominador', den); aplicarFeedbackVisual('marc_den', true); } else { registrarErroCampo(fase, 'Marceneiro (0,666) - Denominador', den); aplicarFeedbackVisual('marc_den', false); }
+    if (fracaoEquivalente(Number(num), Number(den), 6, 9)) {
+    acertos++; registrarAcertoCampo(fase, 'Marceneiro (0,666) - Numerador', num);   aplicarFeedbackVisual('marc_num', true);
+    acertos++; registrarAcertoCampo(fase, 'Marceneiro (0,666) - Denominador', den); aplicarFeedbackVisual('marc_den', true);
+    } else {
+        registrarErroCampo(fase, 'Marceneiro (0,666) - Numerador', num);   aplicarFeedbackVisual('marc_num', false);
+        registrarErroCampo(fase, 'Marceneiro (0,666) - Denominador', den); aplicarFeedbackVisual('marc_den', false);
+    }
     const ok = (acertos === total); contabilizarCampos(fase, acertos); registrarTentativa(fase, ok); const fb = document.getElementById('erro_marc_p1');
     if (ok) { fb.style.color='#22c55e'; fb.style.textAlign='center'; fb.innerHTML='✓ Fração validada!'; fb.classList.add('celebrar'); setTimeout(() => fb.classList.remove('celebrar'), 600); mostrar('marceneiro-p2'); } 
     else { fb.style.color='#f59e0b'; fb.style.textAlign='center'; fb.innerHTML=`🤔 Vamos ajustar a lente! (Acertos: ${acertos}/${total}). A largura 0,666... tem o comportamento de eco infinito. Lembre-se da regra anterior: qual base usamos para representar essa repetição?`; }
@@ -1304,8 +1309,13 @@ function verificarF4Passo1() {
         fb.style.color = '#ef4444'; fb.innerHTML = '⚠️ Erro de Segurança: O sistema exige validação puramente numérica.'; return;
     }
 
-    if (num === '16') { acertos++; registrarAcertoCampo(fase, 'Potências (1,777) - Numerador', num); aplicarFeedbackVisual('f4_num', true); } else { registrarErroCampo(fase, 'Potências (1,777) - Numerador', num); aplicarFeedbackVisual('f4_num', false); }
-    if (den === '9') { acertos++; registrarAcertoCampo(fase, 'Potências (1,777) - Denominador', den); aplicarFeedbackVisual('f4_den', true); } else { registrarErroCampo(fase, 'Potências (1,777) - Denominador', den); aplicarFeedbackVisual('f4_den', false); }
+    if (fracaoEquivalente(Number(num), Number(den), 16, 9)) {
+    acertos++; registrarAcertoCampo(fase, 'Potências (1,777) - Numerador', num);   aplicarFeedbackVisual('f4_num', true);
+    acertos++; registrarAcertoCampo(fase, 'Potências (1,777) - Denominador', den); aplicarFeedbackVisual('f4_den', true);
+    } else {
+        registrarErroCampo(fase, 'Potências (1,777) - Numerador', num);   aplicarFeedbackVisual('f4_num', false);
+        registrarErroCampo(fase, 'Potências (1,777) - Denominador', den); aplicarFeedbackVisual('f4_den', false);
+    }
     const ok = (acertos === total); contabilizarCampos(fase, acertos); registrarTentativa(fase, ok); const fb=document.getElementById('erro_f4p1');
     if (ok) { fb.style.color='#22c55e'; fb.style.textAlign='center'; fb.innerHTML='✓ Fração montada corretamente!'; fb.classList.add('celebrar'); setTimeout(() => fb.classList.remove('celebrar'), 600); mostrar('passo2-fase4'); } 
     else { fb.style.color='#f59e0b'; fb.style.textAlign='center'; fb.innerHTML=`🤔 Quase lá! (Acertos: ${acertos}/${total}). Quantos nonos cabem em 1 inteiro? Se você já sabe transformar 0,777… em fração, como pode juntar essa parte com o 1 inteiro usando o mesmo denominador?`; }
@@ -1327,9 +1337,13 @@ function verificarF4Passo2() {
         fb.style.color = '#ef4444'; fb.innerHTML = '⚠️ Erro de Segurança: Valores inválidos bloqueados.'; return;
     }
 
-    if (num === '4') { acertos++; registrarAcertoCampo(fase, 'Potências (m) - Numerador', num); aplicarFeedbackVisual('f4_m_num', true); } else { registrarErroCampo(fase, 'Potências (m) - Numerador', num); aplicarFeedbackVisual('f4_m_num', false); }
-    if (den === '3') { acertos++; registrarAcertoCampo(fase, 'Potências (m) - Denominador', den); aplicarFeedbackVisual('f4_m_den', true); } else { registrarErroCampo(fase, 'Potências (m) - Denominador', den); aplicarFeedbackVisual('f4_m_den', false); }
-    const ok = (acertos === total); contabilizarCampos(fase, acertos); registrarTentativa(fase, ok); const fb=document.getElementById('erro_f4p2');
+    if (fracaoEquivalente(Number(num), Number(den), 4, 3)) {
+    acertos++; registrarAcertoCampo(fase, 'Potências (m) - Numerador', num);   aplicarFeedbackVisual('f4_m_num', true);
+    acertos++; registrarAcertoCampo(fase, 'Potências (m) - Denominador', den); aplicarFeedbackVisual('f4_m_den', true);
+    } else {
+        registrarErroCampo(fase, 'Potências (m) - Numerador', num);   aplicarFeedbackVisual('f4_m_num', false);
+        registrarErroCampo(fase, 'Potências (m) - Denominador', den); aplicarFeedbackVisual('f4_m_den', false);
+    }
     if (ok) { fb.style.color='#22c55e'; fb.style.textAlign='center'; fb.innerHTML='✓ Perfeito!'; fb.classList.add('celebrar'); setTimeout(() => fb.classList.remove('celebrar'), 600); mostrar('passo3-fase4'); } 
     else { fb.style.color='#f59e0b'; fb.style.textAlign='center'; fb.innerHTML=`🤔 Vamos ajustar as engrenagens! (Acertos: ${acertos}/${total}). O expoente 0,5 pede a raiz quadrada. Extraia a raiz do numerador e do denominador. Que número multiplicado por si mesmo dá o numerador? E o denominador?`; }
     atualizarProgresso();
@@ -1350,8 +1364,13 @@ function verificarF4Passo3() {
         fb.style.color = '#ef4444'; fb.innerHTML = '⚠️ Erro de Segurança: Somente números exatos.'; return;
     }
 
-    if (num === '9') { acertos++; registrarAcertoCampo(fase, 'Potências (n) - Numerador', num); aplicarFeedbackVisual('f4_n_num', true); } else { registrarErroCampo(fase, 'Potências (n) - Numerador', num); aplicarFeedbackVisual('f4_n_num', false); }
-    if (den === '4') { acertos++; registrarAcertoCampo(fase, 'Potências (n) - Denominador', den); aplicarFeedbackVisual('f4_n_den', true); } else { registrarErroCampo(fase, 'Potências (n) - Denominador', den); aplicarFeedbackVisual('f4_n_den', false); }
+    if (fracaoEquivalente(Number(num), Number(den), 9, 4)) {
+    acertos++; registrarAcertoCampo(fase, 'Potências (n) - Numerador', num);   aplicarFeedbackVisual('f4_n_num', true);
+    acertos++; registrarAcertoCampo(fase, 'Potências (n) - Denominador', den); aplicarFeedbackVisual('f4_n_den', true);
+    } else {
+        registrarErroCampo(fase, 'Potências (n) - Numerador', num);   aplicarFeedbackVisual('f4_n_num', false);
+        registrarErroCampo(fase, 'Potências (n) - Denominador', den); aplicarFeedbackVisual('f4_n_den', false);
+    }
     const ok = (acertos === total); contabilizarCampos(fase, acertos); registrarTentativa(fase, ok); const fb=document.getElementById('erro_f4p3');
     if (ok) { fb.style.color='#22c55e'; fb.style.textAlign='center'; fb.innerHTML='✓ Exato!'; fb.classList.add('celebrar'); setTimeout(() => fb.classList.remove('celebrar'), 600); mostrar('passo4-fase4'); } 
     else { fb.style.color='#f59e0b'; fb.style.textAlign='center'; fb.innerHTML=`🤔 Quase no alvo! (Acertos: ${acertos}/${total}). Um expoente negativo inverte a fração. Por exemplo, (a/b)^-1 = b/a. Depois, a potência positiva se aplica normalmente.`; }
@@ -1688,7 +1707,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.modal-overlay').forEach(overlay => {
         overlay.addEventListener('click', function(e) {
             if (e.target === this) {
-                this.style.display = 'none';
+                fecharModal(this.id);
             }
         });
     });
