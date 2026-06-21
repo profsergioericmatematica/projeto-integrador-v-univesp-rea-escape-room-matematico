@@ -166,7 +166,8 @@ const diagnosticosErro = {
         '1': 'Você colocou 1, mas a conversão direta de 0,5 pede 5 partes de 10.',
         '0': 'O numerador é o algarismo após a vírgula (o 5).',
         '50': '0,5 = 5/10, não 50/100? (ambos equivalem, mas o gabarito espera 5/10).',
-        '2': '0,5 = 2/4? Não, 0,5 = 5/10.'
+        '2': '0,5 = 2/4? Não, 0,5 = 5/10.',
+        '0,5': 'Use ponto em vez de vírgula para decimais, ou converta para fração (numerador/denominador).'
     },
     'df1': {
         '9': 'Para um decimal finito (que tem fim, como 0,5), a base é 10 ou 100. O 9 é só para dízimas infinitas.',
@@ -306,7 +307,8 @@ const diagnosticosErro = {
     'f6_aresta': {
         '256': 'Você dividiu por 2. O volume 3D exige a Raiz Cúbica!',
         '64': '64 x 64 x 64 é gigantesco. Teste números de 1 a 10.',
-        '512': '512 é o volume, não a aresta.'
+        '16': 'Você calculou a área de uma face (8x2), mas a aresta é o lado único.',
+        '512': '512 é o volume total, não a aresta,precisamos da medida de apenas UM lado.'
     },
     'f6_total': {
         '48': 'O quarto não tem só 6 quinas. São 12 arestas estruturais!',
@@ -338,7 +340,9 @@ const diagnosticosErro = {
         '216': 'Você esqueceu de adicionar a pausa programada de 10 minutos.',
         '206': 'Você subtraiu os 10 minutos da pausa em vez de somar! O tempo de laboratório é o total gasto.',
         '236': 'Você adicionou 20 minutos em vez de 10. Reveja a soma de 216 + 10.',
-        '206': 'Você subtraiu em vez de somar o intervalo.'
+        '206': 'Você subtraiu em vez de somar o intervalo.',
+        '226min': 'Não precisa digitar "min", digite apenas o número!',
+        '0': 'Você esqueceu de somar os minutos do filme com a pausa. O tempo total é maior que a duração do filme.'
     },
     'f7_horas': {
         '2': 'Em 226 minutos cabem mais do que apenas duas horas inteiras.',
