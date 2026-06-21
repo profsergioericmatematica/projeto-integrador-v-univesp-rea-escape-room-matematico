@@ -18,9 +18,15 @@
  * O uso de módulos ES6 (import/export) exigiria um bundler (Vite, Webpack)
  * ou servidor HTTP local, o que conflita com o requisito de acessibilidade
  * offline do REA em contextos escolares com infraestrutura limitada.
- * Todas as funções seguem nomenclatura prefixada por domínio para evitar
- * colisões: verificar*, calcular*, registrar*, renderizar*, etc.
- */
+ * 
+ * "Todas as funções seguem nomenclatura prefixada por domínio para evitar
+   colisões: verificar*, calcular*, registrar*, renderizar*, etc."
+   por: 
+
+ * Mitigação de colisões: todas as 75 funções seguem nomenclatura
+ * prefixada por domínio (verificar*, calcular*, registrar*,
+ * renderizar*, aplicar*, confirmar*, mudar*), eliminando o principal
+ * risco do escopo global sem exigir um bundler. */
 
 // ========== ESTATÍSTICAS GLOBAIS (ESTENDIDAS) ========== 
 const stats = {
