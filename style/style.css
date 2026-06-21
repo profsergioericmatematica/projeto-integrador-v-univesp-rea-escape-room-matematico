@@ -572,33 +572,175 @@ body.tema-claro .aviso-pontuacao { background-color: #ffffff !important; color: 
     margin-bottom: 8px;
 }
 
-/* Tema claro para os modais */
+
+/* =========================================
+   TEMA CLARO PARA MODAIS (SOBRE E REVISÃO)
+========================================= */
+
+/* Overlay do modal no tema claro */
 body.tema-claro .modal-overlay {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
 }
 
+/* Caixa principal do modal */
 body.tema-claro .modal-box {
-    background: #ffffff;
-    border-color: #0284c7;
-    color: #1e293b;
+    background: #ffffff !important;
+    border: 2px solid #0284c7 !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15) !important;
 }
 
+/* Títulos */
 body.tema-claro .modal-box h2 {
-    color: #0284c7;
+    color: #0284c7 !important;
 }
 
 body.tema-claro .modal-box h3 {
-    color: #0284c7;
+    color: #0369a1 !important;
 }
 
+body.tema-claro .modal-box h4 {
+    color: #1e293b !important;
+}
+
+/* Textos gerais */
 body.tema-claro .modal-box p,
-body.tema-claro .modal-box li {
-    color: #1e293b;
+body.tema-claro .modal-box li,
+body.tema-claro .modal-box span,
+body.tema-claro .modal-box div:not(.btn-container):not(.modal-overlay):not(.modal-box) {
+    color: #1e293b !important;
 }
 
-body.tema-claro .modal-box hr {
-    border-color: #cbd5e1;
+/* Bloco de fundo escuro do projeto */
+body.tema-claro .modal-box [style*="background: rgba(0, 0, 0, 0.2)"],
+body.tema-claro .modal-box [style*="background: rgba(15, 23, 42, 0.6)"] {
+    background: #f1f5f9 !important;
+    border-color: #cbd5e1 !important;
 }
+
+body.tema-claro .modal-box [style*="background: rgba(0, 0, 0, 0.2)"] p,
+body.tema-claro .modal-box [style*="background: rgba(15, 23, 42, 0.6)"] p,
+body.tema-claro .modal-box [style*="background: rgba(0, 0, 0, 0.2)"] div,
+body.tema-claro .modal-box [style*="background: rgba(15, 23, 42, 0.6)"] div {
+    color: #1e293b !important;
+}
+
+body.tema-claro .modal-box [style*="background: rgba(0, 0, 0, 0.2)"] strong {
+    color: #0284c7 !important;
+}
+
+/* Div com fundo "rgba(0,0,0,0.4)" do rodapé do modal */
+body.tema-claro .modal-box [style*="background: rgba(0, 0, 0, 0.4)"] {
+    background: #f1f5f9 !important;
+    border-color: #cbd5e1 !important;
+}
+
+body.tema-claro .modal-box [style*="background: rgba(0, 0, 0, 0.4)"] p,
+body.tema-claro .modal-box [style*="background: rgba(0, 0, 0, 0.4)"] strong {
+    color: #334155 !important;
+}
+
+body.tema-claro .modal-box [style*="background: rgba(0, 0, 0, 0.4)"] strong {
+    color: #0f172a !important;
+}
+
+/* Linhas divisórias (hr) */
+body.tema-claro .modal-box hr {
+    border-color: #cbd5e1 !important;
+}
+
+/* Listas e itens */
+body.tema-claro .modal-box ul {
+    color: #1e293b !important;
+}
+
+body.tema-claro .modal-box ul li {
+    color: #1e293b !important;
+}
+
+/* Texto de referências (mais claro) */
+body.tema-claro .modal-box [style*="color:#94a3b8"] {
+    color: #475569 !important;
+}
+
+/* Títulos coloridos específicos */
+body.tema-claro .modal-box [style*="color: #fde047"] {
+    color: #b45309 !important;
+}
+
+body.tema-claro .modal-box [style*="color: #e2e8f0"] {
+    color: #1e293b !important;
+}
+
+body.tema-claro .modal-box [style*="color: #f8fafc"] {
+    color: #0f172a !important;
+}
+
+body.tema-claro .modal-box [style*="color: #cbd5e1"] {
+    color: #1e293b !important;
+}
+
+body.tema-claro .modal-box [style*="color: #38bdf8"] {
+    color: #0284c7 !important;
+}
+
+body.tema-claro .modal-box [style*="color: #8b5cf6"] {
+    color: #7c3aed !important;
+}
+
+/* Elemento details (expandir referências) */
+body.tema-claro .modal-box details summary {
+    color: #7c3aed !important;
+}
+
+body.tema-claro .modal-box details summary strong {
+    color: #7c3aed !important;
+}
+
+body.tema-claro .modal-box details ul {
+    color: #475569 !important;
+}
+
+body.tema-claro .modal-box details ul li {
+    color: #475569 !important;
+}
+
+/* Botão "Voltar" dos modais */
+body.tema-claro .modal-box .btn-container button {
+    background: #64748b !important;
+    color: #ffffff !important;
+}
+
+body.tema-claro .modal-box .btn-container button:hover {
+    background: #475569 !important;
+}
+
+/* Scrollbar do modal no tema claro */
+body.tema-claro .modal-box div[style*="overflow-y: auto"]::-webkit-scrollbar-track {
+    background: #f1f5f9 !important;
+}
+
+body.tema-claro .modal-box div[style*="overflow-y: auto"]::-webkit-scrollbar-thumb {
+    background: #94a3b8 !important;
+}
+
+body.tema-claro .modal-box div[style*="overflow-y: auto"]::-webkit-scrollbar-thumb:hover {
+    background: #64748b !important;
+}
+
+/* Correção para a div interna com border dashed */
+body.tema-claro .modal-box [style*="border: 1px dashed #64748b"] {
+    border-color: #94a3b8 !important;
+}
+
+body.tema-claro .modal-box [style*="border: 1px solid #334155"] {
+    border-color: #cbd5e1 !important;
+}
+
+
+
+
 
 /* =========================================
    TOOLTIPS E INTERATIVIDADE EM TEXTOS
@@ -656,4 +798,23 @@ body.tema-claro #barra-progresso-container {
 
 body.tema-claro #progresso-texto {
     color: #1e293b !important; /* Preto/azul escuro no tema claro */
+}
+
+
+/* Solução compacta para a aproximação linear */
+body.tema-claro .modal-box div[style*="background:#0f172a"] {
+    background: #f1f5f9 !important;
+    border-color: #cbd5e1 !important;
+}
+
+body.tema-claro .modal-box div[style*="background:#0f172a"] * {
+    color: #1e293b !important;
+}
+
+body.tema-claro .modal-box div[style*="background:#0f172a"] [style*="color:#38bdf8"] {
+    color: #0284c7 !important;
+}
+
+body.tema-claro .modal-box [style*="border-bottom:2px solid #f8fafc"] {
+    border-bottom-color: #64748b !important;
 }
