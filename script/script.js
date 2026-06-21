@@ -2021,8 +2021,8 @@ function salvarDiarioBordo() {
     const t3 = document.getElementById('diario_3').value.trim();
     const fb = document.getElementById('feedback_diario');
 
-    if (t1.length < 30 || t2.length < 30 || t3.length < 30) {
-        fb.textContent = '✍️ Cada resposta precisa de pelo menos 30 caracteres.';
+    if (t1.length < 15 || t2.length < 15 || t3.length < 15) {
+        fb.textContent = '✍️ Cada resposta precisa de pelo menos 15 caracteres.';
         fb.style.color = '#ef4444';
         return;
     }
