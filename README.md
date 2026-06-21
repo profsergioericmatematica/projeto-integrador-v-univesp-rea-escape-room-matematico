@@ -44,6 +44,10 @@ O projeto foi organizado de forma modular para facilitar a manutenção e o depl
 
 - **Tela inicial contextualizada:** oferece acesso rápido a informações sobre o projeto e a uma revisão teórica, antes mesmo de iniciar o jogo.
 - **Modais de apoio:** pop-ups com conteúdo institucional e resumos matemáticos, mantendo o aluno informado sem sair da página.
+- **Tutor Inteligente (Feedback Formativo):** O sistema possui um dicionário com mais de 60 diagnósticos de erro. Quando o aluno erra, recebe uma dica específica sobre o erro conceitual cometido (ex: "Você dividiu a largura do topo (10/2). Subtraia o fundo (6m) antes de dividir pela metade!"), transformando o erro em oportunidade de aprendizado.
+- **Refatoração Dinâmica do Código:** O objeto de estatísticas (`stats.fases`) é gerado automaticamente a partir da matriz pedagógica, eliminando repetições e tornando o código mais enxuto e fácil de manter.
+- **Micro‑interações Visuais:** Feedback visual em forma de "toast" (notificação flutuante) ao copiar um resultado da calculadora ou salvar o diário de bordo, melhorando a experiência do usuário.
+- **Efeito Glassmorphism e Animações:** Os modais de "Sobre" e "Revisão" ganharam fundo com desfoque (backdrop-filter) e transições suaves de escala, conferindo um visual mais moderno e profissional.
 
 ## 🧠 Motor Pedagógico
 
@@ -51,7 +55,7 @@ Jornada progressiva: 8 fases e 32 etapas de validação com dificuldade crescent
 
 Sistema de Estrelas e Patentes: Penaliza o uso indiscriminado de dicas e erros sucessivos, classificando o aluno de Prisioneiro dos Números até Mestre do Escapismo.
 
-Diário de Bordo Metacognitivo: O aluno é convidado a registrar o seu raciocínio final. Ao salvar, a interface é selada visualmente (🔒).
+**Diário de Bordo Metacognitivo Estruturado:** O aluno responde a três perguntas específicas (1. Qual fase foi mais difícil? 2. Qual raciocínio usou? 3. O que faria diferente?), estimulando a reflexão profunda sobre o próprio processo de aprendizagem. Ao salvar, a interface é selada visualmente (🔒) e uma notificação de confirmação é exibida.
 
 🌟 Como as Estrelas são calculadas?
 
@@ -101,11 +105,13 @@ Nota ao Professor: Esta estrutura, além de engajar o aluno, dá ao professor um
 
 ## 🛡️ Segurança e Resiliência (Edge Cases)
 
-Parser Matemático Customizado: A calculadora virtual não utiliza as funções perigosas eval() ou new Function(). Foi implementado um Recursive Descent Parser que garante o cálculo correto da precedência matemática e elimina vetores de ataque (RCE).
+- **Parser Matemático Customizado:** A calculadora virtual não utiliza as funções perigosas eval() ou new Function(). Foi implementado um Recursive Descent Parser que garante o cálculo correto da precedência matemática e elimina vetores de ataque (RCE).
 
-Proteção Anti-Bypass: O avanço de fases é validado duplamente no Front-end, impedindo que alunos usem as ferramentas de desenvolvedor (F12) para forçar botões ocultos.
+- **Proteção Anti-Bypass:** O avanço de fases é validado duplamente no Front-end, impedindo que alunos usem as ferramentas de desenvolvedor (F12) para forçar botões ocultos.
 
-Sanitização de Dados (XSS): Entradas de texto livres (como o nome do aluno) são higienizadas, convertendo tags HTML em texto inofensivo antes da geração dos relatórios.
+- **Sanitização de Dados (XSS):** Entradas de texto livres (como o nome do aluno) são higienizadas, convertendo tags HTML em texto inofensivo antes da geração dos relatórios.
+
+- **Dicionário de Erros (Tutor Inteligente):** O sistema não apenas identifica o erro, mas fornece uma orientação personalizada baseada no valor digitado, reduzindo a frustração e promovendo a autonomia do aluno.
 
 (Mais detalhes no arquivo testes_edge_cases.md).
 
@@ -223,6 +229,8 @@ A ferramenta foi desenhada para a Educação Baseada em Evidências. Ao recolher
 Privacidade (LGPD): Todo o processamento é feito localmente no navegador (Client-side). Nenhum dado do aluno transita pela internet ou é armazenado em bases de dados de terceiros.
 
 Dica: Verifique a pasta testes de bancada para visualizar exemplos reais dos relatórios diagnósticos gerados pelo sistema.
+
+O relatório gerado inclui agora o **histórico completo de erros com as tentativas do aluno**, permitindo ao professor identificar não só o que o aluno errou, mas também os **padrões de erro** (ex: sempre confunde cateto com hipotenusa, ou esquece de elevar ao quadrado). Isso viabiliza intervenções ainda mais precisas.
 
 ## 🛠️ Tecnologias Utilizadas
 
