@@ -207,7 +207,21 @@ button:hover { background-color: #0369a1; transform: scale(1.02); }
 /* CALCULADORA POPUP: Sobrepõe a tela (modal) com z-index alto e bloqueia interação com o fundo */
 .calculadora-popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%); background: #1e293b; border: 2px solid #38bdf8; border-radius: 12px; padding: 20px; z-index: 1000; box-shadow: 0 10px 30px rgba(0,0,0,0.8); width: min(90%,500px); }
 .calculadora-popup.active { display: block; }
-.calc-display { width: 100% !important; padding: 10px; font-size: 24px; text-align: right; background: #0f172a; color: #fde047; border: 2px solid #334155; border-radius: 6px; margin-bottom: 10px; box-sizing: border-box; }
+
+/* Substitua a antiga .calc-display por esta: */
+#calc-popup .calc-display {
+    width: 100%;
+    font-size: 32px;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 2px solid #38bdf8;
+    border-radius: 8px;
+    background-color: #0f172a;
+    color: #f8fafc;
+    text-align: right;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+    outline: none;
+}
 .calc-botoes { display: grid; grid-template-columns: repeat(4,1fr); gap: 5px; }
 .calc-botoes button { padding: 15px 8px; font-size: 20px; margin: 0; width: 100%; min-width: 48px; min-height: 48px; }
 
@@ -337,9 +351,10 @@ footer strong { color: #38bdf8; letter-spacing: 1px; }
    TEMA CLARO (ALTO CONTRASTE - WCAG NÍVEL AA/AAA)
    Testado: Cor #334155 sobre #ffffff excede a exigência de contraste (taxa de 9.4:1).
 ========================================= */
-body.tema-claro {
-    background-color: #f8fafc;
-    color: #334155; 
+/* Texto das caixas BNCC no tema claro */
+body.tema-claro [style*="background: rgba(56, 189, 248, 0.1)"] p,
+body.tema-claro [style*="background: rgba(56, 189, 248, 0.1)"] {
+    color: #1e293b !important;
 }
 
 body.tema-claro .container,
@@ -509,32 +524,41 @@ body.tema-claro .aviso-pontuacao { background-color: #ffffff !important; color: 
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(15, 23, 42, 0.95); /* Fundo escuro semi-transparente */
+    /* Efeito Glassmorphism */
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 2000; /* Fica acima de tudo */
+    z-index: 2000;
+    /* Prepara para a Animação */
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .modal-overlay.active {
-    display: flex;
+    opacity: 1;
 }
 
-
+.modal-overlay.active .modal-box {
+    transform: scale(1);
+}
 
 .modal-box {
     background: #1e293b;
     border: 2px solid #38bdf8;
     border-radius: 10px;
     padding: 30px;
-    max-width: 600px;
+    max-width: 1000px;
     width: 90%;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
     text-align: center;
     position: relative;
+    /* Animação de entrada (escala suave) */
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
 }
-
-
 
 .modal-box h2 {
     margin-top: 0;
@@ -576,4 +600,47 @@ body.tema-claro .modal-box li {
 
 body.tema-claro .modal-box hr {
     border-color: #cbd5e1;
+}
+
+/* =========================================
+   TOOLTIPS E INTERATIVIDADE EM TEXTOS
+========================================= */
+span.linha-interativa:hover, strong.linha-interativa:hover {
+    filter: brightness(1.4) drop-shadow(0 0 5px rgba(253, 224, 71, 0.5));
+    cursor: help;
+}
+
+/* =========================================
+   RESPONSIVIDADE EXTREMA E TOUCH TARGETS (WCAG)
+========================================= */
+
+/* Ajuste Mobile para o Diário de Bordo (Empilhar caixas) */
+@media (max-width: 480px) {
+    #diario-bordo > div {
+        flex-direction: column !important;
+    }
+}
+
+
+@media (max-width: 480px) {
+    /* Inputs de fração em coluna no mobile */
+    .input-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+    input[type="number"], input[type="text"], select {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    /* Raiz-bloco adaptável */
+    .raiz-bloco {
+        flex-direction: column;
+        font-size: 36px;
+    }
+    /* Botões de validar com largura total e toque seguro */
+    .btn-container button {
+        width: 100%;
+        margin: 4px 0;
+        min-height: 54px; /* Touch target superior a 48px */
+    }
 }

@@ -1,3 +1,12 @@
+## 🧠 Dicionário de Diagnósticos (Tutor Inteligente)
+
+O sistema conta agora com um dicionário de mais de 60 mensagens de erro personalizadas (`diagnosticosErro`), mapeando valores incorretos comuns a dicas pedagógicas específicas. Isso garante que o feedback não seja genérico, mas direcionado ao erro conceitual do aluno.
+
+**Exemplo:** Se o aluno digitar `5` no campo `cat1` (base do triângulo), o sistema exibirá:  
+*"Você dividiu a largura do topo (10/2). Subtraia o fundo (6m) antes de dividir pela metade!"*
+
+Essa funcionalidade foi testada para garantir que, mesmo que o aluno insira valores inesperados, o sistema não quebra e sempre oferece uma orientação útil.
+
 # Plano de Testes e Resolução de Edge Cases
 
 Este documento detalha os 6 principais cenários de "edge cases" (casos limite) previstos e tratados no **Escape Room: Fundamentos Matemáticos Visuais**, garantindo a integridade, segurança e fluidez da aplicação.
@@ -10,7 +19,7 @@ Este documento detalha os 6 principais cenários de "edge cases" (casos limite) 
 - **Linha de proteção:** `script.js:148` — função `validarEntradaNumerica()` (aceita e valida o sinal `-`) e os validadores de negócio (ex: `script.js:777` em `verificarF6Passo1()`).
 - **Comportamento confirmado:** O valor escapa à barreira de segurança inicial (`!isNaN`), o que é correto (é um número). A seguir, bate na lógica rígida do enigma (`v === '8'`). A resposta reprova de forma limpa, o campo fica vermelho (UI inalterada) e o número `-5` é inserido sem erros no array `stats.errosDetalhados`.
 - **Brecha residual:** Nenhuma. A arquitetura trata números matematicamente inválidos como falha natural de jogo.
-
+ 
 ---
 
 ## Cenário 2: Valores Absurdamente Altos (Overflow)
@@ -69,6 +78,8 @@ Este documento detalha os 6 principais cenários de "edge cases" (casos limite) 
 ## Testes de Bancada (Validação Funcional)
 
 Além dos edge cases, o sistema foi submetido a três testes de bancada para verificar a consistência da lógica de pontuação, estrelas e relatórios. Os testes foram executados manualmente, seguindo roteiros pré-definidos, e os resultados estão documentados nos arquivos de relatório gerados automaticamente pelo sistema.
+
+> **Nota adicional:** Os testes de bancada também validaram indiretamente o dicionário de diagnósticos, confirmando que, para cada erro registrado, uma mensagem específica é exibida e o sistema continua estável.
 
 ### Cenário 1: Execução Perfeita (Golden Master)
 - **Objetivo:** Validar que, ao acertar todos os 60 campos na primeira tentativa e sem usar dicas, o sistema atribui **96 estrelas** e a patente **"Mestre do Escapismo"**.

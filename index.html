@@ -6,7 +6,7 @@
     <title>Escape Room: Fundamentos Matemáticos Visuais</title>
     <link rel="stylesheet" href="style/style.css">
 </head>
-<body>
+<body> 
 
 <header>
     <div class="nome-missao">REA: Escape Room Matemático – Fundamentos Visuais</div>
@@ -16,7 +16,7 @@
 <div id="barra-progresso-container" style="width:100%; background:#334155; border-radius:10px; margin-bottom:30px; height:24px; overflow:hidden;" aria-hidden="true">
     <div id="barra-progresso-preenchida" style="width:0%; height:100%; background:linear-gradient(90deg, #22c55e, #38bdf8); border-radius:10px; transition: width 0.5s ease;"></div>
 </div>
-<p id="progresso-texto" style="text-align:center; margin-top:5px; font-size:16px; color:#94a3b8;" aria-live="polite">Progresso: 0/32 etapas concluídas</p>
+<p id="progresso-texto" style="text-align:center; margin-top:5px; font-size:22px; color:#94a3b8;" aria-live="polite">Progresso: 0/32 etapas concluídas</p>
 
 <div class="overlay" id="overlay-calc" onclick="fecharCalculadora()" aria-hidden="true"></div>
 <div class="calculadora-popup" id="calc-popup" role="dialog" aria-label="Calculadora de apoio">
@@ -105,86 +105,185 @@
             </div>
 
             
-       
+        <div style="margin-top: 50px; padding: 20px; border: 2px dashed #f59e0b; background: rgba(245, 158, 11, 0.1); border-radius: 8px;">
+            <h3 style="color: #fde047; font-size: 20px; margin-top: 0;">🛠️ Menu Provisório de Testes</h3>
+            <p style="font-size: 16px; margin-bottom: 15px;">Selecione a fase para onde deseja saltar diretamente:</p>
+            <select id="menu-testes" style="padding: 10px; font-size: 16px; border-radius: 6px; margin-bottom: 15px; width: 100%; max-width: 400px; cursor: pointer;">
+                <option value="fase1">Fase 1 (Parte 1) - Pitágoras</option>
+                <option value="fase1_pt2">Fase 1 (Parte 2) - Simplificação √20</option>
+                <option value="fase1_pt3">Fase 1 (Parte 3) - Tirolesa</option>
+                <option value="fase2">Fase 2 (Parte 1) - Triângulo Retângulo</option>
+                <option value="fase2_pt2">Fase 2 (Parte 2) - Circunferência</option>
+                <option value="fase3">Fase 3 - O Finito e o Infinito</option>
+                <option value="fase4">Fase 4 - Potências e Dízimas</option>
+                <option value="fase5">Fase 5 (Parte 1) - Áreas e Raízes</option>
+                <option value="fase5_pt2">Fase 5 (Parte 2) - Raiz de 180</option>
+                <option value="fase6">Fase 6 (Parte 1) - Caixinha Cúbica 3D</option>
+                <option value="fase6_pt2">Fase 6 (Parte 2) - Sobra da Fita</option>
+                <option value="fase7">Fase 7 - Estrutura do Tempo</option>
+                <option value="fase8">Fase 8 - Sequência de Fibonacci</option>
+                <option value="tela_sucesso">TELA FINAL (Relatório de Sucesso)</option>
+            </select>
+            <br>
+            <button onclick="mudarTela('tela1', document.getElementById('menu-testes').value)" style="background: #f59e0b; color: #0f172a; padding: 10px 20px; font-size: 16px; text-transform: none; border-radius: 6px;">Saltar para Fase Selecionada 🚀</button>
+        </div>
         </div>
 
-        <!-- ===== MODAIS (SEMPRE FUNCIONAIS) ===== -->
-        <!-- Modal Sobre o Projeto -->
         <div id="modal-sobre" class="modal-overlay" style="display: none;">
-            <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="titulo-modal-sobre">
-                <h2 id="titulo-modal-sobre" style="color: #38bdf8;">📖 Sobre o Projeto</h2>
-                <div style="text-align: left; font-size: 18px; line-height: 1.6; max-height: 60vh; overflow-y: auto; padding-right: 10px;">
-                    <p><strong>Título:</strong> Educação Baseada em Evidências - Intervenção Pedagógica a partir dos Dados da Prova Paulista do 1º Bimestre de 2026</p>
-                    <p><strong>Projeto Integrador V</strong> | Universidade Virtual do Estado de São Paulo - UNIVESP</p>
-                    <hr style="border-color: #334155; margin: 15px 0;">
-                    <p>Este <strong>Recurso Educacional Aberto (REA)</strong> utiliza a mecânica de <em>Escape Room</em> para ensinar e diagnosticar habilidades matemáticas essenciais, com base nos descritores de defasagem da Prova Paulista.</p>
-                    <p>O aluno assume o papel de um prisioneiro em um laboratório de matemática pura e, guiado por uma assistente I.A., precisa resolver enigmas geométricos e algébricos. O sistema registra cada tentativa, erro e dica, gerando um relatório detalhado para o professor.</p>
-                    <p><strong>Equipe de desenvolvimento:</strong> Antonio Antunes Junior, Giovani Machado de Lima, Lilian Maria de Souza Lino, Priscilla Santiago Zamorra, Renata Helena Arantes e Oliveira, Rodrigo Aires de Medeiros Correa, Sergio Eric Reis de Oliveira, Vitor Correa Uberti.</p>
-                    <p><strong>Licença:</strong> MIT © 2026</p>
-                </div>
-                <button onclick="fecharModal('modal-sobre')" style="background: #64748b; margin-top: 20px;">Voltar</button>
-            </div>
-        </div>
+                <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="titulo-modal-sobre">
+                    <h2 id="titulo-modal-sobre" style="color: #38bdf8;">📖 Sobre o Projeto</h2>
+                    
+                    <div style="text-align: left; font-size: 18px; line-height: 1.6; max-height: 60vh; overflow-y: auto; padding-right: 10px;">
+                        <div style="background: rgba(0, 0, 0, 0.2); border: 1px dashed #64748b; padding: 25px; border-radius: 8px; margin: 20px auto; max-width: 800px; text-align: left;">
+                            <p style="color: #fde047; font-size: 24px; font-weight: bold; margin-top: 0; text-align: center;">Projeto Integrador V</p>
+                            <p style="font-size: 18px; color: #e2e8f0; text-align: center; margin-bottom: 25px;">Universidade Virtual do Estado de São Paulo - UNIVESP</p>
+                            
+                            <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid #334155; padding: 15px 20px; border-radius: 6px; margin-bottom: 25px; font-size: 15px; line-height: 1.6; color: #cbd5e1;">
+                                <p style="margin-top: 0;"><strong style="color: #38bdf8;">🎯 Objetivo da Disciplina:</strong> Planejar uma intervenção em um contexto escolar específico, criando e implementando uma atividade inovadora (Matemática) baseada em avaliações em larga escala, culminando em uma avaliação formativa.</p>
+                                <p><strong style="color: #38bdf8;">📚 Ementa:</strong> Avaliação em larga escala, diagnóstica e formativa; plano de aula, inovação e intervenção em educação.</p>
+                                <p><strong style="color: #38bdf8;">⚖️ Justificativa:</strong> Preparar docentes para analisar, refletir e aplicar melhorias no ensino utilizando dados de avaliações externas (Prova Brasil, Saresp, Saeb, Enem, Pisa, etc.), garantindo uma educação de qualidade para demandas complexas e diversificadas.</p>
+                                <p><strong style="color: #38bdf8;">⚙️ Metodologia:</strong> Trabalho colaborativo e interdisciplinar fundamentado na Aprendizagem Baseada em Problemas e Projetos (PBL) e no <em>Design Thinking</em>.</p>
+                                
+                                <details style="cursor: pointer; margin-top: 15px; outline: none;">
+                                    <summary><strong style="color: #8b5cf6; user-select: none;">📖 Referências Bibliográficas Base (Clique para expandir)</strong></summary>
+                                    <ul style="font-size: 13px; color: #94a3b8; padding-left: 20px; margin-top: 10px; line-height: 1.5;">
+                                        <li>ARAÚJO, U. F.; SASTRE, G. (Org.). <em>Aprendizagem baseada em problemas no ensino superior</em>. São Paulo: Summus Editorial, 2009.</li>
+                                        <li>BROWN, T. <em>Design thinking: uma metodologia poderosa para decretar o fim das velhas ideias</em>. Rio de Janeiro: Elsevier, 2010.</li>
+                                        <li>PLATTNER, H.; MEINEL, C. & LEIFER, L. <em>Design Thinking Research</em>. Springer, 2012.</li>
+                                    </ul>
+                                </details>
+                            </div>
 
-        <!-- Modal Revisão Teórica -->
-        <div id="modal-revisao" class="modal-overlay" style="display: none;">
-            <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="titulo-modal-revisao">
-                <h2 id="titulo-modal-revisao" style="color: #f59e0b;">📚 Revisão Teórica</h2>
-                <div style="text-align: left; font-size: 17px; line-height: 1.6; max-height: 60vh; overflow-y: auto; padding-right: 10px;">
-                    <h3 style="color: #38bdf8;">Fase 1 – Geometria e Tirolesa</h3>
-                    <ul>
-                        <li><strong>Teorema de Pitágoras:</strong> a² + b² = c². Área do quadrado sobre a hipotenusa é a soma das áreas dos quadrados sobre os catetos.</li>
-                        <li><strong>Simplificação de radicais:</strong> fatoração em primos, pares saem da raiz, ímpares ficam.</li>
-                        <li><strong>Aproximação linear:</strong> √N ≈ raiz do quadrado perfeito anterior + (N – Q²) / (2 · raiz anterior).</li>
-                    </ul>
-                    <h3 style="color: #38bdf8;">Fase 2 – Triângulos e Circunferência</h3>
-                    <ul>
-                        <li>Triângulo retângulo inscrito num círculo: a hipotenusa é o diâmetro.</li>
-                        <li>Raio = metade do diâmetro.</li>
-                    </ul>
-                    <h3 style="color: #38bdf8;">Fase 3 – Finito e Infinito</h3>
-                    <ul>
-                        <li>Decimais finitos → fração com denominador potência de 10 (10, 100, …).</li>
-                        <li>Dízimas periódicas → fração com denominador 9, 99, … (ex: 0,333… = 3/9).</li>
-                    </ul>
-                    <h3 style="color: #38bdf8;">Fase 4 – Potências e Dízimas Mistas</h3>
-                    <ul>
-                        <li>Dízima mista: separar parte inteira e decimal, transformar ambas em frações de mesmo denominador.</li>
-                        <li>Expoente 0,5 = raiz quadrada.</li>
-                        <li>Expoente negativo inverte a fração (a/b)^−n = (b/a)^n.</li>
-                    </ul>
-                    <h3 style="color: #38bdf8;">Fase 5 – Irracionais e Raiz de 180</h3>
-                    <ul>
-                        <li>Raízes não exatas estão entre dois quadrados perfeitos consecutivos.</li>
-                        <li>Simplificação: 180 = 2² · 3² · 5 → √180 = 6√5.</li>
-                        <li>Aproximação por interpolação linear.</li>
-                    </ul>
-                    <h3 style="color: #38bdf8;">Fase 6 – Geometria 3D e Fita</h3>
-                    <ul>
-                        <li>Volume do cubo: V = a³ → aresta = ∛V.</li>
-                        <li>Cubo tem 12 arestas.</li>
-                        <li>Conversão de unidades: raízes, frações → decimais.</li>
-                    </ul>
-                    <h3 style="color: #38bdf8;">Fase 7 – Tempo</h3>
-                    <ul>
-                        <li>Soma de minutos e intervalo.</li>
-                        <li>Conversão para horas (÷60) e minutos restantes.</li>
-                        <li>Sistema 24h: se ultrapassar 24, subtrai 24.</li>
-                    </ul>
-                    <h3 style="color: #38bdf8;">Fase 8 (Secreta) – Fibonacci</h3>
-                    <ul>
-                        <li>Sequência de Fibonacci: cada termo é a soma dos dois anteriores (1, 1, 2, 3, 5, 8, 13, 21…).</li>
-                        <li>Proporção Áurea.</li>
-                    </ul>
-                    <p style="margin-top: 15px; font-style: italic; color: #94a3b8;">Os conceitos são aplicados gradualmente, com perguntas socráticas e dicas estratégicas.</p>
+                            <hr style="border-color: #334155; margin: 25px 0;">
+
+                            <p style="color: #f8fafc; font-size: 18px;"><strong>Título do Projeto:</strong> Educação Baseada em Evidências - Intervenção Pedagógica a partir dos Dados da Prova Paulista do 1º Bimestre de 2026</p>
+                            <p style="color: #e2e8f0;">Este <strong>Recurso Educacional Aberto (REA)</strong> utiliza a mecânica de <em>Escape Room</em> para ensinar e diagnosticar habilidades matemáticas essenciais, com base nos descritores de defasagem da Prova Paulista.</p>
+                            <p style="color: #e2e8f0;">O aluno assume o papel de um prisioneiro em um laboratório de matemática pura e, guiado por uma assistente I.A., precisa resolver enigmas geométricos e algébricos. O sistema registra cada tentativa, erro e dica, gerando um relatório detalhado para o professor.</p>
+
+                            <div style="background: rgba(0, 0, 0, 0.4); padding: 15px; border-radius: 6px; margin-top: 25px; font-size: 14px; color: #94a3b8;">
+                                <p style="margin-top: 0;"><strong>Equipe de Desenvolvimento:</strong> Antonio Antunes Junior, Giovani Machado de Lima, Lilian Maria de Souza Lino, Priscilla Santiago Zamorra, Renata Helena Arantes e Oliveira, Rodrigo Aires de Medeiros Correa, Sergio Eric Reis de Oliveira, Vitor Correa Uberti.</p>
+                                <p style="margin-bottom: 0;"><strong>Licença:</strong> MIT © 2026</p>
+                            </div>
+                        </div>
+                    </div> <div class="btn-container" style="justify-content: center; margin-top: 20px;">
+                        <button onclick="fecharModal('modal-sobre')" style="background: #64748b;">Voltar</button>
+                    </div>
+                </div> </div>
+            <div id="modal-revisao" class="modal-overlay" style="display: none;">
+                <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="titulo-modal-revisao">
+                    <h2 id="titulo-modal-revisao" style="color: #f59e0b;">📚 Revisão Teórica</h2>
+                    
+                    <div style="text-align: left; font-size: 17px; line-height: 1.6; max-height: 60vh; overflow-y: auto; padding-right: 10px;">
+                        <h3 style="color: #38bdf8;">Fase 1 – Geometria e Tirolesa</h3>
+                        <ul>
+                            <li><strong>Teorema de Pitágoras:</strong> a² + b² = c². Área do quadrado sobre a hipotenusa é a soma das áreas dos quadrados sobre os catetos.</li>
+                            <li><strong>Simplificação de radicais:</strong> fatoração em primos, pares saem da raiz, ímpares ficam.</li>
+                            <li style="margin-top: 15px;"><strong>Aproximação linear:</strong>
+                                <div style="background:#0f172a; padding:15px; border-radius:8px; margin: 15px 0; border: 1px solid #38bdf8;">
+                                    <p style="text-align:center; font-weight:bold; color:#38bdf8; margin-top:0;">Método de Ajuste</p>
+                                    <div style="display:flex; justify-content:center; align-items:center; font-size:16px; color:#f8fafc; flex-wrap:wrap; gap:10px; text-align:center;">
+                                        <span>&radic;N &approx; </span> 
+                                        <span>Raiz Exata do Quadrado Perfeito Anterior + </span>
+                                        <div style="display:flex; flex-direction:column; align-items:center;">
+                                            <span style="border-bottom:2px solid #f8fafc; padding:0 5px;">Seu Número (N) &minus; Quadrado Perfeito Anterior</span>
+                                            <span style="padding:0 5px;">2 &times; Raiz Exata do Quadrado Perfeito Anterior</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        
+                        <h3 style="color: #38bdf8;">Fase 2 – Triângulos e Circunferência</h3>
+                        <ul>
+                            <li>Triângulo retângulo inscrito num círculo: a hipotenusa é o diâmetro.</li>
+                            <li>Raio = metade do diâmetro.</li>
+                        </ul>
+                        
+                        <h3 style="color: #38bdf8;">Fase 3 – Finito e Infinito</h3>
+                        <ul>
+                            <li>Decimais finitos → fração com denominador potência de 10 (10, 100, …).</li>
+                            <li>Dízimas periódicas → fração com denominador 9, 99, … <br>(ex: 0,333… = 
+                                <span style="display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; margin: 0 4px;">
+                                    <span style="line-height: 1;">3</span>
+                                    <span style="width: 100%; height: 2px; background-color: currentColor; margin: 2px 0;"></span>
+                                    <span style="line-height: 1;">9</span>
+                                </span>).
+                            </li>
+                        </ul>
+                        
+                        <h3 style="color: #38bdf8;">Fase 4 – Potências e Dízimas Mistas</h3>
+                        <ul>
+                            <li>Dízima mista: separar parte inteira e decimal, transformar ambas em frações de mesmo denominador.</li>
+                            <li>Expoente 0,5 = raiz quadrada.</li>
+                            <li>Expoente negativo inverte a fração:
+                                <span style="display: inline-flex; align-items: center; vertical-align: middle; margin: 0 5px;">
+                                    <span style="font-size: 26px; font-weight: normal;">(</span>
+                                    <span style="display: inline-flex; flex-direction: column; align-items: center; margin: 0 4px;">
+                                        <span style="line-height: 1;">a</span>
+                                        <span style="width: 100%; height: 2px; background-color: currentColor; margin: 2px 0;"></span>
+                                        <span style="line-height: 1;">b</span>
+                                    </span>
+                                    <span style="font-size: 26px; font-weight: normal;">)</span>
+                                    <sup style="align-self: flex-start; margin-top: 4px; font-size: 14px;">&minus;n</sup>
+                                </span>
+                                =
+                                <span style="display: inline-flex; align-items: center; vertical-align: middle; margin: 0 5px;">
+                                    <span style="font-size: 26px; font-weight: normal;">(</span>
+                                    <span style="display: inline-flex; flex-direction: column; align-items: center; margin: 0 4px;">
+                                        <span style="line-height: 1;">b</span>
+                                        <span style="width: 100%; height: 2px; background-color: currentColor; margin: 2px 0;"></span>
+                                        <span style="line-height: 1;">a</span>
+                                    </span>
+                                    <span style="font-size: 26px; font-weight: normal;">)</span>
+                                    <sup style="align-self: flex-start; margin-top: 4px; font-size: 14px;">n</sup>
+                                </span>.
+                            </li>
+                        </ul>
+                        
+                        <h3 style="color: #38bdf8;">Fase 5 – Irracionais e Raiz de 180</h3>
+                        <ul>
+                            <li>Raízes não exatas estão entre dois quadrados perfeitos consecutivos.</li>
+                            <li>Simplificação: 180 = 2² · 3² · 5 → √180 = 6√5.</li>
+                            <li>Aproximação por interpolação linear.</li>
+                        </ul>
+                        
+                        <h3 style="color: #38bdf8;">Fase 6 – Geometria 3D e Fita</h3>
+                        <ul>
+                            <li>Volume do cubo: V = a³ → aresta = ∛V.</li>
+                            <li>Cubo tem 12 arestas.</li>
+                            <li>Conversão de unidades: raízes, frações → decimais.</li>
+                        </ul>
+                        
+                        <h3 style="color: #38bdf8;">Fase 7 – Tempo</h3>
+                        <ul>
+                            <li>Soma de minutos e intervalo.</li>
+                            <li>Conversão para horas (÷60) e minutos restantes.</li>
+                            <li>Sistema 24h: se ultrapassar 24, subtrai 24.</li>
+                        </ul>
+                        
+                        <h3 style="color: #38bdf8;">Fase 8 (Secreta) – Fibonacci</h3>
+                        <ul>
+                            <li>Sequência de Fibonacci: cada termo é a soma dos dois anteriores (1, 1, 2, 3, 5, 8, 13, 21…).</li>
+                            <li>Proporção Áurea.</li>
+                        </ul>
+                        
+                        <p style="margin-top: 15px; font-style: italic; color: #94a3b8;">Os conceitos são aplicados gradualmente, com perguntas socráticas e dicas estratégicas.</p>
+                    </div>
+                    
+                    <div class="btn-container" style="justify-content: center; margin-top: 20px;">
+                        <button onclick="fecharModal('modal-revisao')" style="background: #64748b;">Voltar</button>
+                    </div>
                 </div>
-                <button onclick="fecharModal('modal-revisao')" style="background: #64748b; margin-top: 20px;">Voltar</button>
-            </div>
+            </div>   
+                    
         </div>
-    </section>
+    </section>    
 
     <section id="fase1" class="enigma-box">
         <h2>Fase 1: Dissecando a Geometria</h2>
+        <p style="font-size:16px; color:#e2e8f0; background: rgba(56, 189, 248, 0.1); border: 1px dashed #38bdf8; padding: 12px; border-radius: 6px; margin-top:15px; line-height: 1.5;"> 📋 <strong style="color:#38bdf8;">Habilidade BNCC (EM13MAT308):</strong> Aplicar as relações métricas para resolver problemas que envolvem triângulos.</p>
+
+
         <p class="aviso-pontuacao">⭐ Sistema de Estrelas</p>
         
        <div class="mentor">
@@ -196,7 +295,8 @@
             
             <div class="svg-container" style="background-color: #0b1120; border: 2px solid #38bdf8; position: relative;">
                 <svg width="100%" viewBox="0 0 600 300" style="max-width:600px;margin:0 auto;display:block; font-family: 'Segoe UI', sans-serif;" role="img" aria-labelledby="desc-canal">
-                    <desc id="desc-canal">Planta arquitetônica de um canal de água em formato de trapézio isósceles. A largura do topo é de 10 metros, do fundo é 6 metros e a profundidade é de 4 metros. Uma linha destacada em vermelho representa a parede inclinada que forma a hipotenusa de um triângulo retângulo imaginário.</desc>
+                    <desc id="desc-canal">Planta arquitetônica de um canal de água em formato de trapézio isósceles. A largura do topo é de 10 metros, do fundo é 6 metros e a profundidade é de 4 metros. Uma linha destacada em vermelho representa a parede inclinada que forma a hipotenusa de um triângulo retângulo imaginário. (Competência BNCC: EM13MAT308).</desc>
+
                     
                     <defs>
                         <pattern id="blueprint-grid" width="30" height="30" patternUnits="userSpaceOnUse">
@@ -248,6 +348,7 @@
             
             <p>"Para revelar o tamanho real da linha vermelha, precisaremos da regra de ouro da geometria espacial: o <strong>Teorema de Pitágoras</strong>.</p>
             <p id="instrucao-pitagoras-f1">A essência desta lei nos diz que a área geométrica de um quadrado construído sobre a hipotenusa será exatamente igual à junção das áreas dos quadrados formados por cada um dos catetos. Pensando nisso, qual é o conceito matemático para se calcular a 'área de um quadrado' a partir da sua medida de lado? Aplique esse conceito mental na equação abaixo utilizando as duas medidas que você deduziu!"</p>
+
         </div>
 
         <div class="input-group">
@@ -277,6 +378,9 @@
 
     <section id="fase1_pt2" class="enigma-box">
         <h2>Fase 1 (Continuação): Simplificando a Raiz</h2>
+        <p style="font-size:16px; color:#e2e8f0; background: rgba(56, 189, 248, 0.1); border: 1px dashed #38bdf8; padding: 12px; border-radius: 6px; margin-top:15px; line-height: 1.5;"> 📋 <strong style="color:#38bdf8;">Habilidade BNCC (EM13MAT308):</strong> Aplicar as relações métricas para resolver problemas que envolvem triângulos.</p>
+
+
         <p class="aviso-pontuacao">⭐ Sistema de Estrelas</p>
         <div class="mentor">
             <strong>Assistente I.A. diz:</strong> "No passo anterior, você encontrou a Hipotenusa elevada ao quadrado.<br><br>
@@ -435,6 +539,9 @@
     
     <section id="fase1_pt3" class="enigma-box">
         <h2>Fase 1: O Desafio da Tirolesa</h2>
+        <p style="font-size:16px; color:#e2e8f0; background: rgba(56, 189, 248, 0.1); border: 1px dashed #38bdf8; padding: 12px; border-radius: 6px; margin-top:15px; line-height: 1.5;"> 📋 <strong style="color:#38bdf8;">Habilidade BNCC (EM13MAT308):</strong> Aplicar as relações métricas para resolver problemas que envolvem triângulos.</p>
+
+
         <p class="aviso-pontuacao">⭐ Sistema de Estrelas</p>
         <div class="mentor">
             <strong>Assistente I.A. diz:</strong> "No canal de água, aprendemos a fundação matemática pura:<br>
@@ -449,7 +556,8 @@
 
         <div class="svg-container">
             <svg width="100%" viewBox="0 0 650 364" style="max-width:650px;margin:0 auto;display:block;" role="img" aria-labelledby="desc-tirolesa">
-                <desc id="desc-tirolesa">Esquema visual de uma tirolesa conectando duas torres azuis. A Torre A (esquerda) tem 8 metros de altura e a Torre B (direita) tem 12 metros de altura. A distância no solo entre elas é de 20 metros. Uma linha vermelha une o topo das duas torres, formando a hipotenusa do cabo da tirolesa.</desc>
+                <desc id="desc-tirolesa">Esquema visual de uma tirolesa conectando duas torres azuis. A Torre A (esquerda) tem 8 metros de altura e a Torre B (direita) tem 12 metros de altura. A distância no solo entre elas é de 20 metros. Uma linha vermelha une o topo das duas torres, formando a hipotenusa do cabo da tirolesa. (Competência BNCC: EM13MAT308).</desc>
+
                 
                 <line x1="65" y1="312" x2="585" y2="312" stroke="#94a3b8" stroke-width="5"/>
                 <text x="325" y="345" fill="#94a3b8" font-size="21" font-weight="bold" text-anchor="middle">Distância Chão = 20m</text>
@@ -577,6 +685,8 @@
 
     <section id="fase2" class="enigma-box">
         <h2>Fase 2: Aplicando o Teorema de Pitágoras</h2>
+        <p style="font-size:18px; color:#e2e8f0; margin-top:15px; border-top:1px solid #38bdf8; padding-top:8px;"> 📋 Habilidade BNCC: <strong>EM13MAT308</strong> — Aplicar as relações métricas para resolver problemas que envolvem triângulos.</p>
+
         <p class="aviso-pontuacao">⭐ Sistema de Estrelas</p>
         <div class="mentor">
             <p><strong>Assistente I.A. diz:</strong> "Você acabou de provar que compreende a essência estrutural dos triângulos. Chegou o momento de dar um passo além e agir sem o auxílio do nosso passo a passo detalhado."</p>
@@ -586,7 +696,8 @@
         
         <div class="svg-container">
             <svg width="100%" viewBox="0 0 400 250" style="max-width:400px;margin:0 auto;display:block;" role="img" aria-labelledby="desc-triangulo-simples">
-                <desc id="desc-triangulo-simples">Um triângulo retângulo contendo um cateto vertical amarelo medindo 9 centímetros e um cateto horizontal amarelo medindo 12 centímetros. Eles formam um ângulo de 90 graus. A hipotenusa está destacada em vermelho com uma interrogação.</desc>
+                <desc id="desc-triangulo-simples">Um triângulo retângulo contendo um cateto vertical amarelo medindo 9 centímetros e um cateto horizontal amarelo medindo 12 centímetros. Eles formam um ângulo de 90 graus. A hipotenusa está destacada em vermelho com uma interrogação. (Competência BNCC: EM13MAT308).</desc>
+
                 
                 <polygon points="50,200 350,200 50,50" fill="rgba(253,224,71,0.15)" stroke="#fde047" stroke-width="3"/>
                 <polyline points="50,180 70,180 70,200" fill="none" stroke="#fde047" stroke-width="2"/>
@@ -664,6 +775,8 @@
 
     <section id="fase2_pt2" class="enigma-box">
         <h2>Fase 2: Geometria de Circunferência</h2>
+        <p style="font-size:16px; color:#e2e8f0; background: rgba(56, 189, 248, 0.1); border: 1px dashed #38bdf8; padding: 12px; border-radius: 6px; margin-top:15px; line-height: 1.5;"> 📋 <strong style="color:#38bdf8;">Habilidade BNCC (EM13MAT308):</strong> Aplicar as relações métricas para resolver problemas que envolvem triângulos.</p>
+
         <p class="aviso-pontuacao">⭐ Sistema de Estrelas</p>
         <div class="mentor">
             <p><strong>Assistente I.A. diz:</strong> "A matemática geométrica possui uma regra elegante e irrefutável: <strong>Todo triângulo retângulo desenhado com os seus vértices a tocar os limites de um círculo tem a sua Hipotenusa a passar exatamente no centro. Isso forma o Diâmetro.</strong></p>
@@ -673,7 +786,8 @@
 
         <div class="svg-container">
             <svg width="100%" viewBox="0 0 400 300" style="max-width:400px;margin:0 auto;display:block;" role="img" aria-labelledby="desc-triangulo-circ">
-                <desc id="desc-triangulo-circ">Um círculo contendo um triângulo retângulo inscrito. O cateto superior esquerdo mede 6 centímetros e o direito mede 4 centímetros. A hipotenusa do triângulo passa exatamente pelo centro do círculo, traçada como uma linha cinza, correspondendo ao Diâmetro total.</desc>
+                <desc id="desc-triangulo-circ">Um círculo contendo um triângulo retângulo inscrito. O cateto superior esquerdo mede 6 centímetros e o direito mede 4 centímetros. A hipotenusa do triângulo passa exatamente pelo centro do círculo, traçada como uma linha cinza, correspondendo ao Diâmetro total. (Competência BNCC: EM13MAT308).</desc>
+
                 
                 <circle cx="200" cy="150" r="130" fill="none" stroke="#38bdf8" stroke-width="3"/>
                 
@@ -763,6 +877,8 @@
 
     <section id="fase3" class="enigma-box">
         <h2>Fase 3: O Finito e o Infinito</h2>
+        <p style="font-size:16px; color:#e2e8f0; background: rgba(56, 189, 248, 0.1); border: 1px dashed #38bdf8; padding: 12px; border-radius: 6px; margin-top:15px; line-height: 1.5;"> 📋 <strong style="color:#38bdf8;">Habilidade BNCC (EM13MAT101):</strong> Resolver problemas do cotidiano que envolvem diferentes grandezas e proporções (Frações e Decimais).</p>
+
         <p class="aviso-pontuacao">⭐ Sistema de Estrelas</p>
         <div class="mentor">
             <p><strong>Assistente I.A. diz:</strong> "O universo numérico é dividido em duas naturezas: os valores <strong>Finitos</strong> (que possuem um fim delimitado) e as <strong>Dízimas Infinitas</strong> (que ecoam eternamente, marcadas pelo padrão visual '...')."</p>
@@ -839,7 +955,7 @@
             </div>
             <div id="marceneiro-p1">
                 <div class="input-group">
-                    <span style="font-size:20px;">0,666... =</span>
+                    <span class="linha-interativa" title="Dízima periódica: o dígito 6 repete-se infinitamente" style="font-size:20px; cursor:help; color:#fde047; border-bottom: 1px dashed #fde047;">0,666... =</span>
                     <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
                         <input type="number" id="marc_num" aria-label="Numerador marceneiro" aria-describedby="instrucao-marceneiro" placeholder="Numerador" style="width:220px;font-size:24px;text-align:center;">
                         <div style="width:220px;height:3px;background:#e2e8f0;border-radius:2px;" aria-hidden="true"></div>
@@ -882,6 +998,9 @@
 
     <section id="fase4" class="enigma-box">
         <h2>Fase 4: Potências e Dízimas</h2>
+        <p style="font-size:16px; color:#e2e8f0; background: rgba(56, 189, 248, 0.1); border: 1px dashed #38bdf8; padding: 12px; border-radius: 6px; margin-top:15px; line-height: 1.5;"> 📋 <strong style="color:#38bdf8;">Habilidade BNCC (EM13MAT304):</strong> Resolver problemas envolvendo cálculos algébricos com expoentes e potências fracionárias.</p>
+
+
         <p class="aviso-pontuacao">⭐ Sistema de Estrelas</p>
         <div class="mentor">
             <p><strong>Assistente I.A. diz:</strong> "O laboratório exige agora a síntese de propriedades avançadas. O nosso Desafio é decodificar e calcular o valor final de <strong>m &times; n</strong>, sabendo que <strong>m = (1,777...)<sup>0,5</sup></strong> e <strong>n = 
@@ -902,7 +1021,8 @@
         <div id="passo1-fase4">
             <p id="instrucao-f4-p1" style="font-size:18px;"><strong>1º Passo:</strong> Uma dízima mista (ex: 1,777...) é uma soma matemática do inteiro com a fração da dízima.</p>
             <div class="input-group">
-                <span style="font-size:20px;">Fração Final de 1,777... =</span>
+                <span class="linha-interativa" title="Dízima mista: parte inteira (1) + dízima periódica (0,777...)" style="font-size:20px; cursor:help; color:#fde047; border-bottom: 1px dashed #fde047;">Fração Final de 1,777... =</span>
+
                 <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
                     <input type="number" id="f4_num" aria-label="Numerador" aria-describedby="instrucao-f4-p1" placeholder="Numerador" style="width:260px;font-size:24px;text-align:center;">
                     <div style="width:260px;height:3px;background:#e2e8f0;border-radius:2px;" aria-hidden="true"></div>
@@ -946,7 +1066,9 @@
         <div id="passo3-fase4" class="hidden">
             
             <p id="instrucao-f4-p3" style="font-size:18px;"><strong>3º Passo:</strong> Obtenha 'n'. n = 
-                <span style="display: inline-flex; align-items: center; vertical-align: middle; font-weight: bold;">
+                <span class="linha-interativa" title="Atenção: O expoente negativo inverte a fração base!" style="display: inline-flex; align-items: center; vertical-align: middle; font-weight: bold; cursor:help; color:#fde047;">
+
+                </span>
                     <span style="font-size: 28px; font-weight: normal;">(</span>
                     <span style="display: inline-flex; flex-direction: column; align-items: center; margin: 0 4px;">
                         <span style="line-height: 1;">2</span>
@@ -1001,6 +1123,9 @@
 
     <section id="fase5" class="enigma-box">
         <h2>Fase 5: Cercando o Irracional</h2>
+        <p style="font-size:16px; color:#e2e8f0; background: rgba(56, 189, 248, 0.1); border: 1px dashed #38bdf8; padding: 12px; border-radius: 6px; margin-top:15px; line-height: 1.5;"> 📋 <strong style="color:#38bdf8;">Habilidade BNCC (EM13MAT101):</strong> Interpretar e operar com diferentes grandezas na reta numérica real.</p>
+
+
         <p class="aviso-pontuacao">⭐ Sistema de Estrelas</p>
         <div class="mentor">
             <p><strong>Assistente I.A. diz:</strong> "Entramos agora no território dos números que não se comportam de forma exata. Mas, antes de dominá-los, precisamos entender a sua origem geométrica perfeita. Observe atentamente a malha do Piso 1 projetada no nosso holograma:"</p>
@@ -1042,6 +1167,9 @@
 
     <section id="fase5_pt2" class="enigma-box">
         <h2>Fase 5: Desvendando a Raiz de 180</h2>
+        <p style="font-size:16px; color:#e2e8f0; background: rgba(56, 189, 248, 0.1); border: 1px dashed #38bdf8; padding: 12px; border-radius: 6px; margin-top:15px; line-height: 1.5;"> 📋 <strong style="color:#38bdf8;">Habilidade BNCC (EM13MAT101):</strong> Interpretar e operar com diferentes grandezas na reta numérica real.</p>
+
+
         <p class="aviso-pontuacao">⭐ Sistema de Estrelas</p>
         <div class="mentor">
             <p><strong>Assistente I.A. diz:</strong> "Você acabou de descobrir que pátios com áreas de 169 e 196 formam recintos matemáticos exatos. Porém, o laboratório nos entregou agora um pátio projetado com exatos <strong>180 blocos</strong> isolados."</p>
@@ -1173,6 +1301,9 @@
 
     <section id="fase6" class="enigma-box">
         <h2>Fase 6: Caixinha Cúbica em 3D</h2>
+        <p style="font-size:16px; color:#e2e8f0; background: rgba(56, 189, 248, 0.1); border: 1px dashed #38bdf8; padding: 12px; border-radius: 6px; margin-top:15px; line-height: 1.5;"> 📋 <strong style="color:#38bdf8;">Habilidade BNCC (EM13MAT309):</strong> Resolver e elaborar problemas que envolvem o cálculo de volumes de sólidos geométricos.</p>
+
+
         <p class="aviso-pontuacao">⭐ Sistema de Estrelas</p>
        <div class="mentor">
             <p><strong>Assistente I.A. diz:</strong> "Entramos agora na terceira dimensão. Diferente das áreas planas que calculamos até aqui, um objeto 3D possui espaço interno real (Volume)."</p>
@@ -1180,7 +1311,8 @@
         </div>
         <div class="svg-container">
             <svg width="100%" viewBox="0 0 300 250" style="max-width:300px;margin:0 auto;display:block;" role="img" aria-labelledby="desc-cubo">
-                <desc id="desc-cubo">Uma ilustração tridimensional (3D) de um cubo vazado e transparente. No centro do cubo está indicado que seu Volume total (V) é igual a 512 centímetros cúbicos.</desc>
+                <desc id="desc-cubo">Uma ilustração tridimensional (3D) de um cubo vazado e transparente. No centro do cubo está indicado que seu Volume total (V) é igual a 512 centímetros cúbicos. (Competência BNCC: EM13MAT309).</desc>
+
                 
                 <polygon points="100,50 130,20 220,20 190,50" fill="rgba(253,224,71,0.1)" stroke="#fde047" stroke-width="2" class="linha-interativa"><title>Tampa do Cubo</title></polygon>
                 <polygon points="100,50 190,50 190,140 100,140" fill="rgba(56,189,248,0.1)" stroke="#38bdf8" stroke-width="2" class="linha-interativa"><title>Face Frontal</title></polygon>
@@ -1229,6 +1361,9 @@
 
     <section id="fase6_pt2" class="enigma-box">
         <h2>Fase 6: A Sobra da Fita</h2>
+        <p style="font-size:16px; color:#e2e8f0; background: rgba(56, 189, 248, 0.1); border: 1px dashed #38bdf8; padding: 12px; border-radius: 6px; margin-top:15px; line-height: 1.5;"> 📋 <strong style="color:#38bdf8;">Habilidade BNCC (EM13MAT309):</strong> Resolver e elaborar problemas que envolvem o cálculo de volumes de sólidos geométricos.</p>
+
+
         <p class="aviso-pontuacao">⭐ Sistema de Estrelas</p>
         <div class="mentor">
             <p><strong>Assistente I.A. diz:</strong> "O laboratório exige que você controle recursos físicos. Você possui um rolo principal de fita e três fragmentos retirados (<strong>2,5 m</strong>, <strong>3/4 m</strong> e <strong>&radic;(9/4) m</strong>), cada um expresso em um formato matemático diferente."</p>
@@ -1328,10 +1463,13 @@
 
     <section id="fase7" class="enigma-box">
         <h2>Fase 7: A Estrutura do Tempo</h2>
+        <p style="font-size:16px; color:#e2e8f0; background: rgba(56, 189, 248, 0.1); border: 1px dashed #38bdf8; padding: 12px; border-radius: 6px; margin-top:15px; line-height: 1.5;"> 📋 <strong style="color:#38bdf8;">Habilidade BNCC (EM13MAT101):</strong> Resolver problemas que exigem a compreensão e conversão de grandezas de tempo.</p>
+
+
         <p class="aviso-pontuacao">⭐ Sistema de Estrelas</p>
        <div class="mentor">
             <p><strong>Assistente I.A. diz:</strong> "O Desafio Final lida com a dimensão mais traiçoeira: o Tempo. Ele obedece a um sistema de limites exclusivos e não utiliza a nossa confortável base perfeita das centenas e dezenas."</p>
-            <p id="instrucao-f7-total" class="pergunta-socratica">❓ <strong>Consolidação de Dados:</strong> Analise as informações fornecidas pelo painel: o filme possui uma longa duração contínua de <strong>216 minutos</strong> e sofre uma pausa programada de <strong>10 minutos</strong>. A sessão se inicia às <strong>21h10</strong>. Antes de tentarmos transpor esses dados para o relógio da parede, como você pode consolidar toda a experiência real gasta no laboratório em um único grande bloco inicial?"</p>
+            <p id="instrucao-f7-total" class="pergunta-socratica">❓ <strong>Consolidação de Dados:</strong> Analise as informações fornecidas pelo painel: o filme possui uma longa duração contínua de <strong class="linha-interativa" title="Duração total do filme" style="cursor:help; color:#38bdf8; border-bottom: 1px dashed #38bdf8;">216 minutos</strong> e sofre uma pausa programada de <strong class="linha-interativa" title="Tempo da pausa (parada técnica)" style="cursor:help; color:#38bdf8; border-bottom: 1px dashed #38bdf8;">10 minutos</strong>.
         </div>
         <div id="passo1-fase7">
             <p style="font-size:18px;"><strong>1º Passo:</strong> Acumulação Total.</p>
@@ -1413,7 +1551,39 @@
         <div id="diario-bordo" style="margin-top: 30px; background: rgba(56, 189, 248, 0.05); border: 2px dashed #38bdf8; border-radius: 8px; padding: 25px; text-align: left;">
             <h3 style="color: #38bdf8; margin-top: 0; font-size: 24px;">🧠 A Última Barreira Cognitiva</h3>
             <p style="font-size: 18px; margin-bottom: 15px; color: #f8fafc;"><label for="texto_metacognitivo">Antes de gerar o seu arquivo de fuga, deixe um registro para o seu professor: <strong>Qual foi o enigma que mais desafiou a sua mente hoje e qual foi a lógica que você usou para superá-lo?</strong></label></p>
-            <textarea id="texto_metacognitivo" rows="4" style="width: 100%; box-sizing: border-box; padding: 15px; font-size: 18px; border-radius: 6px; border: 2px solid #334155; background: #0f172a; color: #fde047; font-family: inherit; resize: vertical;" placeholder="Escreva o seu diário de bordo aqui..."></textarea>
+            <!-- Trocar o textarea único por este bloco -->
+            <div style="display:flex; flex-direction:column; gap:15px;">
+            <div>
+                <label style="font-size:15px; color:#38bdf8; display:block; margin-bottom:6px;">
+                1. Qual fase foi mais difícil para você e por quê?
+                </label>
+                <textarea id="diario_1" rows="2" minlength="15" placeholder="Mínimo 15 caracteres..."
+                style="width:100%; box-sizing:border-box; padding:10px; font-size:16px;
+                        border-radius:6px; border:2px solid #334155; background:#0f172a;
+                        color:#fde047; font-family:inherit; resize:vertical;"></textarea>
+                <span id="cnt1" style="font-size:12px; color:#64748b;">0 / 15</span>
+            </div>
+            <div>
+                <label style="font-size:15px; color:#38bdf8; display:block; margin-bottom:6px;">
+                2. Qual raciocínio você usou para superar o maior obstáculo?
+                </label>
+                <textarea id="diario_2" rows="2" minlength="15" placeholder="Mínimo 15 caracteres..."
+                style="width:100%; box-sizing:border-box; padding:10px; font-size:16px;
+                        border-radius:6px; border:2px solid #334155; background:#0f172a;
+                        color:#fde047; font-family:inherit; resize:vertical;"></textarea>
+                <span id="cnt2" style="font-size:12px; color:#64748b;">0 / 15</span>
+            </div>
+            <div>
+                <label style="font-size:15px; color:#38bdf8; display:block; margin-bottom:6px;">
+                3. O que você faria diferente se começasse de novo?
+                </label>
+                <textarea id="diario_3" rows="2" minlength="15" placeholder="Mínimo 15 caracteres..."
+                style="width:100%; box-sizing:border-box; padding:10px; font-size:16px;
+                        border-radius:6px; border:2px solid #334155; background:#0f172a;
+                        color:#fde047; font-family:inherit; resize:vertical;"></textarea>
+                <span id="cnt3" style="font-size:12px; color:#64748b;">0 / 15</span>
+            </div>
+            </div>
             
             <div class="btn-container" style="margin-top: 15px; justify-content: center;">
                 <button id="btn_salvar_diario" onclick="salvarDiarioBordo()" style="background:#22c55e;">💾 Salvar Reflexão</button>
@@ -1434,21 +1604,23 @@
     
     <section id="fase8" class="enigma-box">
         <h2 style="color: #fde047;">🌀 A Sala do Arquiteto</h2>
-        <div class="mentor" style="border-left-color: #fde047; ;">
+        <p style="font-size:16px; color:#e2e8f0; background: rgba(56, 189, 248, 0.1); border: 1px dashed #38bdf8; padding: 12px; border-radius: 6px; margin-top:15px; line-height: 1.5;"> 📋 <strong style="color:#38bdf8;">Habilidade BNCC (EM13MAT315):</strong> Investigar e registrar padrões de variação de sequências numéricas.</p>
+        
+
+        
+        <div class="mentor" style="border-left-color: #fde047;">
             <p><strong>Assistente I.A. diz (em tons baixos):</strong> "Você encontrou o que não deveria. Esta sala guarda o padrão primordial que rege a natureza: a <strong>Proporção Áurea</strong>."</p>
             <div class="svg-container" style="background: #0b1120;">
                     <svg width="30%" viewBox="0 0 680 420" xmlns="http://www.w3.org/2000/svg" style="display: block; margin: 0 auto;" role="img" aria-labelledby="desc-espiral">
-        
-                        <desc id="desc-espiral">Uma espiral verde crescente construída a partir da união de vários quadrados em expansão. As áreas numéricas grafadas no centro dos quadrados seguem a lógica de Fibonacci: 1, 1, 2, 3, 5, 8, 13... Terminando em um imenso quadrado escuro com uma interrogação, aguardando o cálculo do aluno.</desc>
+                       <desc id="desc-espiral">Uma espiral verde crescente construída a partir da união de vários quadrados em expansão. As áreas numéricas grafadas no centro dos quadrados seguem a lógica de Fibonacci: 1, 1, 2, 3, 5, 8, 13... Terminando em um imenso quadrado escuro com uma interrogação, aguardando o cálculo do aluno. (Competência BNCC: EM13MAT315).</desc>
+
                         <defs>
                             <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
                                 <rect width="20" height="20" fill="#fff3a6" />
                                 <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#fbd971" stroke-width="1.5"/>
                             </pattern>
                         </defs>
-
                         <rect width="680" height="420" fill="url(#grid)" />
-
                         <g fill="none" stroke="#111111" stroke-width="2">
                             <rect x="0" y="0" width="420" height="420" />
                             <rect x="420" y="0" width="260" height="260" />
@@ -1459,7 +1631,6 @@
                             <rect x="480" y="300" width="20" height="20" />
                             <rect x="500" y="300" width="20" height="20" />
                         </g>
-
                         <g fill="#000000" text-anchor="middle" dominant-baseline="central">
                             <text x="210" y="210" font-size="64">?</text>
                             <text x="550" y="130" font-size="64">13</text>
@@ -1470,7 +1641,6 @@
                             <text x="490" y="310" font-size="11">1</text>
                             <text x="510" y="310" font-size="11">1</text>
                         </g>
-
                         <path d="M 0 420
                                 A 420 420 0 0 1 420 0
                                 A 260 260 0 0 1 680 260
@@ -1483,11 +1653,8 @@
                             fill="none" stroke="#1da851" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" class="linha-interativa-espiral">
                             <title>A Espiral da Sequência de Fibonacci</title>
                         </path>
-
                         <circle cx="420" cy="0" r="6" fill="#ffffff" />
-                        
                     </svg>
-                
             </div>
             <p id="instrucao-f8-sequencia">Qual é o <strong>próximo número</strong> dessa sequência?</p>
         </div>
@@ -1496,13 +1663,53 @@
             <input type="number" id="f8_resposta" aria-describedby="instrucao-f8-sequencia" placeholder="?" style="width:200px; font-size:28px;">
         </div>
         <div class="btn-container">
-            <button onclick="verificarFase8()" style="background:#8b5cf6;">Validar</button>
-            </div>
+            <button id="btn_validar_f8" onclick="verificarFase8()" style="background:#8b5cf6;">Validar</button>
+        </div>
         <div id="erro_f8" class="feedback" role="status" aria-live="polite"></div>
+        
+        <div id="f8_bonus" style="display:none; margin-top:25px; border-top:2px dashed #fde047; padding-top:20px;">
+            <div class="mentor" style="border-left-color:#fde047;">
+                <p><strong>Assistente I.A. diz:</strong> "A Proporção Áurea (φ) emerge desta sequência. Divida qualquer termo pelo anterior: 21÷13, 13÷8, 8÷5... Todos convergem para o mesmo número mágico. Arredonde para 2 casas decimais."</p>
+            </div>
+            <div class="input-group">
+                <span><label for="f8_phi">φ (phi) &approx; </label></span>
+                <input type="text" id="f8_phi" placeholder="0,00" style="width:120px; font-size:24px; text-align:center;">
+            </div>
+            <div class="btn-container">
+                <button id="btn_validar_phi" onclick="verificarPhi()" style="background:#22c55e;">Confirmar φ</button>
+            </div>
+            <div id="erro_phi" class="feedback" role="status" aria-live="polite"></div>
+        </div>
+
         <div id="f8_parabens" style="display:none; margin-top:30px; border-top:2px solid #fde047; padding-top:20px;" role="status" aria-live="polite">
             <h3 style="color:#22c55e;">🌟 Você transcendeu a matemática! A natureza se revelou a você.</h3>
-            <p style="font-size:20px;">A porta principal foi destrancada. Siga para a sala de controle.</p>
-            <button onclick="mudarTela('fase8', 'tela_sucesso', 'fase8')" class="btn-avancar">Acessar Relatório Final ➔</button>
+
+                <div style="background: rgba(253,224,71,0.08); border: 1px dashed #fde047;
+                            border-radius: 8px; padding: 20px; margin: 20px 0; text-align: left;">
+                    <p style="color:#fde047; font-weight:bold; margin-top:0;">
+                        🌿 Por que a contante φ (Phi), proporção áurea, governa a natureza?
+                        <p>Ela está intimamente ligada à sequência de Fibonacci (1, 1, 2, 3, 5, 8, 13, …). A razão entre dois números consecutivos nessa sequência aproxima-se de φ à medida que os números crescem.</p>
+                    </p>
+                    <p style="color:#f8fafc; font-size:17px; line-height:1.7;">
+                        Encontramos está constante em:<br><br>
+                        - Pétalas de girassol: <strong style="color:#fde047;">34 e 55</strong> espirais 
+                        (termos consecutivos de Fibonacci).<br>
+                        - Concha nautilus: cada câmara é <strong style="color:#fde047;">φ vezes</strong> 
+                        maior que a anterior.<br>
+                        - Ramos de árvore, escamas de pinha, proporções do rosto humano — 
+                        todos convergem para <strong style="color:#fde047;">1,618...</strong>
+                    </p>
+                    <p style="color:#94a3b8; font-size:14px; margin-bottom:0;">
+                        📋 <strong style="color:#fde047;">BNCC (EM13MAT502):</strong> 
+                        Investigar relações entre números, formas geométricas e padrões 
+                        presentes na natureza.
+                    </p>
+                </div>
+
+            <p style="font-size:20px;">A porta principal foi destrancada. Siga para a sala de controle para analisar sua jornada.</p>
+            <div class="btn-container" style="justify-content: center;">
+                <button onclick="mudarTela('fase8', 'tela_sucesso', 'fase8')" style="background:#2ac749; font-size: 20px; width: 100%;">Acessar Tela de Sucesso ➔</button>
+            </div>
         </div>
     </section>
 
