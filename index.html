@@ -105,7 +105,28 @@
             </div>
 
             
-       
+        <div style="margin-top: 50px; padding: 20px; border: 2px dashed #f59e0b; background: rgba(245, 158, 11, 0.1); border-radius: 8px;">
+            <h3 style="color: #fde047; font-size: 20px; margin-top: 0;">🛠️ Menu Provisório de Testes</h3>
+            <p style="font-size: 16px; margin-bottom: 15px;">Selecione a fase para onde deseja saltar diretamente:</p>
+            <select id="menu-testes" style="padding: 10px; font-size: 16px; border-radius: 6px; margin-bottom: 15px; width: 100%; max-width: 400px; cursor: pointer;">
+                <option value="fase1">Fase 1 (Parte 1) - Pitágoras</option>
+                <option value="fase1_pt2">Fase 1 (Parte 2) - Simplificação √20</option>
+                <option value="fase1_pt3">Fase 1 (Parte 3) - Tirolesa</option>
+                <option value="fase2">Fase 2 (Parte 1) - Triângulo Retângulo</option>
+                <option value="fase2_pt2">Fase 2 (Parte 2) - Circunferência</option>
+                <option value="fase3">Fase 3 - O Finito e o Infinito</option>
+                <option value="fase4">Fase 4 - Potências e Dízimas</option>
+                <option value="fase5">Fase 5 (Parte 1) - Áreas e Raízes</option>
+                <option value="fase5_pt2">Fase 5 (Parte 2) - Raiz de 180</option>
+                <option value="fase6">Fase 6 (Parte 1) - Caixinha Cúbica 3D</option>
+                <option value="fase6_pt2">Fase 6 (Parte 2) - Sobra da Fita</option>
+                <option value="fase7">Fase 7 - Estrutura do Tempo</option>
+                <option value="fase8">Fase 8 - Sequência de Fibonacci</option>
+                <option value="tela_sucesso">TELA FINAL (Relatório de Sucesso)</option>
+            </select>
+            <br>
+            <button onclick="mudarTela('tela1', document.getElementById('menu-testes').value)" style="background: #f59e0b; color: #0f172a; padding: 10px 20px; font-size: 16px; text-transform: none; border-radius: 6px;">Saltar para Fase Selecionada 🚀</button>
+        </div>
         </div>
 
         <div id="modal-sobre" class="modal-overlay" style="display: none;">
@@ -1663,24 +1684,25 @@
         <div id="f8_parabens" style="display:none; margin-top:30px; border-top:2px solid #fde047; padding-top:20px;" role="status" aria-live="polite">
             <h3 style="color:#22c55e;">🌟 Você transcendeu a matemática! A natureza se revelou a você.</h3>
 
-                <div style="background: rgba(253,224,71,0.08); border: 1px dashed #fde047;
-                            border-radius: 8px; padding: 20px; margin: 20px 0; text-align: left;">
+                <div style="background: rgba(253,224,71,0.08); border: 1px dashed #fde047; border-radius: 8px; padding: 20px; margin: 20px 0; text-align: left;">
                     <p style="color:#fde047; font-weight:bold; margin-top:0;">
-                        🌿 Por que a contante φ (Phi), proporção áurea, governa a natureza?
-                        <p>Ela está intimamente ligada à sequência de Fibonacci (1, 1, 2, 3, 5, 8, 13, …). A razão entre dois números consecutivos nessa sequência aproxima-se de φ à medida que os números crescem.</p>
+                        🌿 Por que a constante φ (Phi), proporção áurea, governa a natureza?
                     </p>
-                    <p style="color:#f8fafc; font-size:17px; line-height:1.7;">
-                        Encontramos está constante em:<br><br>
-                        - Pétalas de girassol: <strong style="color:#fde047;">34 e 55</strong> espirais 
+                    <p style="color:#f8fafc; font-size:17px; line-height:1.7; margin-top:8px;">
+                        Ela está intimamente ligada à sequência de Fibonacci (1, 1, 2, 3, 5, 8, 13, …).
+                        A razão entre dois números consecutivos nessa sequência aproxima-se de φ à medida
+                        que os números crescem.<br><br>
+                        Encontramos esta constante em:<br><br>
+                        - Pétalas de girassol: <strong style="color:#fde047;">34 e 55</strong> espirais
                         (termos consecutivos de Fibonacci).<br>
-                        - Concha nautilus: cada câmara é <strong style="color:#fde047;">φ vezes</strong> 
+                        - Concha nautilus: cada câmara é <strong style="color:#fde047;">φ vezes</strong>
                         maior que a anterior.<br>
-                        - Ramos de árvore, escamas de pinha, proporções do rosto humano — 
+                        - Ramos de árvore, escamas de pinha, proporções do rosto humano —
                         todos convergem para <strong style="color:#fde047;">1,618...</strong>
                     </p>
                     <p style="color:#94a3b8; font-size:14px; margin-bottom:0;">
-                        📋 <strong style="color:#fde047;">BNCC (EM13MAT502):</strong> 
-                        Investigar relações entre números, formas geométricas e padrões 
+                        📋 <strong style="color:#fde047;">BNCC (EM13MAT502):</strong>
+                        Investigar relações entre números, formas geométricas e padrões
                         presentes na natureza.
                     </p>
                 </div>

@@ -1560,8 +1560,14 @@ function verificarF4Passo1() {
     let acertos = 0; const total = 2; const fase = 'f4_p1';
     const num = document.getElementById('f4_num').value.trim(); const den = document.getElementById('f4_den').value.trim();
     if (!validarEntradaNumerica(num) || !validarEntradaNumerica(den)) return;
-    if (num === '16') { acertos++; registrarAcertoCampo(fase, 'Potências (1,777) - Numerador', num); aplicarFeedbackVisual('f4_num', true); } else { registrarErroCampo(fase, 'Potências (1,777) - Numerador', num); aplicarFeedbackVisual('f4_num', false); }
-    if (den === '9') { acertos++; registrarAcertoCampo(fase, 'Potências (1,777) - Denominador', den); aplicarFeedbackVisual('f4_den', true); } else { registrarErroCampo(fase, 'Potências (1,777) - Denominador', den); aplicarFeedbackVisual('f4_den', false); }
+    // Passo 1 — 1,777... = 16/9
+    if (fracaoEquivalente(Number(num), Number(den), 16, 9)) {
+        acertos++; registrarAcertoCampo(fase, 'Potências (1,777) - Numerador', num); aplicarFeedbackVisual('f4_num', true);
+        acertos++; registrarAcertoCampo(fase, 'Potências (1,777) - Denominador', den); aplicarFeedbackVisual('f4_den', true);
+    } else {
+        registrarErroCampo(fase, 'Potências (1,777) - Numerador', num); aplicarFeedbackVisual('f4_num', false);
+        registrarErroCampo(fase, 'Potências (1,777) - Denominador', den); aplicarFeedbackVisual('f4_den', false);
+    }
     const ok = (acertos === total); contabilizarCampos(fase, acertos); registrarTentativa(fase, ok); const fb=document.getElementById('erro_f4p1');
     if (ok) { fb.style.color='#22c55e'; fb.innerHTML='✓ Montada!'; mostrar('passo2-fase4'); } 
     else { 
@@ -1577,8 +1583,14 @@ function verificarF4Passo2() {
     let acertos = 0; const total = 2; const fase = 'f4_p2';
     const num = document.getElementById('f4_m_num').value.trim(); const den = document.getElementById('f4_m_den').value.trim();
     if (!validarEntradaNumerica(num) || !validarEntradaNumerica(den)) return;
-    if (num === '4') { acertos++; registrarAcertoCampo(fase, 'Potências (m) - Numerador', num); aplicarFeedbackVisual('f4_m_num', true); } else { registrarErroCampo(fase, 'Potências (m) - Numerador', num); aplicarFeedbackVisual('f4_m_num', false); }
-    if (den === '3') { acertos++; registrarAcertoCampo(fase, 'Potências (m) - Denominador', den); aplicarFeedbackVisual('f4_m_den', true); } else { registrarErroCampo(fase, 'Potências (m) - Denominador', den); aplicarFeedbackVisual('f4_m_den', false); }
+    // Passo 2 — m = 4/3
+    if (fracaoEquivalente(Number(num), Number(den), 4, 3)) {
+        acertos++; registrarAcertoCampo(fase, 'Potências (m) - Numerador', num); aplicarFeedbackVisual('f4_m_num', true);
+        acertos++; registrarAcertoCampo(fase, 'Potências (m) - Denominador', den); aplicarFeedbackVisual('f4_m_den', true);
+    } else {
+        registrarErroCampo(fase, 'Potências (m) - Numerador', num); aplicarFeedbackVisual('f4_m_num', false);
+        registrarErroCampo(fase, 'Potências (m) - Denominador', den); aplicarFeedbackVisual('f4_m_den', false);
+    }
     const ok = (acertos === total); contabilizarCampos(fase, acertos); registrarTentativa(fase, ok); const fb=document.getElementById('erro_f4p2');
     if (ok) { fb.style.color='#22c55e'; fb.innerHTML='✓ Perfeito!'; mostrar('passo3-fase4'); } 
     else { 
@@ -1594,8 +1606,14 @@ function verificarF4Passo3() {
     let acertos = 0; const total = 2; const fase = 'f4_p3';
     const num = document.getElementById('f4_n_num').value.trim(); const den = document.getElementById('f4_n_den').value.trim();
     if (!validarEntradaNumerica(num) || !validarEntradaNumerica(den)) return;
-    if (num === '9') { acertos++; registrarAcertoCampo(fase, 'Potências (n) - Numerador', num); aplicarFeedbackVisual('f4_n_num', true); } else { registrarErroCampo(fase, 'Potências (n) - Numerador', num); aplicarFeedbackVisual('f4_n_num', false); }
-    if (den === '4') { acertos++; registrarAcertoCampo(fase, 'Potências (n) - Denominador', den); aplicarFeedbackVisual('f4_n_den', true); } else { registrarErroCampo(fase, 'Potências (n) - Denominador', den); aplicarFeedbackVisual('f4_n_den', false); }
+    // Passo 3 — n = 9/4
+    if (fracaoEquivalente(Number(num), Number(den), 9, 4)) {
+        acertos++; registrarAcertoCampo(fase, 'Potências (n) - Numerador', num); aplicarFeedbackVisual('f4_n_num', true);
+        acertos++; registrarAcertoCampo(fase, 'Potências (n) - Denominador', den); aplicarFeedbackVisual('f4_n_den', true);
+    } else {
+        registrarErroCampo(fase, 'Potências (n) - Numerador', num); aplicarFeedbackVisual('f4_n_num', false);
+        registrarErroCampo(fase, 'Potências (n) - Denominador', den); aplicarFeedbackVisual('f4_n_den', false);
+    }
     const ok = (acertos === total); contabilizarCampos(fase, acertos); registrarTentativa(fase, ok); const fb=document.getElementById('erro_f4p3');
     if (ok) { fb.style.color='#22c55e'; fb.innerHTML='✓ Exato!'; mostrar('passo4-fase4'); } 
     else { 
@@ -1917,27 +1935,6 @@ function fecharModal(idModal) {
             overlay._focusAntes = null;
         }
     }, 300);
-}
-
-function fecharModal(idModal) {
-    const overlay = document.getElementById(idModal);
-    overlay.style.display = 'none';
-
-    // Remove os listeners criados ao abrir
-    if (overlay._escListener) {
-        document.removeEventListener('keydown', overlay._escListener);
-        overlay._escListener = null;
-    }
-    if (overlay._trapListener) {
-        document.removeEventListener('keydown', overlay._trapListener);
-        overlay._trapListener = null;
-    }
-
-    // Devolve o foco ao elemento que o tinha antes
-    if (overlay._focusAntes) {
-        overlay._focusAntes.focus();
-        overlay._focusAntes = null;
-    }
 }
 
 function abrirSobre()   { abrirModal('modal-sobre');   }
