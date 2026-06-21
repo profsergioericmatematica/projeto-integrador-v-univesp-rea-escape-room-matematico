@@ -389,7 +389,8 @@ const diagnosticosErro = {
  * @returns {string} Mensagem de feedback otimizada
  */
 function obterDicaEspecifica(idCampo, valorDigitado, dicaPadrao) {
-    const val = String(valorDigitado).trim();
+    // 🌟 CORREÇÃO AQUI: adicionado o replace para unificar vírgula e ponto
+    const val = String(valorDigitado).trim().replace(',', '.'); 
     if (diagnosticosErro[idCampo] && diagnosticosErro[idCampo][val]) {
         return `💡 <strong>Intervenção do Sistema:</strong> ${diagnosticosErro[idCampo][val]}`;
     }
@@ -745,13 +746,43 @@ function iniciarJogo() {
 }
 
 function alternarTema() {
+    console.log("alternarTema() foi chamado!"); // LOG 1
     const body = document.body;
     body.classList.toggle('tema-claro');
+    const isClaro = body.classList.contains('tema-claro');
+    console.log("Tema claro:", isClaro); // LOG 2
+
     const btn = document.getElementById('btn-tema');
-    if (body.classList.contains('tema-claro')) {
-        btn.innerHTML = '🌙 Tema Escuro'; btn.style.background = '#e2e8f0'; btn.style.color = '#0f172a';
+    const barra = document.getElementById('barra-progresso-container');
+    const texto = document.getElementById('progresso-texto');
+
+    console.log("Barra encontrada?", barra); // LOG 3
+    console.log("Texto encontrado?", texto); // LOG 4
+
+    if (isClaro) {
+        btn.innerHTML = '🌙 Tema Escuro';
+        btn.style.background = '#e2e8f0';
+        btn.style.color = '#0f172a';
+        if (barra) {
+            barra.style.backgroundColor = '#e2e8f0';
+            console.log("Barra -> fundo claro aplicado!"); // LOG 5
+        }
+        if (texto) {
+            texto.style.color = '#1e293b';
+            console.log("Texto -> cor clara aplicada!"); // LOG 6
+        }
     } else {
-        btn.innerHTML = '☀️ Tema Claro'; btn.style.background = '#334155'; btn.style.color = '#f8fafc';
+        btn.innerHTML = '☀️ Tema Claro';
+        btn.style.background = '#334155';
+        btn.style.color = '#f8fafc';
+        if (barra) {
+            barra.style.backgroundColor = '#334155';
+            console.log("Barra -> fundo escuro aplicado!"); // LOG 7
+        }
+        if (texto) {
+            texto.style.color = '#94a3b8';
+            console.log("Texto -> cor escura aplicada!"); // LOG 8
+        }
     }
 }
 

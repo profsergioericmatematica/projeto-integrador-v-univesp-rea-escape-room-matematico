@@ -243,13 +243,13 @@ button:hover { background-color: #0369a1; transform: scale(1.02); }
 ========================================= */
 header {
     display: flex;
-    justify-content: center;
+    flex-direction: column;   /* Empilha os elementos verticalmente */
     align-items: center;
     position: fixed;
     top: 0; left: 0; width: 100%;
     background-color: #1e293b;
     border-bottom: 2px solid #38bdf8;
-    padding: 15px 20px;
+    padding: 12px 20px 10px 20px;
     z-index: 999;
     box-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
@@ -262,8 +262,6 @@ header {
 }
 
 .btn-tema-header {
-    position: absolute;
-    right: 20px;
     background: #334155; 
     color: #f8fafc; 
     border: 1px solid #38bdf8; 
@@ -273,6 +271,7 @@ header {
     font-weight: bold; 
     transition: 0.3s;
     font-size: 16px;
+    /* Remova o position: absolute e right: 20px */
 }
 
 /* =========================================
@@ -638,4 +637,23 @@ span.linha-interativa:hover, strong.linha-interativa:hover {
         margin: 4px 0;
         min-height: 54px;
     }
+}
+
+
+/* ===== BARRA DE PROGRESSO - AMBOS OS TEMAS (FORÇADO) ===== */
+#barra-progresso-container {
+    background-color: #334155 !important; /* Cinza escuro no tema escuro */
+}
+
+body.tema-claro #barra-progresso-container {
+    background-color: #e2e8f0 !important; /* Cinza claro no tema claro */
+}
+
+/* ===== TEXTO DE PROGRESSO - AMBOS OS TEMAS ===== */
+#progresso-texto {
+    color: #94a3b8 !important; /* Cinza claro no tema escuro */
+}
+
+body.tema-claro #progresso-texto {
+    color: #1e293b !important; /* Preto/azul escuro no tema claro */
 }
