@@ -1,248 +1,128 @@
-# 🧩 REA: Escape Room Matemático – Fundamentos Visuais
+## 🧩 Escape Room Matemático
 
-![Status](https://img.shields.io/badge/Status-Concluído-success)
-![Licença](https://img.shields.io/badge/Licen%C3%A7a-MIT-blue)
-![Tecnologias](https://img.shields.io/badge/Tecnologias-HTML5%20|%20CSS3%20|%20Vanilla%20JS-orange)
-![Acessibilidade](https://img.shields.io/badge/Acessibilidade-WCAG%202.1%20AA-brightgreen)
+Recurso Educacional Aberto (REA) focado na Educação Baseada em Evidências. Projeto Integrador V | Universidade Virtual do Estado de São Paulo - UNIVESP (2026)
 
----
+## 📖 Sobre o Projeto
 
-## 🎯 O que é este projeto?
+Este projeto consiste em uma intervenção pedagógica digital gamificada (Escape Room) desenvolvida para diagnosticar e sanar defasagens em habilidades matemáticas essenciais, com base nos descritores da Prova Paulista.
 
-Este é um **Recurso Educacional Aberto (REA)** interativo que utiliza a mecânica de *Escape Room* para ensinar e diagnosticar habilidades matemáticas essenciais. Foi desenvolvido para o **Projeto Integrador V** da UNIVESP, com base nos descritores de defasagem da **Prova Paulista (1º Bimestre de 2026)**.
+O aluno assume o papel de um prisioneiro em um laboratório de matemática pura. Guiado por uma Inteligência Artificial (Tutor Virtual), ele precisa resolver enigmas geométricos e algébricos para escapar. Ao invés de premiar o simples acerto mecânico, o sistema exige e avalia a compreensão da essência visual e lógica dos números.
 
-O aluno assume o papel de um prisioneiro em um laboratório de matemática pura e, guiado por uma assistente I.A., precisa resolver uma série de enigmas geométricos e algébricos.
+## ✨ Principais Funcionalidades
 
-**O grande diferencial (Data-Driven):** O sistema atua como uma ferramenta diagnóstica passiva. Ele registra cada tentativa, erro, dica utilizada e tempo de resposta. Ao final, gera um **relatório completo em formato `.txt`** para o professor, permitindo uma análise granular das dificuldades metacognitivas de cada aluno.
+📊 Relatório Pedagógico (Learning Analytics): O sistema capta a telemetria completa da sessão (tempo, acertos, erros específicos por campo, dicas utilizadas e linha do tempo de eventos). Ao final, gera um relatório textual () local — sem envio de dados para servidores, garantindo total adequação à LGPD..txt
 
----
+🧮 Calculadora Virtual Segura: Uma calculadora in-app construída com um Recursive Descent Parser personalizado, protegida contra injeções e falhas lógicas (como a divisão por zero).
 
-## 📁 Estrutura de Diretórios
+👁️ Acessibilidade e UX (WCAG 2.1): Suporte a preferência de movimento reduzido, touch targets ampliados (mínimo de 48px) e Temas Claro/Escuro rigorosamente testados para alto contraste (AA/AAA).
 
-O projeto foi organizado de forma modular para facilitar a manutenção e o deploy estático:
+📝 Diário de Bordo (Metacognição): Antes de gerar o relatório, o aluno é instigado a responder três perguntas sobre seu próprio processo de raciocínio, promovendo o fechamento cognitivo.
 
-```text
-/ (Raiz)
-├── index.html                  # Estrutura semântica e interface do Escape Room
-├── README.md                   # Documentação do projeto
-├── LICENSE                     # Licença MIT
-├── testes_edge_cases.md        # Documentação de testes de resiliência e segurança
-│
-├── script/
-│   └── script.js               # Lógica de jogo, validações, parser e geração de relatórios
-│
+## 📚 Matriz Curricular (BNCC)
+O jogo percorre uma progressão transdisciplinar focada no Ensino Médio:
+
+Fase 1 e 2: Teorema de Pitágoras, triângulos em circunferências e simplificação de radicais (EM13MAT308).
+
+Fase 3: O Finito e o Infinito (conversão de dízimas periódicas e frações) (EM13MAT101).
+
+Fase 4: Potências fracionárias, dízimas mistas e expoentes negativos (EM13MAT304).
+
+Fase 5: Números irracionais e posicionamento na reta numérica real (EM13MAT101).
+
+Fase 6: Geometria 3D, volume do cubo e tradução universal de grandezas (EM13MAT309).
+
+Fase 7: Operações com grandezas de tempo e lógica modular de base 60 e 24 (EM13MAT101).
+
+Fase 8 (Secreta): Sequência de Fibonacci e Proporção Áurea (EM13MAT315, EM13MAT502).
+
+## 🧠 Dicionário de Diagnósticos (Tutor Inteligente)
+
+A plataforma foi construída com um motor de tutoria inteligente, fundamentado em um dicionário que contém mais de 60 mensagens de erro exclusivas (). Em vez de um feedback genérico ("Resposta incorreta"), o sistema mapeia o input incorreto e entrega uma intervenção pedagógica direcionada à falha conceitual exata do aluno.diagnosticosErro
+
+Exemplo Prático: Se o aluno inserir o valor  no campo da base do triângulo (quando deveria ser ), a interface exibirá: "Você dividiu a largura do topo (10/2). Subtraia o fundo (6m) antes de dividir pela metade!". Isso garante que a aplicação permaneça ofereça suporte contextualizado, guiando o aluno construtivamente.54
+
+## 🛡️ Plano de Testes e Resolução de Edge Cases
+
+Para garantir a estabilidade da aplicação em ambiente escolar, foram mapeados e tratados os 6 principais cenários de exceção (casos limite).
+
+Cenário 1: Inserção de Valores Negativos
+Ação: Inserir um número negativo (ex: ) em um campo geométrico.-5
+
+Resolução: A função absorve o valor sem quebrar a aplicação. A lógica de negócio recusa a resposta, o campo é destacado em vermelho e a falha é registrada na telemetria (). A arquitetura trata números inválidos como falha natural de jogo.validarEntradaNumericastats.errosDetalhados
+
+Cenário 2: Valores Absurdamente Altos (Overflow)
+Ação: Colar um número colossal (ex: ).999999999999999999
+
+Resolução: O JavaScript trata o input dentro de seu limite de segurança. Como a string gerada não corresponde ao gabarito, a resposta é rejeitada sem distorcer o layout CSS (protegido por ). Não há travamento do DOM.max-width
+
+Cenário 3: Submissão de Strings Vazias ou Apenas Espaços
+Ação: Clicar em "Validar" com o campo em branco ou preenchido com espaços.
+
+Resolução: A verificação bloqueia a submissão instantaneamente, prevenindo a inserção de "lixo" no relatório JSON final. Um alerta visual instrui o aluno a inserir um valor válido.trim() === ''
+
+Cenário 4: Injeção de Caracteres Especiais e XSS
+Ação: Tentar injetar código (ex: ).<script>alert('hack')</script>
+
+Resolução: Dupla camada. O rejeita strings em campos numéricos. No campo textual ("Nome"), a função global converte tags HTML em entidades seguras (). O código malicioso é inofensivamente impresso no relatório final, impossibilitando sua execução.!isNaNsanitizarHTML&lt;
+
+Cenário 5: Divisão por Zero na Calculadora Virtual
+Ação: Tentar calcular na calculadora do sistema.5 / 0 =
+
+Resolução: O Parser personalizado utiliza a verificação . Ao detectar divisão por zero, lança uma exceção controlada, capturada pelo bloco , exibindo a mensagem "Erro" no visor em vez de quebrar a thread com um retorno .!isFinite(r)catchInfinity
+
+Cenário 6: Burlar as Fases via Manipulação do DOM
+Ação: Remover a classe CSS via DevTools (F12) para forçar o avanço.hidden
+
+Resolução: A segurança não depende da interface. A função cruza o evento com o estado global (). Se a fase não foi genuinamente resolvida, a navegação é abortada e um alerta de segurança é disparado.mudarTela()stats.fases[id].concluida
+
+## 🧪 Testes de Bancada e Validação Funcional (QA)
+
+A arquitetura de gamificação (Estrelas, Patentes e Penalidades) foi submetida a três baterias estritas de QA manual para validar a telemetria do professor.
+
+Teste 1: Execução Perfeita (Mestre Dourado)
+
+Cenário: O aluno simulado acertou todos os 60 campos na primeira tentativa sem solicitar dicas.
+
+Resultado: O relatório confirmou a pontuação de 96 estrelas e a patente de "Mestre do Escapismo 🏆", ratificando o Happy Path.
+
+Teste 2: Uso Massivo de Dicas (Teste de Penalidade)
+
+Cenário: Resolução sem erros de digitação, porém solicitando todas as 32 dicas do sistema.
+
+Resultado: O sistema aplicou a penalidade perfeitamente, consolidando 64 estrelas e rebaixando a patente para "Especialista Matemático". A linha do tempo rastreou com exatidão a intercalação entre pedidos de dica e acertos.
+
+Teste 3: Erro Sistemático (Uma falha por campo)
+
+Cenário: O usuário errou intencionalmente cada um dos 60 campos exata vez antes de acertar, sem usar dicas.
+
+Resultado: O motor de cálculo deduziu corretamente as penalidades, entregando 59 estrelas, comprovando a estabilidade do array de persistência de erros.
+
+## 🚀 Como Executar (Instalação)
+
+O REA foi desenhado para ser universalmente acessível e resiliente. Não exige build steps (Node.js, Webpack, etc.) ou servidores web, garantindo execução offline em laboratórios escolares com infraestrutura restrita.
+
+Faça o download ou clone este repositório.
+
+Extraia os arquivos para qualquer massa.
+
+Dê um duplo clique no arquivo .index.html
+
+O projeto abrirá nativamente no seu navegador padrão.
+
+## 📂 Estrutura de Diretórios
+
+Texto simples
+/
+├── index.html        # Estrutura principal da interface, modais e SVGs inline.
 ├── style/
-│   └── style.css               # Estilização responsiva e regras de acessibilidade visual
-│
-└── testes de bancada/          # Exemplos reais de relatórios gerados pelo sistema
-    ├── Relatorio_Teste_de_Bancada_número_1...txt (100% acertos / sem dicas)
-    ├── Relatorio_Teste_de_Bancada_número_2...txt (Uso de todas as dicas)
-    └── Relatorio_Teste_de_Bancada_número_3...txt (1 erro em cada campo)
-```
+│   └── style.css     # Estilos de interface, acessibilidade (WCAG), temas e animações.
+└── script/
+    ├── dados.js      # Base de dados: Dicionário de erros cognitivos e dicas.
+    └── script.js     # Motor lógico: Validações, parser matemático e telemetria (Learning Analytics).
 
-## 🚀 Funcionalidades e Maturidade Técnica
+## 👥 Equipe de Desenvolvimento (UNIVESP)
 
-- **Tela inicial contextualizada:** oferece acesso rápido a informações sobre o projeto e a uma revisão teórica, antes mesmo de iniciar o jogo.
-- **Modais de apoio:** pop-ups com conteúdo institucional e resumos matemáticos, mantendo o aluno informado sem sair da página.
-- **Tutor Inteligente (Feedback Formativo):** O sistema possui um dicionário com mais de 60 diagnósticos de erro. Quando o aluno erra, recebe uma dica específica sobre o erro conceitual cometido (ex: "Você dividiu a largura do topo (10/2). Subtraia o fundo (6m) antes de dividir pela metade!"), transformando o erro em oportunidade de aprendizado.
-- **Refatoração Dinâmica do Código:** O objeto de estatísticas (`stats.fases`) é gerado automaticamente a partir da matriz pedagógica, eliminando repetições e tornando o código mais enxuto e fácil de manter.
-- **Micro‑interações Visuais:** Feedback visual em forma de "toast" (notificação flutuante) ao copiar um resultado da calculadora ou salvar o diário de bordo, melhorando a experiência do usuário.
-- **Efeito Glassmorphism e Animações:** Os modais de "Sobre" e "Revisão" ganharam fundo com desfoque (backdrop-filter) e transições suaves de escala, conferindo um visual mais moderno e profissional.
-
-## 🧠 Motor Pedagógico
-
-Jornada progressiva: 8 fases e 32 etapas de validação com dificuldade crescente.
-
-Sistema de Estrelas e Patentes: Penaliza o uso indiscriminado de dicas e erros sucessivos, classificando o aluno de Prisioneiro dos Números até Mestre do Escapismo.
-
-**Diário de Bordo Metacognitivo Estruturado:** O aluno responde a três perguntas específicas (1. Qual fase foi mais difícil? 2. Qual raciocínio usou? 3. O que faria diferente?), estimulando a reflexão profunda sobre o próprio processo de aprendizagem. Ao salvar, a interface é selada visualmente (🔒) e uma notificação de confirmação é exibida.
-
-🌟 Como as Estrelas são calculadas?
-
-O jogo possui 32 etapas de validação no total. Cada etapa pode render até 3 estrelas, o que significa que a pontuação máxima do laboratório é de 96 estrelas. A distribuição por etapa funciona assim:
-
-| Desempenho | Estrelas | Condição |
-| :--- | :--- | :--- |
-| ⭐⭐⭐ Excelente | 3 estrelas | 0 erros e 0 dicas (acertou de primeira) |
-| ⭐⭐ Regular | 2 estrelas | Soma de erros + dicas = 1 ou 2 |
-| ⭐ Insuficiente | 1 estrela | Soma de erros + dicas ≥ 3 |
-
-🎖️ As 5 Patentes de Fuga
-
-A soma das estrelas de todas as etapas no final do jogo define a patente do aluno. Cada patente reflete um nível de maturidade cognitiva e autonomia matemática:
-
-1. 🪦 Prisioneiro dos Números (0 a 19 Estrelas)
-   
-Diagnóstico: O aluno apresentou dependência quase total das dicas e cometeu múltiplos erros por etapa. Reflete uma grave defasagem nos conceitos fundamentais (como operações básicas e compreensão visual da geometria).
-
-Ação Pedagógica: Requer intervenção direta e retomada da base matemática. O aluno ainda está "preso" na decoreba e não consegue visualizar a lógica.
-
-2. 🏃 Aprendiz em Fuga (20 a 38 Estrelas)
-   
-Diagnóstico: O aluno conseguiu compreender a dinâmica em algumas fases mais fáceis, mas ainda tropeça fortemente quando os conceitos exigem abstração (como frações e raízes não exatas). Utilizou muitas dicas para conseguir avançar.
-
-Ação Pedagógica: Precisa de reforço na tradução da linguagem matemática para o mundo real. Entende a teoria superficialmente, mas falha na aplicação.
-
-3. 🧩 Sobrevivente Lógico (39 a 57 Estrelas)
-   
-Diagnóstico: É o nível intermediário. O aluno sobreviveu ao laboratório com um misto de acertos autônomos e alguns escorregões (especialmente nas fases 3D ou de Tempo). Sabe se virar, mas a sua precisão ainda oscila.
-
-Ação Pedagógica: O foco deve ser em lapidar a atenção aos detalhes (sinais, leitura atenta das unidades de medida) e reduzir a impulsividade ao validar as respostas.
-
-4. 🧪 Especialista Matemático (58 a 76 Estrelas)
-   
-Diagnóstico: Um excelente desempenho. O aluno tem grande clareza espacial e lógica, resolvendo a maioria dos enigmas de primeira. Os erros cometidos foram pontuais ou por distração, e o uso de dicas foi estratégico e raro.
-
-Ação Pedagógica: Aluno autônomo. Pode ser estimulado com desafios maiores ou atuar como monitor/tutor para auxiliar colegas das patentes iniciais.
-
-5. 🏆 Mestre do Escapismo (77 a 96 Estrelas)
-   
-Diagnóstico: A elite do laboratório. O aluno dominou completamente a linguagem dos números, demonstrando precisão cirúrgica, raciocínio rápido e zero (ou quase zero) dependência de dicas. Visualiza perfeitamente a matemática no espaço.
-
-Ação Pedagógica: Alcançou o topo da taxonomia proposta. Como recompensa extra no sistema, apenas alunos que gabaritam o jogo de forma quase perfeita costumam decifrar o padrão sem ajudas para aceder à Sala do Arquiteto (Fase 8).
-
-Nota ao Professor: Esta estrutura, além de engajar o aluno, dá ao professor uma escala muito clara de "temperatura" sobre a turma, permitindo intervenções personalizadas com base em dados concretos.
-
-## 🛡️ Segurança e Resiliência (Edge Cases)
-
-- **Parser Matemático Customizado:** A calculadora virtual não utiliza as funções perigosas eval() ou new Function(). Foi implementado um Recursive Descent Parser que garante o cálculo correto da precedência matemática e elimina vetores de ataque (RCE).
-
-- **Proteção Anti-Bypass:** O avanço de fases é validado duplamente no Front-end, impedindo que alunos usem as ferramentas de desenvolvedor (F12) para forçar botões ocultos.
-
-- **Sanitização de Dados (XSS):** Entradas de texto livres (como o nome do aluno) são higienizadas, convertendo tags HTML em texto inofensivo antes da geração dos relatórios.
-
-- **Dicionário de Erros (Tutor Inteligente):** O sistema não apenas identifica o erro, mas fornece uma orientação personalizada baseada no valor digitado, reduzindo a frustração e promovendo a autonomia do aluno.
-
-(Mais detalhes no arquivo testes_edge_cases.md).
-
-## ♿ Acessibilidade (WCAG 2.1)
-
-Leitores de Tela: Uso de aria-labels, aria-describedby interligando inputs aos enunciados, e SVGs descritos textualmente nos bastidores (<desc>).
-
-Navegação por Teclado: Implementação de focus-visible para destacar campos ativados via Tab (outline acessível).
-
-Sensibilidade ao Movimento: Uso da media query prefers-reduced-motion para desativar animações automáticas em utilizadores com distúrbios vestibulares.
-
-Alto Contraste: Tema claro/escuro nativo com taxas de contraste validadas para dislexia e fadiga visual.
-
-## 📚 Trilha de Conhecimento e Detalhamento das Fases
-
-O laboratório está estruturado para quebrar a mecânica da memorização "marrada", obrigando o aluno a observar a "forma geométrica" da matemática.
-
-## 🌊 Fase 1: Dissecando a Geometria (O Canal e a Tirolesa)
-
-O que é ensinado na fase: A fundação visual do Teorema de Pitágoras, a decomposição em fatores primos, e métodos de aproximação linear de números irracionais.
-
-Etapa 1 (Dedução Espacial e Pitágoras): Como ensinado: O aluno deduz catetos ocultos olhando para a simetria de um canal trapezoidal. Ensina-se que "elevar ao quadrado" é literalmente calcular a área de um quadrado desenhado naquele lado.
-
-Etapa 2 (Simplificação Algébrica): Como ensinado: Através da fatoração animada do número 20. O sistema ensina a "Regra do Passe Livre" (raízes quadradas anulam expoentes quadrados). Pares saem multiplicando, solitários ficam retidos.
-
-Etapa 3 (Aproximação Linear): Como ensinado: O aluno monta uma fórmula com frações que busca a "distância" entre dois quadrados perfeitos exatos vizinhos.
-
-Etapa 4 (O Desafio da Tirolesa): Como ensinado: O aluno aplica todo o ciclo (achar catetos subtraindo torres, elevar, simplificar e aproximar) autonomamente.
-
-## 📐 Fase 2: Triângulos e Circunferência
-
-O que é ensinado na fase: A aplicação do Teorema de Pitágoras sem guias passo a passo, e a lei geométrica do triângulo retângulo inscrito no círculo.
-
-Etapa 1 (Triângulo Puro): Como ensinado: Localização visual dos catetos através do símbolo de 90 graus (o "Esquadro"). O aluno aplica a soma das áreas.
-
-Etapa 2 (O Diâmetro Inquebrável): Como ensinado: O triângulo está inscrito num círculo. Prova-se que a hipotenusa atravessa perfeitamente o centro, convertendo-se no Diâmetro total.
-
-Etapa 3 (O Raio como Divisão Segura): Como ensinado: Ao dividir o Diâmetro simplificado por 2 para achar o Raio, ensina-se algebricamente que divisores externos só afetam multiplicadores externos (as "caixas"), e não o que está confinado dentro da raiz.
-
-## 📏 Fase 3: O Finito e o Infinito
-
-O que é ensinado na fase: A transformação mecânica de casas decimais em frações (com limites ou dízimas).
-
-Etapa 1 (Reconhecimento de Padrão): Como ensinado: Decimais exatos operam em base 10 (ou potências de 10). Dízimas infinitas repetitivas ancoram-se obrigatoriamente em divisores com a base 9.
-
-Etapa 2 (Projeto do Marceneiro): Como ensinado: Pede o cálculo de Área misturando um inteiro e uma dízima. Demonstra o padrão do cancelamento em cruz: o "9" que multiplica o comprimento anula o "9" da base da largura fracionada.
-
-## ⚡ Fase 4: Potências e Dízimas Mistas
-
-O que é ensinado na fase: Operações matemáticas combinadas de alto nível e desmistificação dos "Sustos Visuais" (expoentes esquisitos).
-
-Etapa 1 (Dízima Mista): Como ensinado: Transforma-se 1,777... desdobrando-o na junção de um inteiro exato (9/9) com o "eco" decimal (7/9), gerando a fração 16/9.
-
-Etapa 2 (Expoente Fracionário): Como ensinado: Expoente "0,5" é mecanicamente desmascarado como a tradicional raiz quadrada aplicada nos dois andares da fração.
-
-Etapa 3 (Expoente Negativo): Como ensinado: Aborda o conceito do "Espelho". O sinal negativo inverte o numerador e denominador; em seguida, a potência ao quadrado expande a área.
-
-Etapa 4 (Corte em Diagonais): Como ensinado: Ao multiplicar m × n, o aluno é incentivado a não realizar o cálculo enorme, mas usar a visão (cancelamento de andares opostos) e encontrar a resposta limpa instantaneamente.
-
-## 🎯 Fase 5: Cercando o Irracional
-
-O que é ensinado na fase: A exploração territorial dos números que quebram, o tratamento da raiz de 180, e o nivelamento monetário em reta numérica.
-
-Etapa 1 (As Fronteiras): Como ensinado: Para entender raízes soltas, o aluno investiga na calculadora quais vizinhos possuem áreas exatas (169 e 196), enclausurando a resposta.
-
-Etapa 2 (Passe Livre Composto): Como ensinado: Na simplificação do 180, ensina-se que múltiplos números podem sair da raiz simultaneamente. Ao saírem, eles fundem-se por multiplicação externa.
-
-Etapa 3 (A Régua Decimal): Como ensinado: Para posicionar raízes irracionais e frações grotescas (193/90) em uma fita geométrica, traduz-se todos os valores bizarros para um referencial monetário comum (decimais na calculadora).
-
-## 📦 Fase 6: Geometria 3D e A Sobra da Fita
-
-O que é ensinado na fase: Operações volumétricas de espaço, propriedades estruturais das arestas e consolidação de subtrações consecutivas.
-
-Etapa 1 (O Volume Reverso): Como ensinado: Diferente das áreas 2D (Quadrado), a expansão tridimensional gerada pelo volume exige raiz cúbica (multiplicação de três eixos).
-
-Etapa 2 (Visão Espacial - Arame): Como ensinado: Imaginar o cubo transparente como a estrutura da "sua sala" (4 no teto, 4 no piso, 4 colunas verticais), evitando esquecer vigas durante o contorno do arame.
-
-Etapa 3 (Nivelamento Físico): Como ensinado: O aluno transforma pedaços soltos descritos de formas absurdas (√144, √(9/4), 3/4) para decimais universais antes de lidar com uma subtração na obra civil.
-
-Etapa 4 (Cálculo de Retalhos): Como ensinado: Em vez de descontar fita por fita de forma arriscada, consolida-se todo o "lixo" gerado em uma soma única, descontando-o uma única vez da origem bruta.
-
-## ⏱️ Fase 7: A Estrutura do Tempo
-
-O que é ensinado na fase: Trabalhar fora do sistema decimal confortável, respeitando as bases 60 e o relógio cíclico 24h.
-
-Etapa 1 (Ação Contínua): Como ensinado: Consolidar filmes e intervalos em um grande bloco de vida crua, traduzido em minutos absolutos.
-
-Etapa 2 (A Caixa de Ovos): Como ensinado: Dividindo os minutos, extraem-se os blocos completos de "embalagens de 60" (Horas fechadas), enquanto a fração de divisão que sobra forma os minutos residuais.
-
-Etapa 3 (A Catraca): Como ensinado: Somar as horas calculadas ao horário inicial da noite e lidar com o transbordo ("overflow") quando o ponteiro supera a marca civil das 24 horas, zerando o contador do dia.
-
-## 🌀 Fase 8 (Secreta): A Sala do Arquiteto
-
-O que é ensinado na fase: A observação da lei áurea da biologia. Acessível apenas para os mestres lógicos.
-
-Etapa Única: Como ensinado: Através do desenho de uma espiral áurea baseada em quadrados expansivos, o aluno prova ser um observador nato ao perceber a Sequência de Fibonacci (cada termo é forjado pela união dos dois termos antecessores).
-
-## 💻 Como usar (Aluno)
-
-1. Faça o download ou clone o repositório.
-2. Abra o arquivo `index.html` em qualquer navegador web atual (Chrome, Edge, Firefox, Safari). Não requer instalação de servidor.
-3. **Na tela inicial, você encontrará três opções:**
-   - **📖 Sobre o Projeto:** conheça o contexto acadêmico, a equipe e a licença do REA.
-   - **🎮 Ir para o Jogo:** acesse o conteúdo completo do Escape Room.
-   - **📚 Revisão Teórica:** consulte um resumo dos conceitos matemáticos abordados em cada fase.
-4. Após clicar em **"Ir para o Jogo"**, preencha o seu nome e clique em **"Iniciar Aula de Fuga"** para começar a jornada.
-5. Use a calculadora (🧮) contextualizada para rascunhos mentais.
-6. Anote as Senhas-chave fornecidas ao final de cada fase concluída.
-7. Destranque o cadeado digital final, registre a sua experiência e clique em **Baixar Relatório**.
-
-## 👩‍🏫 Como usar (Professor)
-
-A ferramenta foi desenhada para a Educação Baseada em Evidências. Ao recolher os relatórios .txt dos seus alunos, terá um mapa exato de onde ocorrem as falhas lógicas (ex: o aluno entende o Teorema de Pitágoras, mas erra sistematicamente na fatoração da raiz).
-
-Privacidade (LGPD): Todo o processamento é feito localmente no navegador (Client-side). Nenhum dado do aluno transita pela internet ou é armazenado em bases de dados de terceiros.
-
-Dica: Verifique a pasta testes de bancada para visualizar exemplos reais dos relatórios diagnósticos gerados pelo sistema.
-
-O relatório gerado inclui agora o **histórico completo de erros com as tentativas do aluno**, permitindo ao professor identificar não só o que o aluno errou, mas também os **padrões de erro** (ex: sempre confunde cateto com hipotenusa, ou esquece de elevar ao quadrado). Isso viabiliza intervenções ainda mais precisas.
-
-## 🛠️ Tecnologias Utilizadas
-
-HTML5 (Semântica e SVGs Interativos)
-
-CSS3 (Responsividade Mobile-first, Animações e Temas)
-
-JavaScript (Vanilla/ES6) (Manipulação de DOM, Parser Matemático, Blob API para relatórios)
-
-## 👥 Equipe de Desenvolvimento
-
-Antonio Antunes Junior
+Antonio Antunes Júnior
 
 Giovani Machado de Lima
 
@@ -258,6 +138,5 @@ Sergio Eric Reis de Oliveira
 
 Vitor Correa Uberti
 
-## 📄 Licença
-
-Este projeto é um Recurso Educacional Aberto distribuído sob a licença MIT – livre para uso, cópia, modificação e distribuição, seja para fins académicos ou comerciais. Consulte o arquivo LICENSE para mais detalhes. © 2026.
+## 📜 Licença
+Este projeto está licenciado sob a MIT License - veja o arquivo para mais detalhes. O uso, modificação e distribuição em ambientes educacionais e de pesquisa são altamente encorajados.LICENSE
