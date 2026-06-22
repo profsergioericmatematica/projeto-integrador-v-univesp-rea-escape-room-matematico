@@ -1,96 +1,74 @@
 ## 🧠 Dicionário de Diagnósticos (Tutor Inteligente)
 
-O sistema conta agora com um dicionário de mais de 60 mensagens de erro personalizadas (`diagnosticosErro`), mapeando valores incorretos comuns a dicas pedagógicas específicas. Isso garante que o feedback não seja genérico, mas direcionado ao erro conceitual do aluno.
+A plataforma foi aprimorada com um **motor de tutoria inteligente**, fundamentado em um dicionário que contém mais de 60 mensagens de erro exclusivas (`diagnosticosErro`). Em vez de um feedback genérico (como "Resposta incorreta"), o sistema mapeia o input incorreto e entrega uma intervenção pedagógica direcionada à falha conceitual exata do aluno.
 
-**Exemplo:** Se o aluno digitar `5` no campo `cat1` (base do triângulo), o sistema exibirá:  
+**Exemplo Prático:** Se o aluno inserir o valor `5` no campo `cat1` (referente à base do triângulo), a interface exibirá a seguinte orientação:
 *"Você dividiu a largura do topo (10/2). Subtraia o fundo (6m) antes de dividir pela metade!"*
 
-Essa funcionalidade foi testada para garantir que, mesmo que o aluno insira valores inesperados, o sistema não quebra e sempre oferece uma orientação útil.
-
-# Plano de Testes e Resolução de Edge Cases
-
-Este documento detalha os 6 principais cenários de "edge cases" (casos limite) previstos e tratados no **Escape Room: Fundamentos Matemáticos Visuais**, garantindo a integridade, segurança e fluidez da aplicação.
-
-## Cenário 1: Inserção de Valores Negativos
-* **Ação do Utilizador:** Introduzir números negativos (ex: `-5`) num campo que espera uma medida de distância ou geometria.
-* **Comportamento Esperado & Tratamento:** A função `validarEntradaNumerica` identifica-o como um número válido, evitando o travamento do sistema. Contudo, a lógica de negócio reconhece que `-5` não é a resposta correta para a geometria (ex: a aresta do cubo). O campo é suavemente sinalizado a vermelho (feedback visual de erro) e a falha é registada no relatório do aluno. O sistema **não quebra**.
-
-### Resultado verificado
-- **Linha de proteção:** `script.js:148` — função `validarEntradaNumerica()` (aceita e valida o sinal `-`) e os validadores de negócio (ex: `script.js:777` em `verificarF6Passo1()`).
-- **Comportamento confirmado:** O valor escapa à barreira de segurança inicial (`!isNaN`), o que é correto (é um número). A seguir, bate na lógica rígida do enigma (`v === '8'`). A resposta reprova de forma limpa, o campo fica vermelho (UI inalterada) e o número `-5` é inserido sem erros no array `stats.errosDetalhados`.
-- **Brecha residual:** Nenhuma. A arquitetura trata números matematicamente inválidos como falha natural de jogo.
- 
----
-
-## Cenário 2: Valores Absurdamente Altos (Overflow)
-* **Ação do Utilizador:** Colar ou digitar um número gigante (ex: `999999999999999999`).
-* **Comportamento Esperado & Tratamento:** O JavaScript lida nativamente com grandes números até um limite de segurança (Number.MAX_SAFE_INTEGER). A aplicação aceita o input como número para não quebrar a UI, mas a validação rigorosa das funções (ex: `if (v === '15')`) reprova a tentativa de imediato. A interface suporta o valor no input sem distorcer o layout CSS graças ao `max-width: 100%`.
-
-### Resultado verificado
-- **Linha de proteção:** `script.js:151` — função `validarEntradaNumerica()`.
-- **Comportamento confirmado:** A instrução `Number(valorTratado)` transforma com sucesso o limite de buffer (atribuindo a Notação Científica ou `Infinity`). Como o valor lido jamais corresponderá às strings exatas das respostas (`'15'`, `'20'`), a função de avaliação recusa a resposta de imediato. Não há paragem da thread do JS.
-- **Brecha residual:** Nenhuma. O sistema absorve o impacto sem distorcer o layout ou causar quebras na execução.
+Essa arquitetura garante que a aplicação permaneça estável e ofereça suporte contextualizado, mesmo que o aluno insira dados totalmente inesperados.
 
 ---
 
-## Cenário 3: Submissão de Strings Vazias ou Espaços
-* **Ação do Utilizador:** Clicar no botão "Validar" com o campo em branco ou preenchido apenas com espaços.
-* **Comportamento Esperado & Tratamento:** A função auxiliar `validarEntradaNumerica` possui a verificação `if (String(valor).trim() === '') return false;`. A aplicação bloqueia a submissão, não insere "lixo" no relatório JSON (`stats.errosDetalhados`) e apresenta imediatamente um alerta de segurança na zona de feedback da fase, instruindo o utilizador a inserir um valor válido.
+## 🛡️ Plano de Testes e Resolução de *Edge Cases*
 
-### Resultado verificado
-- **Linha de proteção:** `script.js:149` — função `validarEntradaNumerica()`.
-- **Comportamento confirmado:** A cláusula `trim() === ''` dispara `false` instantaneamente. A função validadora (ex: `script.js:527` em `verificarPit`) interceta esse booleano, injeta na interface a mensagem "⚠️ Erro de Segurança: Insira apenas números válidos nos campos." e aciona o `return;`, evitando contabilização de erro injusta nos relatórios.
-- **Brecha residual:** Nenhuma.
+Abaixo estão detalhados os seis principais cenários de exceção (*edge cases*) mapeados e devidamente tratados no **Escape Room: Fundamentos Matemáticos Visuais**. O objetivo destas travas é garantir a integridade dos dados, a segurança contra vulnerabilidades e a fluidez da experiência do usuário (UX).
+
+### Cenário 1: Inserção de Valores Negativos
+
+* **Comportamento do Usuário:** Inserir um número negativo (ex: `-5`) em um campo que exige grandezas absolutas (como medidas de distância ou geometria).
+* **Resolução do Sistema:** A função `validarEntradaNumerica` absorve o valor sem quebrar a aplicação (pois `-5` é matematicamente um número). Contudo, a lógica de negócio do enigma recusa a resposta. O campo é destacado em vermelho (feedback visual), o erro é devidamente registrado na telemetria interna (`stats.errosDetalhados`) e a execução do código continua intacta.
+* **Brecha Residual:** Nenhuma. O sistema entende números matematicamente inválidos para o contexto como uma falha natural de jogo.
+
+### Cenário 2: Valores Absurdamente Altos (*Overflow*)
+
+* **Comportamento do Usuário:** Colar um número colossal (ex: `999999999999999999`).
+* **Resolução do Sistema:** O JavaScript trata o *input* dentro do seu limite de segurança (`Number.MAX_SAFE_INTEGER`), convertendo-o para notação científica ou `Infinity`. Como a string processada jamais baterá com o gabarito estrito da função de avaliação, a resposta é imediatamente rejeitada. A interface gráfica absorve o impacto sem distorcer o layout CSS, graças ao parâmetro `max-width: 100%`.
+* **Brecha Residual:** Nenhuma. O sistema absorve o estresse numérico sem causar congelamentos na *thread* principal.
+
+### Cenário 3: Submissão de Strings Vazias ou Apenas Espaços
+
+* **Comportamento do Usuário:** Clicar no botão "Validar" sem preencher o campo ou preenchendo-o apenas com a tecla de espaço.
+* **Resolução do Sistema:** A cláusula `if (String(valor).trim() === '')` na função `validarEntradaNumerica` intercepta a ação instantaneamente. A submissão é bloqueada para não poluir o relatório JSON final com dados inúteis. Um alerta visual é acionado, instruindo o aluno a inserir um valor numérico válido.
+* **Brecha Residual:** Nenhuma. A telemetria permanece limpa de falsos positivos.
+
+### Cenário 4: Injeção de Caracteres Especiais e *Cross-Site Scripting* (XSS)
+
+* **Comportamento do Usuário:** Tentar comprometer o sistema inserindo código malicioso (ex: `<script>alert('hack')</script>`) ou emojis nos campos.
+* **Resolução do Sistema:** A aplicação conta com uma defesa em duas camadas. Nos campos matemáticos, a barreira `!isNaN(Number(valorTratado))` rejeita impiedosamente qualquer string não numérica. No campo de texto livre ("Nome do Aluno"), a função global `sanitizarHTML` converte automaticamente caracteres sensíveis (como `<` e `>`) em entidades HTML seguras (`&lt;`). Isso garante que o *payload* malicioso seja impresso no relatório final apenas como texto inofensivo, impossibilitando a execução de scripts pelo navegador.
+* **Brecha Residual:** Nenhuma. O código hostil é neutralizado de forma segura e eficaz.
+
+### Cenário 5: Divisão por Zero na Calculadora Virtual
+
+* **Comportamento do Usuário:** Tentar realizar uma operação matemática impossível, como `5 / 0 =`, na calculadora integrada.
+* **Resolução do Sistema:** Para evitar o retorno de `Infinity` (o padrão do JavaScript) e não gerar confusão cognitiva, o *Parser Recursivo Descente* da calculadora utiliza a verificação `!isFinite(r)`. Ao detectar a divisão por zero, o algoritmo lança uma exceção controlada (*Throw Error*), que é capturada pelo bloco `catch`, limpando o visor e exibindo imediatamente a mensagem amigável **"Erro"**.
+* **Brecha Residual:** Nenhuma. Protege contra colapsos lógicos matemáticos.
+
+### Cenário 6: Tentativa de Burlar as Fases (*Bypass* via Manipulação do DOM)
+
+* **Comportamento do Usuário:** Abrir as ferramentas de desenvolvedor do navegador (F12), remover a classe CSS `hidden` do botão "Avançar" e tentar pular o enigma sem o resolver.
+* **Resolução do Sistema:** A segurança do fluxo não depende da interface visual. A função responsável pela transição (`mudarTela()`) exige uma chave de validação e cruza esse dado diretamente com o estado global da aplicação em segundo plano (`stats.fases[id].concluida`). Se o sistema detectar que a fase não foi genuinamente resolvida no *backend* do JS, a navegação é abortada e um alerta de segurança é disparado no ecrã: *"⚠️ Segurança do Laboratório: Não pode forçar as portas. Conclua o puzzle matemático primeiro!"*
+* **Brecha Residual:** Nenhuma. A nível de interface de usuário (UI), a aplicação encontra-se blindada contra adulterações diretas no DOM.
 
 ---
 
-## Cenário 4: Injeção de Caracteres Especiais e XSS
-* **Ação do Utilizador:** Tentar quebrar o sistema colando texto malicioso, como `<script>alert('hack')</script>`, emojis ou símbolos não matemáticos nos inputs.
-* **Comportamento Esperado & Tratamento:** Dupla camada de proteção. Primeiro, o `!isNaN(Number(valorTratado))` recusa qualquer string não-numérica e bloqueia a execução da função de validação. Segundo, se algum dado malicioso for introduzido no campo de "Nome do Aluno" (que é livre), a função global `sanitizarHTML` converte as tags `<` e `>` em entidades HTML (`&lt;`), neutralizando qualquer ameaça de XSS no momento de gerar o relatório.
+## 🧪 Testes de Bancada e Validação Funcional (QA)
 
-### Resultado verificado
-- **Linha de proteção:** `script.js:158` — função `sanitizarHTML()` e a sua utilização direta em `script.js:312` (`gerarRelatorioVisual`). Além do Regex Whitelist na calculadora (`script.js:421`).
-- **Comportamento confirmado:** Inputs numéricos rejeitam injeção via `isNaN`. O campo textual "Nome" captura e envia o payload ao objeto, mas quando `gerarRelatorioVisual` é ativado, a conversão substitui as tags HTML. O payload é impresso apenas como texto visual no ecrã de sucesso, sem invocar o motor de JavaScript do navegador.
-- **Brecha residual:** Nenhuma. Código malicioso é neutralizado de forma segura e eficaz.
+Para garantir a precisão da telemetria, do cálculo dinâmico de penalidades e da geração dos relatórios, a arquitetura foi submetida a três baterias de testes de bancada focados em extremos de usabilidade.
 
----
+* **Teste 1: Execução Perfeita (*Golden Master*)**
+* **Cenário:** O aluno simulado acertou todos os 60 campos na primeira tentativa e concluiu as 32 etapas sem solicitar nenhuma dica.
+* **Resultado:** O relatório confirmou a pontuação máxima de **96 estrelas** e atribuiu a patente suprema de **"Mestre do Escapismo 🏆"**. Este teste ratificou a estabilidade e fluidez do "caminho feliz" (*Happy Path*) da aplicação.
 
-## Cenário 5: Divisão por Zero na Calculadora Virtual
-* **Ação do Utilizador:** Utilizar a calculadora do sistema para realizar a operação `5 / 0 =`.
-* **Comportamento Esperado & Tratamento:** Em JavaScript normal, isso retornaria `Infinity`. Para evitar confusões cognitivas, a função `calcCalcular` verifica se a operação resulta num valor finito através da verificação `!isFinite(r)`. Se o cálculo resultar em divisão por zero (Infinity), a função emite um erro seguro (Throw Error), que é apanhado pelo bloco `catch`, e exibe a mensagem amigável **"Erro"** no ecrã da calculadora, limpando a memória imediatamente a seguir.
 
-### Resultado verificado
-- **Linha de proteção:** `script.js:470` a `script.js:472` — função `calcCalcular()` (Parser Descente).
-- **Comportamento confirmado:** O Parser Recursivo avalia `5/0` e processa como `Infinity`. Imediatamente a seguir, a verificação `if (!isFinite(r) || isNaN(r))` identifica a anomalia, levanta uma exceção (Throw Error) e atira a execução para o bloco `catch` na linha 476, que limpa o display com "Erro".
-- **Brecha residual:** Nenhuma. O algoritmo protege contra colapsos lógicos matemáticos e impede o travamento da calculadora.
 
----
 
-## Cenário 6: Avançar Sem Preencher Nada (Bypassing via Inspecionar Elemento)
-* **Ação do Utilizador:** Tentar ignorar os enigmas forçando o avanço de fase. O aluno abre as Ferramentas de Programador (F12), inspeciona o elemento do botão "Avançar", remove a classe `hidden` que o oculta e clica nele.
-* **Comportamento Esperado & Tratamento:** O sistema não confia apenas no bloqueio visual (CSS). A função `mudarTela()` no `script.js` exige a receção de um ID de fase e avalia no objeto de estado global (`stats.fases[id]`) se essa fase consta realmente como `concluida: true`. Se houver divergência, a navegação é abortada de forma segura.
+* **Teste 2: Uso Massivo de Dicas (Teste de Penalidade)**
+* **Cenário:** Resolução de todos os enigmas sem erros de digitação nos *inputs*, porém com a solicitação extrema de todas as 32 dicas disponíveis no sistema.
+* **Resultado:** O sistema contabilizou perfeitamente a penalidade por dependência assistencial. A pontuação sofreu redução (deduzindo o peso das dicas), consolidando **64 estrelas**, o que rebaixou a patente do usuário para **"Especialista Matemático"**. A telemetria registrou com exatidão a linha do tempo (cruzando os momentos em que a dica foi pedida e a submissão que ocorreu imediatamente após).
 
-### Resultado verificado
-- **Linha de proteção:** `script.js:384` — função `mudarTela(atual, proxima, idFaseAtual = null)`. A validação é rigorosa: `if (idFaseAtual && stats.fases[idFaseAtual] && !stats.fases[idFaseAtual].concluida) { alert(...); return; }`. Os botões HTML injetam ativamente a chave de validação (ex: `'pitagoras'`).
-- **Comportamento confirmado:** Se o aluno adulterar o DOM removendo o `hidden` e clicar no botão de avanço, a função JS deteta que o estatuto `concluida` é falso. Dispara imediatamente o alerta: *"⚠️ Segurança do Laboratório: Não pode forçar as portas. Conclua o puzzle matemático primeiro!"* e aborta a execução do código de transição de ecrã.
-- **Brecha residual:** Nenhuma. A nível de interface de utilizador (UI) e manipulação do DOM, a aplicação encontra-se 100% blindada contra este tipo de adulteração, cumprindo rigorosamente os requisitos de segurança do projeto.
 
-## Testes de Bancada (Validação Funcional)
 
-Além dos edge cases, o sistema foi submetido a três testes de bancada para verificar a consistência da lógica de pontuação, estrelas e relatórios. Os testes foram executados manualmente, seguindo roteiros pré-definidos, e os resultados estão documentados nos arquivos de relatório gerados automaticamente pelo sistema.
 
-> **Nota adicional:** Os testes de bancada também validaram indiretamente o dicionário de diagnósticos, confirmando que, para cada erro registrado, uma mensagem específica é exibida e o sistema continua estável.
-
-### Cenário 1: Execução Perfeita (Golden Master)
-- **Objetivo:** Validar que, ao acertar todos os 60 campos na primeira tentativa e sem usar dicas, o sistema atribui **96 estrelas** e a patente **"Mestre do Escapismo"**.
-- **Resultado:** ✅ Confirmado. Relatório disponível em: `Relatorio_Teste_de_Bancada_número_1_-_sem_erros_e_sem_pedir_dicas_2026-06-17_195625.txt`
-
-### Cenário 2: Uso de Todas as 32 Dicas
-- **Objetivo:** Validar que, ao usar todas as dicas disponíveis (32), o sistema reduz corretamente a pontuação para **64 estrelas** (cada dica penaliza em 1 estrela, pois a base é 96 estrelas e 96 - 32 = 64), e a patente cai para **"Especialista Matemático"**.
-- **Resultado:** ✅ Confirmado. Relatório disponível em: `Relatorio_Teste_de_Bancada_número_2_-_sem_erros_e_pedindo_todas_as_32_dicas_2026-06-17_204001.txt`
-
-### Cenário 3: Erro em Todos os 60 Campos (uma vez)
-- **Objetivo:** Validar que, ao errar cada campo exatamente uma vez e depois acertá-lo, a pontuação final é **59 estrelas** (pois 60 erros → 60 pontos de penalidade? Na verdade, o cálculo é: a cada erro ou dica reduz 1 estrela da fase; como são 32 etapas, o total máximo é 96; com 60 erros, o sistema calcula corretamente as estrelas por fase e resulta em 59 estrelas – conforme confirmado pelo relatório).
-- **Resultado:** ✅ Confirmado. Relatório disponível em: `Relatorio_Teste_de_Bancada_número_3_-_Errando_1_vez_todos_os_60_campos_e_sem_pedir_dicas_2026-06-17_205742.txt`
-
-> **Observação:** Os relatórios foram gerados automaticamente pelo sistema e seus conteúdos atestam a integridade da telemetria, registrando cada acerto, erro, dica e a linha do tempo completa da sessão.
+* **Teste 3: Erro Sistemático (Uma falha por campo)**
+* **Cenário:** O usuário errou intencionalmente todos os 60 campos exata vez antes de inserir as respostas corretas, sem solicitar dicas.
+* **Resultado:** A lógica matemática de penalidade foi validada com absoluto sucesso. O motor de cálculo deduziu a pontuação proporcional aos erros cometidos por fase, entregando o resultado final exato de **59 estrelas**. Isso confirma que o rastreamento do objeto de estado (`stats.errosDetalhados`) processa de forma íntegra a persistência do aluno em caso de erro continuado.
