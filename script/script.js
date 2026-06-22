@@ -1318,14 +1318,14 @@ function verificarReta() {
 }
 
 /**
- * @description Verificação final do Cabo por margem estreita (13.35 ~ 13.42). Prova a habilidade plena de somar inteiros externos com decimais aproximados com rigor mecânico. Entrega a Senha (1).
+ * @description Verificação final do Cabo por margem ampliada (13.38 ~ 13.44), compatível com o arredondamento de √5≈2,236 em duas casas decimais (2,23 a 2,24) multiplicado pelo fator externo 6. Prova a habilidade plena de somar inteiros externos com decimais aproximados com rigor mecânico. Entrega a Senha (1).
  * @param {string} raiz180_aprox - ID do input text de medida.
  * @returns {void} Encerra a grandiosa Fase 5.
  */
 function verificarRaiz180Passo2() {
     let acertos = 0; const total = 1; const fase = 'raiz180_aprox';
     let raw = document.getElementById('raiz180_aprox').value; let aprox = parseFloat(raw.replace(',','.'));
-    if (!isNaN(aprox) && aprox >= 13.35 && aprox <= 13.42) { acertos++; registrarAcertoCampo(fase, 'Raiz 180 - Medida do Cabo', raw); aplicarFeedbackVisual('raiz180_aprox', true); } else { registrarErroCampo(fase, 'Raiz 180 - Medida do Cabo', raw); aplicarFeedbackVisual('raiz180_aprox', false); }
+    if (!isNaN(aprox) && aprox >= 13.38 && aprox <= 13.44) { acertos++; registrarAcertoCampo(fase, 'Raiz 180 - Medida do Cabo', raw); aplicarFeedbackVisual('raiz180_aprox', true); } else { registrarErroCampo(fase, 'Raiz 180 - Medida do Cabo', raw); aplicarFeedbackVisual('raiz180_aprox', false); }
     const ok = (acertos === total); contabilizarCampos(fase, acertos); registrarTentativa(fase, ok); const fb = document.getElementById('erro_fase5_pt2_passo2');
     
     if (ok) {

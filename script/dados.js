@@ -262,8 +262,8 @@ const diagnosticosErro = {
     },
     'raiz180_aprox': {
         '2.236': 'Você esqueceu de multiplicar a raiz pelo 6 que aguardava fora!',
-        '13.4': 'Aumente a precisão. O valor exato é ~13.416.',
-        '13.5': 'A aproximação correta é 13.416, que está entre 13.4 e 13.42.'
+        '13.3': 'Quase lá! Use mais casas decimais na raiz de 5 (≈2,236) antes de multiplicar por 6.',
+        '13.5': 'A aproximação correta é 13.416, dentro da faixa aceita de 13.38 a 13.44.'
     },
 
     // =============================================
@@ -389,7 +389,7 @@ const matrizPedagogica = [
         titulo: "FASE 5 - CERCANDO O IRRACIONAL (RETA NUMÉRICA E RAIZ 180)",
         ids: ['limites', 'raiz180_simp', 'reta', 'raiz180_aprox'],
         contexto: "Estimar entre quais inteiros a √180 está. Simplificar a √180. Posicionar números irracionais/fracionários na reta e calcular um valor decimal cortado.",
-        gabarito: "Limites: 13 (√169) e 14 (√196) | √180 Simplificada: 6√5 | Reta: √22=M, 25/99=O, 193/90=P | Medida do Cabo (6×2,236): 13.416 (aprox aceita 13.4 a 13.42)",
+        gabarito: "Limites: 13 (√169) e 14 (√196) | √180 Simplificada: 6√5 | Reta: √22=M, 25/99=O, 193/90=P | Medida do Cabo (6×2,236): 13.416 (aprox aceita 13.38 a 13.44)",
         campos: ['Limites - Raiz Baixa (169)', 'Limites - Raiz Alta (196)', 'Raiz 180 (Simp) - Número de Fora', 'Raiz 180 (Simp) - Número de Dentro', 'Reta Numérica - Posição √22', 'Reta Numérica - Posição 25/99', 'Reta Numérica - Posição 193/90', 'Raiz 180 - Medida do Cabo']
     },
     {
